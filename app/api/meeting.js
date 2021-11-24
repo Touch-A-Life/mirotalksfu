@@ -2,11 +2,11 @@
 
 const fetch = require('node-fetch');
 
-const API_KEY = 'mirotalksfu_default_secret';
-const MIROTALK_URL = 'http://localhost:3010/api/v1/meeting';
+const API_KEY = 'talgiving_default_key';
+const AUDIO_ROOMS_URL = 'http://localhost:4000/api/v1/meeting';
 
 function getResponse() {
-    return fetch(MIROTALK_URL, {
+    return fetch(AUDIO_ROOMS_URL, {
         method: 'POST',
         headers: {
             authorization: API_KEY,

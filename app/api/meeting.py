@@ -1,8 +1,8 @@
 import requests
 import json
 
-API_KEY = "mirotalksfu_default_secret"
-MIROTALK_URL = "http://localhost:3010/api/v1/meeting"
+API_KEY = "talgiving_default_key"
+AUDIO_ROOMS_URL = "http://localhost:4000/api/v1/meeting"
 
 headers = {
     "authorization": API_KEY,
@@ -10,7 +10,7 @@ headers = {
 }
 
 response = requests.post(
-    MIROTALK_URL,
+    AUDIO_ROOMS_URL,
     headers=headers
 )
 

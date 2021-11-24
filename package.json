@@ -1,7 +1,7 @@
 {
-    "name": "mirotalksfu",
+    "name": "talgiving",
     "version": "1.0.0",
-    "description": "WebRTC SFU browser-based video calls",
+    "description": "WebRTC SFU browser-based Audio Chat",
     "main": "Server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,25 +11,26 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/miroslavpejic85/mirotalksfu"
+        "url": ""
     },
-    "author": "Miroslav Pejic",
+    "author": "",
     "license": "AGPLv3",
     "dependencies": {
         "compression": "1.7.4",
         "cors": "2.8.5",
         "express": "4.17.1",
         "httpolyglot": "0.1.2",
-        "mediasoup": "3.9.2",
+        "mediasoup": "3.8.4",
         "mediasoup-client": "3.6.43",
+        "mongoose": "^6.0.12",
         "ngrok": "4.2.2",
-        "socket.io": "4.3.2",
+        "socket.io": "4.2.0",
         "swagger-ui-express": "4.1.6",
         "uuid": "8.3.2",
         "yamljs": "0.3.0"
     },
     "devDependencies": {
         "node-fetch": "3.0.0",
-        "prettier": "2.4.1"
+        "prettier": "^2.4.1"
     }
 }

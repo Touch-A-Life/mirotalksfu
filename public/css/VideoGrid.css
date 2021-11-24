@@ -3,131 +3,133 @@
 --------------------------------------------------------------*/
 
 #videoMediaContainer {
-    z-index: 1;
-    display: flex;
-    align-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    vertical-align: middle;
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    top: 0px;
-    right: 0px;
+  z-index: 1;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  top: 0px;
+  right: 0px;
 }
 
 #videoMediaContainer div {
-    /* Camera */
-    position: relative;
-    vertical-align: middle;
-    align-self: center;
-    border-radius: 10px;
-    overflow: hidden;
-    display: inline-block;
-    background: transparent;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0px 12px 22px rgba(0, 0, 0, 0.4);
-    animation: show 0.4s ease;
+  /* Camera */
+  position: relative;
+  vertical-align: middle;
+  align-self: center;
+  border-radius: 10px;
+  overflow: hidden;
+  display: inline-block;
+  background: transparent;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 12px 22px rgba(0, 0, 0, 0.4);
+  animation: show 0.4s ease;
 }
 
 #videoMediaContainer p {
-    position: absolute;
-    bottom: 0;
-    color: white;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    margin: 5px;
-    width: auto;
-    height: 25px;
-    border-radius: 5px;
-    background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  bottom: 0;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin: 5px;
+  width: auto;
+  height: 25px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 #videoMediaContainer i {
-    position: absolute;
-    display: none;
-    top: 0;
-    color: rgb(0, 255, 71);
-    font-size: 14px;
-    align-items: center;
-    padding: 5px;
-    margin: 5px;
-    width: auto;
-    height: 25px;
-    border-radius: 5px;
-    background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  display: none;
+  top: 0;
+  color: rgb(0, 255, 71);
+  font-size: 14px;
+  align-items: center;
+  padding: 5px;
+  margin: 5px;
+  width: auto;
+  height: 25px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 #videoMediaContainer button {
-    position: absolute;
-    right: 0;
-    color: white;
-    display: flex;
-    align-items: center;
-    margin: 5px;
-    width: auto;
-    height: 25px;
-    border-radius: 5px;
-    background: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  right: 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  width: auto;
+  height: 25px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.1);
 }
 
 #videoMediaContainer img {
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    width: 250px;
-    display: none;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  min-width: 100px;
+  max-height: 100%;
+  display: none;
 }
 
 #videoMediaContainer video {
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: var(--box-shadow);
-    cursor: pointer;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
 }
 
 video:hover {
-    opacity: 0.9;
+  opacity: 0.9;
 }
 
 video:fullscreen {
-    object-fit: contain;
-    opacity: 1;
+  object-fit: contain;
+  opacity: 1;
 }
 
 .mirror {
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .blur {
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
 }
 
 @keyframes show {
-    0% {
-        opacity: 0;
-        transform: scale(0.4) translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
+  0% {
+    opacity: 0;
+    transform: scale(0.4) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }

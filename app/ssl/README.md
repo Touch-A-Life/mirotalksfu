@@ -1,6 +1,6 @@
 ## Self-signed certificate
 
-![mirotalksfu-https](https.png)
+![talgiving-https](https.png)
 
 ```bash
 # install openssl 4 ubuntu
