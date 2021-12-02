@@ -29,7 +29,7 @@
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0px 12px 22px rgba(0, 0, 0, 0.4);
-  animation: show 0.4s ease;
+  /* animation: show 0.4s ease; */
 }
 
 #videoMediaContainer p {
@@ -45,6 +45,16 @@
   height: 25px;
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.4);
+}
+
+#videoMediaContainer img {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  min-width: 100px;
+  max-height: 100%;
+  display: block;
 }
 
 #videoMediaContainer i {
@@ -64,7 +74,7 @@
 
 #videoMediaContainer button {
   position: absolute;
-  right: 0;
+  right: 5px;
   color: white;
   display: flex;
   align-items: center;
@@ -133,3 +143,91 @@ video:fullscreen {
     transform: scale(1) translateY(0);
   }
 }
+
+/* 
+custom css for chat_mic animation postion
+*/
+.chat_mic {
+  position: absolute;
+  right: 5px;
+  width: 25px !important;
+  height: 25px !important;
+  border-radius: 100% !important;
+  top: 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0) !important;
+  padding: 0 !important;
+  z-index: 999 !important;
+}
+
+@keyframes quiet {
+  25% {
+    transform: scaleY(0.6);
+  }
+  50% {
+    transform: scaleY(0.4);
+  }
+  75% {
+    transform: scaleY(0.8);
+  }
+}
+
+@keyframes normal {
+  25% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.4);
+  }
+  75% {
+    transform: scaleY(0.6);
+  }
+}
+@keyframes loud {
+  25% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.4);
+  }
+  75% {
+    transform: scaleY(1.2);
+  }
+}
+
+.boxContainer {
+  display: flex !important;
+  justify-content: space-between;
+  height: 25px;
+  --boxSize: 3px;
+  --gutter: 0px;
+  width: 25px;
+  background: #fff !important;
+  padding: 4px;
+  border-radius: 100% !important;
+}
+
+.box {
+  transform: scaleY(0.4);
+  height: 100%;
+  width: var(--boxSize);
+  background: #e2122f !important;
+  animation-duration: 1.2s !important;
+  animation-timing-function: ease-in-out !important;
+  animation-iteration-count: infinite !important;
+  border-radius: 8px !important;
+}
+.box1 {
+  animation-name: quiet !important;
+}
+.box2 {
+  animation-name: normal !important;
+}
+
+.box3 {
+  animation-name: quiet !important;
+}
+
+/*
+End of custom css for animation mic icon
+*/

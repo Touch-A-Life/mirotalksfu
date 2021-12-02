@@ -84,6 +84,10 @@ app.get(["/"], (req, res) => {
   res.sendFile(path.join(__dirname, "../../", "public/view/landing.html"));
 });
 
+app.get(["/test"], (req, res) => {
+  res.sendFile(path.join(__dirname, "../../", "public/test/"));
+});
+
 // if not allow video/audio
 app.get(["/permission"], (req, res) => {
   res.sendFile(path.join(__dirname, "../../", "public/view/permission.html"));

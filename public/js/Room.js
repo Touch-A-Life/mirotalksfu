@@ -1,5 +1,9 @@
 "use strict";
 
+let meterRefresh = null;
+
+//end of sound meter
+
 if (location.href.substr(0, 5) !== "https")
   location.href = "https" + location.href.substr(4, location.href.length - 4);
 
@@ -107,7 +111,7 @@ function initClient() {
     setTippy("chatSaveButton", "Save", "bottom");
     setTippy("sessionTime", "Session time", "right");
   }
-  setupWhiteboard();
+  //setupWhiteboard();
   initEnumerateDevices();
 }
 
@@ -450,9 +454,9 @@ function roomIsReady() {
     rc.makeDraggable(mySettings, mySettingsHeader);
     rc.makeDraggable(participants, participantsHeader);
     rc.makeDraggable(whiteboard, whiteboardHeader);
-    if (navigator.getDisplayMedia || navigator.mediaDevices.getDisplayMedia) {
-      //show(startScreenButton);
-    }
+    //if (navigator.getDisplayMedia || navigator.mediaDevices.getDisplayMedia) {
+    //show(startScreenButton);
+    //}
   }
   if (DetectRTC.browser.name != "Safari") {
     document.onfullscreenchange = () => {
@@ -854,6 +858,7 @@ function handleRoomClientEvents() {
     hide(startAudioButton);
     show(stopAudioButton);
     setColor(startAudioButton, "red");
+    startMeter();
   });
   rc.on(RoomClient.EVENTS.pauseAudio, () => {
     console.log("Room Client pause audio");
@@ -869,6 +874,7 @@ function handleRoomClientEvents() {
     console.log("Room Client stop audio");
     hide(stopAudioButton);
     show(startAudioButton);
+    stopMeter();
   });
   // rc.on(RoomClient.EVENTS.startVideo, () => {
   //     console.log('Room Client start video');
@@ -1470,3 +1476,67 @@ function showAbout() {
     },
   });
 }
+
+/*
+ * Start Audio level functions
+ */
+function handleSuccessMeter(stream) {
+  // Put variables in global scope to make them available to the
+  // browser console.
+  window.stream = stream;
+  const soundMeter = (window.soundMeter = new SoundMeter(window.audioContext));
+  soundMeter.connectToSource(stream, function (e) {
+    if (e) {
+      alert(e);
+      return;
+    }
+
+    meterRefresh = setInterval(() => {
+      const meterValue = soundMeter.instant.toFixed(2);
+      console.log("sound meter", meterValue);
+      if (meterValue > 0.01) {
+        document.getElementById(rc.peer_id + "__speaking").innerHTML =
+          '<div class="boxContainer"><div class="box box1"></div><div class="box box2"></div><div class="box box3"></div></div>';
+        rc.updatePeerInfo(peer_name, rc.peer_id, "speaking", true);
+      } else {
+        document.getElementById(rc.peer_id + "__speaking").innerHTML = "";
+        rc.updatePeerInfo(peer_name, rc.peer_id, "speaking", false);
+      }
+    }, 200);
+  });
+}
+
+function handleErrorMeter(error) {
+  console.log(
+    "navigator.MediaDevices.getUserMedia error: ",
+    error.message,
+    error.name
+  );
+}
+
+function startMeter() {
+  console.log("Requesting local stream");
+
+  try {
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    window.audioContext = new AudioContext();
+  } catch (e) {
+    alert("Web Audio API not supported.");
+  }
+
+  navigator.mediaDevices
+    .getUserMedia({ audio: true, video: false })
+    .then(handleSuccessMeter)
+    .catch(handleErrorMeter);
+}
+
+function stopMeter() {
+  console.log("Stopping local stream");
+
+  window.stream.getTracks().forEach((track) => track.stop());
+  window.soundMeter.stop();
+  clearInterval(meterRefresh);
+  // document.getElementById(rc.peer_id + "__speaking").innerHTML = "";
+}
+
+// end of Audio level

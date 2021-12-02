@@ -475,6 +475,17 @@ class RoomClient {
           data.status,
           false
         );
+        if (
+          (data.type === "speaking" ||
+            data.type === "audio" ||
+            data.type === "audioType") &&
+          data.status
+        ) {
+          document.getElementById(data.peer_id + "__speaking").innerHTML =
+            '<div class="boxContainer"><div class="box box1"></div><div class="box box2"></div><div class="box box3"></div></div>';
+        } else {
+          document.getElementById(data.peer_id + "__speaking").innerHTML = "";
+        }
       }.bind(this)
     );
 
@@ -761,7 +772,6 @@ class RoomClient {
   }
 
   async handleProducer(id, type, stream) {
-    console.log("Hello produce");
     let elem, d, p, i, b;
     this.removeVideoOff(this.peer_id);
     d = document.createElement("div");
@@ -778,6 +788,13 @@ class RoomClient {
     p = document.createElement("p");
     p.id = this.peer_id + "__name";
     p.innerHTML = "👤 " + this.peer_name + " (me)";
+
+    //create speaking tag
+    let pSpeaking = document.createElement("p");
+    pSpeaking.id = this.peer_id + "__speaking";
+    pSpeaking.className = "chat_mic";
+    pSpeaking.innerHTML = "";
+
     i = document.createElement("i");
     i.id = this.peer_id + "__hand";
     // i.className = "fas fa-hand-paper pulsate";
@@ -788,6 +805,7 @@ class RoomClient {
     d.appendChild(elem);
     d.appendChild(i);
     d.appendChild(p);
+    d.appendChild(pSpeaking);
     d.appendChild(b);
     this.videoMediaContainer.appendChild(d);
     this.attachMediaStream(elem, stream, type, "Producer");
@@ -1044,7 +1062,7 @@ class RoomClient {
   // ####################################################
 
   async setVideoOff(peer_info, remotePeer = false) {
-    let d, i, h, b, p;
+    let d, i, h, b, p, pSpeaking;
     let peer_id = peer_info.peer_id;
     let peer_name = peer_info.peer_name;
     let peer_audio = peer_info.peer_audio;
@@ -1059,6 +1077,13 @@ class RoomClient {
     p = document.createElement("p");
     p.id = peer_id + "__name";
     p.innerHTML = "👤 " + peer_name + (remotePeer ? "" : " (me) ");
+
+    //create speaking tag
+    pSpeaking = document.createElement("p");
+    pSpeaking.id = peer_id + "__speaking";
+    pSpeaking.className = "chat_mic";
+    pSpeaking.innerHTML = "";
+
     b = document.createElement("button");
     b.id = peer_id + "__audio";
     b.className = peer_audio ? html.audioOn : html.audioOff;
@@ -1067,6 +1092,7 @@ class RoomClient {
     h.className = "fas fa-hand-paper pulsate";
     d.appendChild(i);
     d.appendChild(p);
+    d.appendChild(pSpeaking);
     d.appendChild(b);
     d.appendChild(h);
     this.videoMediaContainer.appendChild(d);
@@ -1288,6 +1314,10 @@ class RoomClient {
 
   getPeerHandBtn(peer_id) {
     return this.getId(peer_id + "__hand");
+  }
+
+  getPeerSpeakingTag(peer_id) {
+    return this.getId(peer_id + "__speaking");
   }
 
   // ####################################################
@@ -2404,6 +2434,11 @@ class RoomClient {
             this.event(_EVENTS.lowerHand);
           }
           break;
+        // case "speaking":
+        //   this.peer_info.peer_speaking = status;
+        //   let peer_speaking = this.getPeerSpeakingTag(peer_id);
+        //   peer_speaking.innerHTML = status ? "Finally speaking" : "";
+        //   break;
       }
       let data = {
         peer_name: peer_name,
@@ -2435,6 +2470,11 @@ class RoomClient {
             if (peer_hand) peer_hand.style.display = "none";
           }
           break;
+        // case "speaking":
+        //   this.peer_info.peer_speaking = status;
+        //   let peer_speaking = this.getPeerSpeakingTag(peer_id);
+        //   peer_speaking.innerHTML = status ? "Finally speaking" : "";
+        //   break;
       }
     }
   }

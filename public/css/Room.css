@@ -100,7 +100,7 @@ body {
 # Buttons bar
 --------------------------------------------------------------*/
 
-#control {
+/* #control {
   z-index: 3;
   position: absolute;
   display: flex;
@@ -120,6 +120,25 @@ body {
   -ms-transform: translate(0%, -50%);
   transform: translate(0%, -50%);
 
+  border-radius: 10px;
+} */
+
+#control {
+  z-index: 3;
+  position: absolute;
+  display: flex;
+  top: var(--btns-top);
+  right: var(--btns-right);
+  left: var(--btns-left);
+  margin-left: var(--btns-margin-left);
+  width: var(--btns-width);
+  flex-direction: var(--btns-flex-direction);
+  grid-gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+  -webkit-transform: translate(0%, -50%);
+  -ms-transform: translate(0%, -50%);
+  transform: translate(0%, -100%);
   border-radius: 10px;
 }
 
@@ -716,3 +735,34 @@ z-index:
     - 7 participants
     - 8 send receive progress
 */
+
+div#meters > div {
+  margin: 0 0 1em 0;
+}
+
+div#meters div.label {
+  display: inline-block;
+  font-weight: 400;
+  margin: 0 0.5em 0 0;
+  width: 3.5em;
+}
+
+div#meters div.value {
+  display: inline-block;
+}
+
+meter {
+  width: 50%;
+}
+
+meter#clip {
+  color: #db4437;
+}
+
+meter#slow {
+  color: #f4b400;
+}
+
+meter#instant {
+  color: #0f9d58;
+}
