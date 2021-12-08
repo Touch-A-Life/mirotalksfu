@@ -2434,11 +2434,6 @@ class RoomClient {
             this.event(_EVENTS.lowerHand);
           }
           break;
-        // case "speaking":
-        //   this.peer_info.peer_speaking = status;
-        //   let peer_speaking = this.getPeerSpeakingTag(peer_id);
-        //   peer_speaking.innerHTML = status ? "Finally speaking" : "";
-        //   break;
       }
       let data = {
         peer_name: peer_name,

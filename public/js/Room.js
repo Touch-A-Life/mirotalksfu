@@ -837,6 +837,7 @@ function handleRoomClientEvents() {
   // });
   rc.on(RoomClient.EVENTS.raiseHand, () => {
     console.log("Room Client raise hand");
+    console.log("Info: Raise Hand: ", RoomClient);
     hide(raiseHandButton);
     show(lowerHandButton);
 
@@ -847,6 +848,7 @@ function handleRoomClientEvents() {
   });
   rc.on(RoomClient.EVENTS.lowerHand, () => {
     console.log("Room Client lower hand");
+    console.log("Info: Lower Hand: ", RoomClient);
     hide(lowerHandButton);
     show(raiseHandButton);
 
