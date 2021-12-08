@@ -132,11 +132,11 @@ app.get("/join/:room", async (req, res) => {
 app.use(express.json());
 
 // api docs
-app.use(
-  apiBasePath + "/docs",
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerDocument)
-);
+// app.use(
+//   apiBasePath + "/docs",
+//   swaggerUi.serve,
+//   swaggerUi.setup(swaggerDocument)
+// );
 
 // request meeting room endpoint
 app.post(["/api/v1/meeting"], (req, res) => {
