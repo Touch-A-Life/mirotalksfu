@@ -50,6 +50,10 @@ const connection = mongoose.connection;
 const ChatRoomSchema = new mongoose.Schema({}, { strict: false });
 const ChatRoomModel = mongoose.model("chatrooms", ChatRoomSchema);
 
+//chatrooms schema
+const UserSchema = new mongoose.Schema({}, { strict: false });
+const UserModel = mongoose.model("users", UserSchema);
+
 // all mediasoup workers
 let workers = [];
 let nextMediasoupWorkerIdx = 0;
@@ -96,7 +100,11 @@ app.get(["/permission"], (req, res) => {
 // join to room
 app.get("/join/:room", async (req, res) => {
   const { room = null } = req.params;
-  const { userName = null } = req.query;
+  const { userId = null } = req.query;
+
+  if (!room) {
+    return res.sendFile(path.join(__dirname, "../../", "public/view/404.html"));
+  }
 
   //check room name in database
   if (!mongoose.isValidObjectId(room)) {
@@ -108,9 +116,10 @@ app.get("/join/:room", async (req, res) => {
     return res.sendFile(path.join(__dirname, "../../", "public/view/404.html"));
   }
 
-  if (!room) {
+  const checkUser = await UserModel.findById(userId);
+  if (!checkUser || !checkUser._id) {
     return res.sendFile(path.join(__dirname, "../../", "public/view/404.html"));
-  }
+  } 
 
   return res.sendFile(path.join(__dirname, "../../", "public/view/Room.html"));
 });
