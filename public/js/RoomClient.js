@@ -795,6 +795,12 @@ class RoomClient {
     pSpeaking.className = "chat_mic";
     pSpeaking.innerHTML = "";
 
+    //create audience/speaker tags
+    let pAudienceSpeaker = document.createElement("p");
+    pAudienceSpeaker.id = this.peer_id + "__audienceSpeaker";
+    pAudienceSpeaker.className = "audienceSpeakerAction";
+    pAudienceSpeaker.innerHTML = "<i class='fa fa-bullhorn'></i>";
+
     i = document.createElement("i");
     i.id = this.peer_id + "__hand";
     // i.className = "fas fa-hand-paper pulsate";
@@ -805,6 +811,7 @@ class RoomClient {
     d.appendChild(elem);
     d.appendChild(i);
     d.appendChild(p);
+    d.appendChild(pAudienceSpeaker);
     d.appendChild(pSpeaking);
     d.appendChild(b);
     this.videoMediaContainer.appendChild(d);
@@ -1084,6 +1091,12 @@ class RoomClient {
     pSpeaking.className = "chat_mic";
     pSpeaking.innerHTML = "";
 
+    //create audience/speaker tags
+    let pAudienceSpeaker = document.createElement("p");
+    pAudienceSpeaker.id = this.peer_id + "__audienceSpeaker";
+    pAudienceSpeaker.className = "audienceSpeakerAction";
+    pAudienceSpeaker.innerHTML = "<i class='fa fa-bullhorn'></i>";
+
     b = document.createElement("button");
     b.id = peer_id + "__audio";
     b.className = peer_audio ? html.audioOn : html.audioOff;
@@ -1092,6 +1105,7 @@ class RoomClient {
     h.className = "fas fa-hand-paper pulsate";
     d.appendChild(i);
     d.appendChild(p);
+    d.appendChild(pAudienceSpeaker);
     d.appendChild(pSpeaking);
     d.appendChild(b);
     d.appendChild(h);
