@@ -116,10 +116,10 @@ app.get("/join/:room", async (req, res) => {
     return res.sendFile(path.join(__dirname, "../../", "public/view/404.html"));
   }
 
-  const checkUser = await UserModel.findById(userId);
-  if (!checkUser || !checkUser._id) {
-    return res.sendFile(path.join(__dirname, "../../", "public/view/404.html"));
-  } 
+  // const checkUser = await UserModel.findById(userId);
+  // if (!checkUser || !checkUser._id) {
+  //   return res.sendFile(path.join(__dirname, "../../", "public/view/404.html"));
+  // } 
 
   return res.sendFile(path.join(__dirname, "../../", "public/view/Room.html"));
 });
