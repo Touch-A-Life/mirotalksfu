@@ -796,10 +796,10 @@ class RoomClient {
     pSpeaking.innerHTML = "";
 
     //create audience/speaker tags
-    let pAudienceSpeaker = document.createElement("p");
-    pAudienceSpeaker.id = this.peer_id + "__audienceSpeaker";
-    pAudienceSpeaker.className = "audienceSpeakerAction";
-    pAudienceSpeaker.innerHTML = "<i class='fa fa-bullhorn'></i>";
+    // let pAudienceSpeaker = document.createElement("p");
+    // pAudienceSpeaker.id = this.peer_id + "__audienceSpeaker";
+    // pAudienceSpeaker.className = "audienceSpeakerAction";
+    // pAudienceSpeaker.innerHTML = "<i class='fa fa-bullhorn'></i>";
 
     i = document.createElement("i");
     i.id = this.peer_id + "__hand";
@@ -811,7 +811,7 @@ class RoomClient {
     d.appendChild(elem);
     d.appendChild(i);
     d.appendChild(p);
-    d.appendChild(pAudienceSpeaker);
+    // d.appendChild(pAudienceSpeaker);
     d.appendChild(pSpeaking);
     d.appendChild(b);
     this.videoMediaContainer.appendChild(d);
@@ -1129,7 +1129,7 @@ class RoomClient {
 
     d.appendChild(i);
     d.appendChild(p);
-    d.appendChild(pAudienceSpeaker);
+    // d.appendChild(pAudienceSpeaker);
     d.appendChild(pSpeaking);
     d.appendChild(b);
     d.appendChild(h);
