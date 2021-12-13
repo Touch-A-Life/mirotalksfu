@@ -51,6 +51,8 @@ const _EVENTS = {
   stopScreen: "stopScreen",
   roomLock: "roomLock",
   roomUnlock: "roomUnlock",
+  disableSpeaker: "disableSpeaker",
+  enableSpeaker: "enableSpeaker",
 };
 
 let recordedBlobs;
@@ -1120,14 +1122,14 @@ class RoomClient {
     //toggle speaker 
     s = document.createElement("i");
     s.id = peer_info.peer_id + "__enableSpeaker";
-    s.className = "fas fa-phone-volume";
-    s.style.cssText = "display: flex;left: 25px";
+    s.className = "fas fa-phone-volume enableSpeaker";
+    s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
 
     //toggle audience 
     a = document.createElement("i");
     a.id = peer_info.peer_id + "__enableAudience";
-    a.className = "fas fa-user-alt-slash";
-    a.style.cssText = "display: flex;left: 50px";
+    a.className = "fas fa-user-alt-slash disableSpeaker";
+    a.style.cssText = "display: flex;left: 50px;cursor: pointer;";
 
     d.appendChild(i);
     d.appendChild(p);

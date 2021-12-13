@@ -556,6 +556,16 @@ io.on("connection", (socket) => {
     callback("Successfully exited room");
   });
 
+  socket.on("disableSpeaker", async (_, callback) => {
+    log.debug("log server.js disableSpeaker");
+    callback("disableSpeaker - server.js");
+  });
+
+  socket.on("enableSpeaker", async (_, callback) => {
+    log.debug("log server.js enableSpeaker");
+    callback("enableSpeaker - server.js");
+  });
+
   // common
   function getPeerName(json = true) {
     if (json) {

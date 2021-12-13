@@ -563,6 +563,14 @@ function stopRecordingTimer() {
 // ####################################################
 
 function handleButtons() {
+  enableSpeaker.onclick = () => {
+    console.log("click Enable speaker");
+  };
+
+  enableSpeaker.onclick = () => {
+    console.log("click Disable speaker");
+  };
+
   exitButton.onclick = () => {
     rc.exitRoom();
   };
@@ -929,6 +937,12 @@ function handleRoomClientEvents() {
   rc.on(RoomClient.EVENTS.exitRoom, () => {
     console.log("Room Client leave room");
     window.location.href = `${webBaseUrl}${webBaseUrlAudioPath}`;
+  });
+  rc.on(RoomClient.EVENTS.enableSpeaker, () => {
+    console.log("ON enableSpeaker ");
+  });
+  rc.on(RoomClient.EVENTS.disableSpeaker, () => {
+    console.log("ON disableSpeaker ");
   });
 }
 
