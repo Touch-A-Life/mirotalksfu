@@ -567,7 +567,7 @@ function handleButtons() {
     console.log("click Enable speaker");
   };
 
-  enableSpeaker.onclick = () => {
+  disableSpeaker.onclick = () => {
     console.log("click Disable speaker");
   };
 
@@ -1556,3 +1556,14 @@ function stopMeter() {
 }
 
 // end of Audio level
+
+
+// enable/disable audience
+function toggleAudience() {
+  window.document.getElementById("enableSpeaker").classList.toggle("hello");
+  alert("Enable")
+}
+
+document.getElementById("enableSpeaker").addEventListener("click", (e) => {
+    toggleAudience();
+  });
