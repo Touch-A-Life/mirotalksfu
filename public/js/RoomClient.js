@@ -1127,7 +1127,7 @@ class RoomClient {
     a = document.createElement("i");
     a.id = peer_info.peer_id + "__enableAudience";
     a.className = "fas fa-user-alt-slash";
-    s.style.cssText = "display: flex;left: 50px";
+    a.style.cssText = "display: flex;left: 50px";
 
     d.appendChild(i);
     d.appendChild(p);
