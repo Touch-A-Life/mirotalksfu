@@ -1029,12 +1029,18 @@ class RoomClient {
         s.id = peer_info.peer_id + "__enableSpeaker";
         s.className = "fas fa-phone-volume enableSpeaker";
         s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
+        s.onclick =  function (){
+          alert("Enable");
+        } 
 
         //toggle audience 
         a = document.createElement("i");
         a.id = peer_info.peer_id + "__enableAudience";
         a.className = "fas user-alt-slash disableSpeaker";
         a.style.cssText = "display: flex;left: 50px;cursor: pointer;";
+        a.onclick =  function (){
+          alert("Disable");
+        } 
 
         d.appendChild(elem);
         d.appendChild(p);
@@ -1126,12 +1132,18 @@ class RoomClient {
     s.id = peer_info.peer_id + "__enableSpeaker";
     s.className = "fas fa-phone-volume enableSpeaker";
     s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
+    s.onclick =  function (){
+          alert("Enable 2");
+        } 
 
     //toggle audience 
     a = document.createElement("i");
     a.id = peer_info.peer_id + "__enableAudience";
     a.className = "fas fa-user-alt-slash disableSpeaker";
     a.style.cssText = "display: flex;left: 50px;cursor: pointer;";
+    a.onclick =  function (){
+          alert("Disable 2");
+        } 
 
     d.appendChild(i);
     d.appendChild(p);

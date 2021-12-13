@@ -563,13 +563,13 @@ function stopRecordingTimer() {
 // ####################################################
 
 function handleButtons() {
-  enableSpeaker.onclick = () => {
-    console.log("click Enable speaker");
-  };
+  // enableSpeaker.onclick = () => {
+  //   console.log("click Enable speaker");
+  // };
 
-  disableSpeaker.onclick = () => {
-    console.log("click Disable speaker");
-  };
+  // disableSpeaker.onclick = () => {
+  //   console.log("click Disable speaker");
+  // };
 
   exitButton.onclick = () => {
     rc.exitRoom();
@@ -1556,14 +1556,3 @@ function stopMeter() {
 }
 
 // end of Audio level
-
-
-// enable/disable audience
-function toggleAudience() {
-  //window.document.getElementById("enableSpeaker").classList.toggle("hello");
-  alert("Enable")
-}
-
-document.getElementsByClassName("enableSpeaker").addEventListener("click", (e) => {
-    toggleAudience();
-  });
