@@ -1560,10 +1560,10 @@ function stopMeter() {
 
 // enable/disable audience
 function toggleAudience() {
-  window.document.getElementById("enableSpeaker").classList.toggle("hello");
+  //window.document.getElementById("enableSpeaker").classList.toggle("hello");
   alert("Enable")
 }
 
-document.getElementById("enableSpeaker").addEventListener("click", (e) => {
+document.getElementsByClassName("enableSpeaker").addEventListener("click", (e) => {
     toggleAudience();
   });
