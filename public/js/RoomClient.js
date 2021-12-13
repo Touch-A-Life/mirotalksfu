@@ -998,7 +998,7 @@ class RoomClient {
   }
 
   handleConsumer(id, type, stream, peer_name, peer_info) {
-    let elem, d, p, i, b;
+    let elem, d, p, i, b, s, a;
     switch (type) {
       case mediaType.video:
         this.removeVideoOff(peer_info.peer_id);
@@ -1021,9 +1021,22 @@ class RoomClient {
         b = document.createElement("button");
         b.id = peer_info.peer_id + "__audio";
         b.className = peer_info.peer_audio ? html.audioOn : html.audioOff;
+
+        //toggle speaker 
+        s = document.createElement("i");
+        s.id = peer_info.peer_id + "__enableSpeaker";
+        s.className = "fas fa-phone-volume";
+
+        //toggle audience 
+        a = document.createElement("i");
+        a.id = peer_info.peer_id + "__enableAudience";
+        a.className = "fas user-alt-slash";
+
         d.appendChild(elem);
         d.appendChild(p);
         d.appendChild(i);
+        d.appendChild(s);
+        d.appendChild(a);
         d.appendChild(b);
         this.videoMediaContainer.appendChild(d);
         this.attachMediaStream(elem, stream, type, "Consumer");
@@ -1069,7 +1082,7 @@ class RoomClient {
   // ####################################################
 
   async setVideoOff(peer_info, remotePeer = false) {
-    let d, i, h, b, p, pSpeaking;
+    let d, i, h, b, p, pSpeaking, s, a;
     let peer_id = peer_info.peer_id;
     let peer_name = peer_info.peer_name;
     let peer_audio = peer_info.peer_audio;
@@ -1092,10 +1105,10 @@ class RoomClient {
     pSpeaking.innerHTML = "";
 
     //create audience/speaker tags
-    let pAudienceSpeaker = document.createElement("p");
-    pAudienceSpeaker.id = this.peer_id + "__audienceSpeaker";
-    pAudienceSpeaker.className = "audienceSpeakerAction";
-    pAudienceSpeaker.innerHTML = "<i class='fa fa-bullhorn'></i>";
+    // let pAudienceSpeaker = document.createElement("p");
+    // pAudienceSpeaker.id = this.peer_id + "__audienceSpeaker";
+    // pAudienceSpeaker.className = "audienceSpeakerAction";
+    // pAudienceSpeaker.innerHTML = "<i class='fa fa-bullhorn'></i>";
 
     b = document.createElement("button");
     b.id = peer_id + "__audio";
