@@ -1103,12 +1103,25 @@ class RoomClient {
     h = document.createElement("i");
     h.id = peer_info.peer_id + "__hand";
     h.className = "fas fa-hand-paper pulsate";
+
+    //toggle speaker 
+    s = document.createElement("i");
+    s.id = peer_info.peer_id + "__enableSpeaker";
+    s.className = "fas fa-phone-volume";
+
+    //toggle audience 
+    a = document.createElement("i");
+    a.id = peer_info.peer_id + "__enableAudience";
+    a.className = "fas user-alt-slash";
+
     d.appendChild(i);
     d.appendChild(p);
     d.appendChild(pAudienceSpeaker);
     d.appendChild(pSpeaking);
     d.appendChild(b);
     d.appendChild(h);
+    d.appendChild(s);
+    d.appendChild(a);
     this.videoMediaContainer.appendChild(d);
     this.setVideoAvatarImgName(i.id, peer_name, peer_img);
     this.getId(i.id).style.display = "block";
