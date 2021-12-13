@@ -1121,11 +1121,13 @@ class RoomClient {
     s = document.createElement("i");
     s.id = peer_info.peer_id + "__enableSpeaker";
     s.className = "fas fa-phone-volume";
+    s.style.cssText = "display: flex;left: 25px";
 
     //toggle audience 
     a = document.createElement("i");
     a.id = peer_info.peer_id + "__enableAudience";
-    a.className = "fas user-alt-slash";
+    a.className = "fas fa-user-alt-slash";
+    s.style.cssText = "display: flex;left: 50px";
 
     d.appendChild(i);
     d.appendChild(p);
