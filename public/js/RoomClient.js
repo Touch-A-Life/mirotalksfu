@@ -1035,10 +1035,8 @@ class RoomClient {
         s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
         spanTag.appendChild(s);
         s.onclick =  function (){
-          document.getElementById(peer_info.peer_id + "__enableSpeaker").classList.toggle("displayElement");
-          document.getElementById(peer_info.peer_id + "__enableAudience").classList.toggle("displayElement");
-          // document.getElementById(peer_info.peer_id + "__enableSpeaker").style.display = 'flex';
-          // document.getElementById(peer_info.peer_id + "__enableAudience").style.display = 'none';
+          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "left: 25px;cursor: pointer;";
+          document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "display: flex;left: 25px;cursor: pointer;";
         } 
 
         //toggle audience 
@@ -1048,10 +1046,8 @@ class RoomClient {
         a.style.cssText = "left: 50px;cursor: pointer;";
         spanTag.appendChild(a);
         a.onclick =  function (){
-          document.getElementById(peer_info.peer_id + "__enableSpeaker").classList.toggle("displayElement");
-          document.getElementById(peer_info.peer_id + "__enableAudience").classList.toggle("displayElement");
-          // document.getElementById(peer_info.peer_id + "__enableSpeaker").style.display = 'none';
-          // document.getElementById(peer_info.peer_id + "__enableAudience").style.display = 'flex';
+          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "display: flex;left: 25px;cursor: pointer;";
+          document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "left: 25px;cursor: pointer;";
         } 
 
         d.appendChild(elem);
@@ -1149,8 +1145,8 @@ class RoomClient {
     s.style.cssText = "display: flex;left: 25px;cursor: pointer;color:grey;";
     spanTag.appendChild(s);
     s.onclick =  function (){
-          document.getElementById(peer_info.peer_id + "__enableSpeaker").classList.toggle("displayElement");
-          document.getElementById(peer_info.peer_id + "__enableAudience").classList.toggle("displayElement");
+          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "left: 25px;cursor: pointer;";
+          document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "display: flex;left: 25px;cursor: pointer;";
         } 
 
     //toggle audience 
@@ -1160,8 +1156,8 @@ class RoomClient {
     a.style.cssText = "left: 50px;cursor: pointer;color:grey;";
     spanTag.appendChild(a);
     a.onclick =  function (){
-          document.getElementById(peer_info.peer_id + "__enableSpeaker").classList.toggle("displayElement");
-          document.getElementById(peer_info.peer_id + "__enableAudience").classList.toggle("displayElement");
+          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "left: 25px;cursor: pointer;";
+          document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "display: flex;left: 25px;cursor: pointer;";
         } 
 
     d.appendChild(i);
