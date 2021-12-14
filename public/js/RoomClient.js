@@ -57,7 +57,7 @@ const _EVENTS = {
 
 let recordedBlobs;
 
-toggleAudienceSpeaker (status = false) {
+function toggleAudienceSpeaker (status = false) {
     console.log("hello", this.peer_id);
     var audienceRef = document.getElementById(this.peer_id + "__enableAudience");
     var speakerRef = document.getElementById(this.peer_id + "__enableSpeaker");
