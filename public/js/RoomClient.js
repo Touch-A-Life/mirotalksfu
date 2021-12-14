@@ -1160,8 +1160,8 @@ class RoomClient {
     spanTag.appendChild(a);
     a.onclick =  function (){
           console.log("hello 2");
-          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.display = "none";
-          document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "display: flex;left: 25px;cursor: pointer;";
+          document.getElementById(peer_info.peer_id + "__enableAudience").style.display = "none";
+          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "display: flex;left: 25px;cursor: pointer;";
         } 
 
     d.appendChild(i);
