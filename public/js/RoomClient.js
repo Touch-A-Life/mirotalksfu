@@ -139,7 +139,7 @@ class RoomClient {
       }.bind(this)
     );
 
-    this.socket.request = function request(type, data = {}) {
+    this.socket.request = function request (type, data = {}) {
       return new Promise((resolve, reject) => {
         socket.emit(type, data, (data) => {
           if (data.error) {
@@ -170,11 +170,21 @@ class RoomClient {
     );
   }
 
+  toggleAudienceSpeaker (status = false) {
+    if (!status) {
+      document.getElementById(this.peer_id + "__enableAudience").style.display = "none";
+      document.getElementById(this.peer_id + "__enableSpeaker").style.cssText = "display: flex;left: 25px;cursor: pointer;";
+    } else {
+      document.getElementById(this.peer_id + "__enableAudience").style.display = "display: flex;left: 25px;cursor: pointer;";
+      document.getElementById(this.peer_id + "__enableSpeaker").style.cssText = "none";
+    }
+  }
+
   // ####################################################
   // GET STARTED
   // ####################################################
 
-  async createRoom(room_id) {
+  async createRoom (room_id) {
     await this.socket
       .request("createRoom", {
         room_id,
@@ -184,7 +194,7 @@ class RoomClient {
       });
   }
 
-  async join(data) {
+  async join (data) {
     socket
       .request("join", data)
       .then(
@@ -210,7 +220,7 @@ class RoomClient {
       });
   }
 
-  async handleRoomInfo(room) {
+  async handleRoomInfo (room) {
     let peers = new Map(JSON.parse(room.peers));
     participantsCount = peers.size;
 
@@ -237,7 +247,7 @@ class RoomClient {
     this.refreshParticipantsCount();
   }
 
-  async loadDevice(routerRtpCapabilities) {
+  async loadDevice (routerRtpCapabilities) {
     let device;
     try {
       device = new this.mediasoupClient.Device();
@@ -259,7 +269,7 @@ class RoomClient {
   // PRODUCER TRANSPORT
   // ####################################################
 
-  async initTransports(device) {
+  async initTransports (device) {
     {
       const data = await this.socket.request("createWebRtcTransport", {
         forceTcp: false,
@@ -386,7 +396,7 @@ class RoomClient {
   // SOCKET ON
   // ####################################################
 
-  initSockets() {
+  initSockets () {
     this.socket.on(
       "consumerClosed",
       function ({ consumer_id }) {
@@ -548,7 +558,7 @@ class RoomClient {
   // START LOCAL AUDIO VIDEO MEDIA
   // ####################################################
 
-  startLocalMedia() {
+  startLocalMedia () {
     if (this.isAudioAllowed && this.peer_info.peer_audio) {
       console.log("08 ----> Start audio media");
       this.produce(mediaType.audio, microphoneSelect.value);
@@ -570,7 +580,7 @@ class RoomClient {
   // PRODUCER
   // ####################################################
 
-  async produce(type, deviceId = null, swapCamera = false) {
+  async produce (type, deviceId = null, swapCamera = false) {
     let mediaConstraints = {};
     let audio = false;
     let screen = false;
@@ -692,7 +702,7 @@ class RoomClient {
     }
   }
 
-  getAudioConstraints(deviceId) {
+  getAudioConstraints (deviceId) {
     return {
       audio: {
         echoCancellation: true,
@@ -704,7 +714,7 @@ class RoomClient {
     };
   }
 
-  getCameraConstraints() {
+  getCameraConstraints () {
     this.camera = this.camera == "user" ? "environment" : "user";
     if (this.camera != "user")
       this.camVideo = { facingMode: { exact: this.camera } };
@@ -715,7 +725,7 @@ class RoomClient {
     };
   }
 
-  getVideoConstraints(deviceId) {
+  getVideoConstraints (deviceId) {
     return {
       audio: false,
       video: {
@@ -736,7 +746,7 @@ class RoomClient {
     };
   }
 
-  getScreenConstraints() {
+  getScreenConstraints () {
     return {
       video: {
         frameRate: {
@@ -748,7 +758,7 @@ class RoomClient {
     };
   }
 
-  getEncoding() {
+  getEncoding () {
     return [
       {
         rid: "r0",
@@ -768,12 +778,12 @@ class RoomClient {
     ];
   }
 
-  closeThenProduce(type, deviceId, swapCamera = false) {
+  closeThenProduce (type, deviceId, swapCamera = false) {
     this.closeProducer(type);
     this.produce(type, deviceId, swapCamera);
   }
 
-  async handleProducer(id, type, stream) {
+  async handleProducer (id, type, stream) {
     let elem, d, p, i, b;
     this.removeVideoOff(this.peer_id);
     d = document.createElement("div");
@@ -828,7 +838,7 @@ class RoomClient {
     return elem;
   }
 
-  pauseProducer(type) {
+  pauseProducer (type) {
     if (!this.producerLabel.has(type)) {
       console.log("There is no producer for this type " + type);
       return;
@@ -852,7 +862,7 @@ class RoomClient {
     }
   }
 
-  resumeProducer(type) {
+  resumeProducer (type) {
     if (!this.producerLabel.has(type)) {
       console.log("There is no producer for this type " + type);
       return;
@@ -876,7 +886,7 @@ class RoomClient {
     }
   }
 
-  closeProducer(type) {
+  closeProducer (type) {
     if (!this.producerLabel.has(type)) {
       console.log("There is no producer for this type " + type);
       return;
@@ -933,7 +943,7 @@ class RoomClient {
   // CONSUMER
   // ####################################################
 
-  async consume(producer_id, peer_name, peer_info) {
+  async consume (producer_id, peer_name, peer_info) {
     this.getConsumeStream(producer_id).then(
       function ({ consumer, stream, kind }) {
         this.consumers.set(consumer.id, consumer);
@@ -973,7 +983,7 @@ class RoomClient {
     );
   }
 
-  async getConsumeStream(producerId) {
+  async getConsumeStream (producerId) {
     const { rtpCapabilities } = this.device;
     const data = await this.socket.request("consume", {
       rtpCapabilities,
@@ -999,7 +1009,7 @@ class RoomClient {
     };
   }
 
-  handleConsumer(id, type, stream, peer_name, peer_info) {
+  handleConsumer (id, type, stream, peer_name, peer_info) {
     let elem, d, p, i, b, s, a;
     switch (type) {
       case mediaType.video:
@@ -1034,11 +1044,11 @@ class RoomClient {
         s.className = "fas fa-phone-volume enableSpeaker";
         s.style.cssText = "left: 25px;cursor: pointer;";
         spanTag.appendChild(s);
-        s.onclick =  function (){
+        s.onclick = function () {
           console.log("hello 3");
           document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "left: 25px;cursor: pointer;";
           document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "display: flex;left: 25px;cursor: pointer;";
-        } 
+        }
 
         //toggle audience 
         a = document.createElement("i");
@@ -1046,11 +1056,11 @@ class RoomClient {
         a.className = "fas user-alt-slash enableAudience";
         a.style.cssText = "left: 50px;cursor: pointer;";
         spanTag.appendChild(a);
-        a.onclick =  function (){
+        a.onclick = function () {
           console.log("hello 4");
           document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "display: flex;left: 25px;cursor: pointer;";
           document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "left: 25px;cursor: pointer;";
-        } 
+        }
 
         d.appendChild(elem);
         d.appendChild(p);
@@ -1077,7 +1087,7 @@ class RoomClient {
     return elem;
   }
 
-  removeConsumer(consumer_id) {
+  removeConsumer (consumer_id) {
     console.log("Remove consumer_id:", consumer_id);
 
     let elem = this.getId(consumer_id);
@@ -1100,7 +1110,7 @@ class RoomClient {
   // HANDLE VIDEO OFF
   // ####################################################
 
-  async setVideoOff(peer_info, remotePeer = false) {
+  async setVideoOff (peer_info, remotePeer = false) {
     let d, i, h, b, p, pSpeaking, s, a;
     let peer_id = peer_info.peer_id;
     let peer_name = peer_info.peer_name;
@@ -1146,11 +1156,7 @@ class RoomClient {
     s.className = "fas fa-phone-volume enableSpeaker";
     s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
     spanTag.appendChild(s);
-    s.onclick =  function (){
-          console.log("hello 1");
-          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.display = "none";
-          document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "display: flex;left: 25px;cursor: pointer;";
-        } 
+    s.onclick = toggleAudienceSpeaker(false, peer_info.peer_id);
 
     //toggle audience 
     a = document.createElement("i");
@@ -1158,11 +1164,7 @@ class RoomClient {
     a.className = "fas fa-user-alt-slash enableAudience";
     a.style.cssText = "left: 50px;cursor: pointer;";
     spanTag.appendChild(a);
-    a.onclick =  function (){
-          console.log("hello 2");
-          document.getElementById(peer_info.peer_id + "__enableAudience").style.display = "none";
-          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "display: flex;left: 25px;cursor: pointer;";
-        } 
+    a.onclick = toggleAudienceSpeaker(true, peer_info.peer_id);
 
     d.appendChild(i);
     d.appendChild(p);
@@ -1179,7 +1181,7 @@ class RoomClient {
     this.sound("joined");
   }
 
-  removeVideoOff(peer_id) {
+  removeVideoOff (peer_id) {
     let pvOff = this.getId(peer_id + "__videoOff");
     if (pvOff) {
       pvOff.parentNode.removeChild(pvOff);
@@ -1192,7 +1194,7 @@ class RoomClient {
   // EXIT ROOM
   // ####################################################
 
-  exit(offline = false) {
+  exit (offline = false) {
     let clean = function () {
       this._isConnected = false;
       this.consumerTransport.close();
@@ -1219,7 +1221,7 @@ class RoomClient {
     this.event(_EVENTS.exitRoom);
   }
 
-  exitRoom() {
+  exitRoom () {
     this.sound("open");
 
     Swal.fire({
@@ -1244,7 +1246,7 @@ class RoomClient {
   // HELPERS
   // ####################################################
 
-  attachMediaStream(elem, stream, type, who) {
+  attachMediaStream (elem, stream, type, who) {
     let track;
     switch (type) {
       case mediaType.audio:
@@ -1261,7 +1263,7 @@ class RoomClient {
     console.log(who + " Success attached media " + type);
   }
 
-  attachSinkId(elem, sinkId) {
+  attachSinkId (elem, sinkId) {
     if (typeof elem.sinkId !== "undefined") {
       elem
         .setSinkId(sinkId)
@@ -1283,13 +1285,13 @@ class RoomClient {
     }
   }
 
-  event(evt) {
+  event (evt) {
     if (this.eventListeners.has(evt)) {
       this.eventListeners.get(evt).forEach((callback) => callback());
     }
   }
 
-  on(evt, callback) {
+  on (evt, callback) {
     this.eventListeners.get(evt).push(callback);
   }
 
@@ -1297,7 +1299,7 @@ class RoomClient {
   // SET
   // ####################################################
 
-  setTippy(elem, content, placement) {
+  setTippy (elem, content, placement) {
     if (DetectRTC.isMobileDevice) return;
     tippy(this.getId(elem), {
       content: content,
@@ -1305,7 +1307,7 @@ class RoomClient {
     });
   }
 
-  setVideoAvatarImgName(elemId, peer_name, profileImageUrl = null) {
+  setVideoAvatarImgName (elemId, peer_name, profileImageUrl = null) {
     let elem = this.getId(elemId);
     let avatarImgSize = 32;
     elem.setAttribute(
@@ -1313,22 +1315,22 @@ class RoomClient {
       profileImageUrl
         ? profileImageUrl
         : cfg.msgAvatar +
-            "?name=" +
-            peer_name +
-            "&size=" +
-            avatarImgSize +
-            "&background=random&rounded=true"
+        "?name=" +
+        peer_name +
+        "&size=" +
+        avatarImgSize +
+        "&background=random&rounded=true"
     );
   }
 
-  setIsAudio(peer_id, status) {
+  setIsAudio (peer_id, status) {
     this.peer_info.peer_audio = status;
     let b = this.getPeerAudioBtn(peer_id);
     if (b)
       b.className = this.peer_info.peer_audio ? html.audioOn : html.audioOff;
   }
 
-  setIsVideo(status) {
+  setIsVideo (status) {
     this.peer_info.peer_video = status;
     if (!this.peer_info.peer_video) {
       this.setVideoOff(this.peer_info, false);
@@ -1336,11 +1338,11 @@ class RoomClient {
     }
   }
 
-  setIsScreen(status) {
+  setIsScreen (status) {
     return status;
   }
 
-  sendVideoOff() {
+  sendVideoOff () {
     this.socket.emit("setVideoOff", this.peer_info);
   }
 
@@ -1348,52 +1350,52 @@ class RoomClient {
   // GET
   // ####################################################
 
-  isConnected() {
+  isConnected () {
     return this._isConnected;
   }
 
-  isRecording() {
+  isRecording () {
     return this._isRecording;
   }
 
-  static get mediaType() {
+  static get mediaType () {
     return mediaType;
   }
 
-  static get EVENTS() {
+  static get EVENTS () {
     return _EVENTS;
   }
 
-  getTimeNow() {
+  getTimeNow () {
     return new Date().toTimeString().split(" ")[0];
   }
 
-  getId(id) {
+  getId (id) {
     return document.getElementById(id);
   }
 
-  getEcN(cn) {
+  getEcN (cn) {
     return document.getElementsByClassName(cn);
   }
 
-  async getRoomInfo() {
+  async getRoomInfo () {
     let room_info = await this.socket.request("getRoomInfo");
     return room_info;
   }
 
-  refreshParticipantsCount() {
+  refreshParticipantsCount () {
     this.socket.emit("refreshParticipantsCount");
   }
 
-  getPeerAudioBtn(peer_id) {
+  getPeerAudioBtn (peer_id) {
     return this.getId(peer_id + "__audio");
   }
 
-  getPeerHandBtn(peer_id) {
+  getPeerHandBtn (peer_id) {
     return this.getId(peer_id + "__hand");
   }
 
-  getPeerSpeakingTag(peer_id) {
+  getPeerSpeakingTag (peer_id) {
     return this.getId(peer_id + "__speaking");
   }
 
@@ -1401,7 +1403,7 @@ class RoomClient {
   // UTILITY
   // ####################################################
 
-  async sound(name, play = false) {
+  async sound (name, play = false) {
     if (!play) return false;
 
     let sound = "../sounds/" + name + ".wav";
@@ -1413,7 +1415,7 @@ class RoomClient {
     }
   }
 
-  userLog(icon, message, position, timer = 5000) {
+  userLog (icon, message, position, timer = 5000) {
     const Toast = Swal.mixin({
       background: swalBackground,
       toast: true,
@@ -1427,7 +1429,7 @@ class RoomClient {
     });
   }
 
-  thereIsParticipants() {
+  thereIsParticipants () {
     // console.log('participantsCount ---->', participantsCount);
     if (this.consumers.size > 0 || participantsCount > 1) {
       return true;
@@ -1439,7 +1441,7 @@ class RoomClient {
   // MY SETTINGS
   // ####################################################
 
-  toggleMySettings() {
+  toggleMySettings () {
     let mySettings = this.getId("mySettings");
     mySettings.style.top = "50%";
     mySettings.style.left = "50%";
@@ -1447,7 +1449,7 @@ class RoomClient {
     this.isMySettingsOpen = this.isMySettingsOpen ? false : true;
   }
 
-  openTab(evt, tabName) {
+  openTab (evt, tabName) {
     let i, tabcontent, tablinks;
     tabcontent = this.getEcN("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -1461,7 +1463,7 @@ class RoomClient {
     evt.currentTarget.className += " active";
   }
 
-  changeBtnsBarPosition(position) {
+  changeBtnsBarPosition (position) {
     switch (position) {
       case "vertical":
         document.documentElement.style.setProperty("--btns-top", "50%");
@@ -1495,7 +1497,7 @@ class RoomClient {
   // FULL SCREEN
   // ####################################################
 
-  toggleFullScreen(elem = null) {
+  toggleFullScreen (elem = null) {
     let el = elem ? elem : document.documentElement;
     document.fullscreenEnabled =
       document.fullscreenEnabled ||
@@ -1514,15 +1516,15 @@ class RoomClient {
       el.msRequestFullScreen;
     if (document.fullscreenEnabled) {
       document.fullscreenElement ||
-      document.webkitFullscreenElement ||
-      document.mozFullScreenElement ||
-      document.msFullscreenElement
+        document.webkitFullscreenElement ||
+        document.mozFullScreenElement ||
+        document.msFullscreenElement
         ? document.exitFullscreen()
         : el.requestFullscreen();
     }
   }
 
-  handleFS(id) {
+  handleFS (id) {
     let videoPlayer = this.getId(id);
     videoPlayer.addEventListener("click", () => {
       videoPlayer.style.pointerEvents = this.isVideoOnFullScreen
@@ -1537,7 +1539,7 @@ class RoomClient {
   // DRAGGABLE
   // ####################################################
 
-  makeDraggable(elmnt, dragObj) {
+  makeDraggable (elmnt, dragObj) {
     let pos1 = 0,
       pos2 = 0,
       pos3 = 0,
@@ -1547,7 +1549,7 @@ class RoomClient {
     } else {
       elmnt.onmousedown = dragMouseDown;
     }
-    function dragMouseDown(e) {
+    function dragMouseDown (e) {
       e = e || window.event;
       e.preventDefault();
       pos3 = e.clientX;
@@ -1555,7 +1557,7 @@ class RoomClient {
       document.onmouseup = closeDragElement;
       document.onmousemove = elementDrag;
     }
-    function elementDrag(e) {
+    function elementDrag (e) {
       e = e || window.event;
       e.preventDefault();
       pos1 = pos3 - e.clientX;
@@ -1565,7 +1567,7 @@ class RoomClient {
       elmnt.style.top = elmnt.offsetTop - pos2 + "px";
       elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
     }
-    function closeDragElement() {
+    function closeDragElement () {
       document.onmouseup = null;
       document.onmousemove = null;
     }
@@ -1575,7 +1577,7 @@ class RoomClient {
   // CHAT
   // ####################################################
 
-  toggleChat() {
+  toggleChat () {
     let chatRoom = this.getId("chatRoom");
     if (this.isChatOpen == false) {
       chatRoom.style.display = "block";
@@ -1589,11 +1591,11 @@ class RoomClient {
     }
   }
 
-  toggleChatEmoji() {
+  toggleChatEmoji () {
     this.getId("chatEmoji").classList.toggle("show");
   }
 
-  sendMessage() {
+  sendMessage () {
     if (!this.thereIsParticipants()) {
       chatMessage.value = "";
       this.userLog("info", "No participants in the room", "top-end");
@@ -1618,7 +1620,7 @@ class RoomClient {
     chatMessage.value = "";
   }
 
-  showMessage(data) {
+  showMessage (data) {
     if (!this.isChatOpen) this.toggleChat();
     this.setMsgAvatar("left", data.peer_name, data.peer_img);
     this.appendMessage(
@@ -1630,20 +1632,20 @@ class RoomClient {
     this.sound("message", true);
   }
 
-  setMsgAvatar(avatar, peerName, profileImageUrl = null) {
+  setMsgAvatar (avatar, peerName, profileImageUrl = null) {
     let avatarImg = profileImageUrl
       ? profileImageUrl
       : cfg.msgAvatar +
-        "?name=" +
-        peerName +
-        "&size=32" +
-        "&background=random&rounded=true";
+      "?name=" +
+      peerName +
+      "&size=32" +
+      "&background=random&rounded=true";
     avatar === "left"
       ? (this.leftMsgAvatar = avatarImg)
       : (this.rightMsgAvatar = avatarImg);
   }
 
-  appendMessage(side, img, from, msg) {
+  appendMessage (side, img, from, msg) {
     let time = this.getTimeNow();
     let msgHTML = `
         <div class="msg ${side}-msg">
@@ -1662,7 +1664,7 @@ class RoomClient {
     chatMsger.scrollTop += 500;
   }
 
-  formatMsg(message) {
+  formatMsg (message) {
     let urlRegex = /(https?:\/\/[^\s]+)/g;
     return message.replace(urlRegex, (url) => {
       if (message.match(/\.(jpeg|jpg|gif|png|tiff|bmp)$/))
@@ -1671,7 +1673,7 @@ class RoomClient {
     });
   }
 
-  collectMessages(time, from, msg) {
+  collectMessages (time, from, msg) {
     this.chatMessages.push({
       time: time,
       from: from,
@@ -1679,7 +1681,7 @@ class RoomClient {
     });
   }
 
-  chatClean() {
+  chatClean () {
     Swal.fire({
       background: swalBackground,
       position: "center",
@@ -1706,7 +1708,7 @@ class RoomClient {
     });
   }
 
-  chatSave() {
+  chatSave () {
     if (this.chatMessages.length === 0) {
       userLog("info", "No chat messages to save", "top-end");
       return;
@@ -1733,7 +1735,7 @@ class RoomClient {
   // RECORDING
   // ####################################################
 
-  getSupportedMimeTypes() {
+  getSupportedMimeTypes () {
     const possibleTypes = [
       "video/webm;codecs=vp9,opus",
       "video/webm;codecs=vp8,opus",
@@ -1746,7 +1748,7 @@ class RoomClient {
     });
   }
 
-  startRecording() {
+  startRecording () {
     recordedBlobs = [];
     let options = this.getSupportedMimeTypes();
     console.log("MediaRecorder supported options", options);
@@ -1815,7 +1817,7 @@ class RoomClient {
     }
   }
 
-  getNewStream(videoStream, audioStream) {
+  getNewStream (videoStream, audioStream) {
     let newStream = null;
     let videoStreamTrack = videoStream
       ? videoStream.getVideoTracks()[0]
@@ -1833,7 +1835,7 @@ class RoomClient {
     return newStream;
   }
 
-  handleMediaRecorder() {
+  handleMediaRecorder () {
     this.mediaRecorder.start();
     this.mediaRecorder.addEventListener("start", this.handleMediaRecorderStart);
     this.mediaRecorder.addEventListener(
@@ -1843,16 +1845,16 @@ class RoomClient {
     this.mediaRecorder.addEventListener("stop", this.handleMediaRecorderStop);
   }
 
-  handleMediaRecorderStart(evt) {
+  handleMediaRecorderStart (evt) {
     console.log("MediaRecorder started: ", evt);
   }
 
-  handleMediaRecorderData(evt) {
+  handleMediaRecorderData (evt) {
     console.log("MediaRecorder data: ", evt);
     if (evt.data && evt.data.size > 0) recordedBlobs.push(evt.data);
   }
 
-  handleMediaRecorderStop(evt) {
+  handleMediaRecorderStop (evt) {
     try {
       console.log("MediaRecorder stopped: ", evt);
       console.log("MediaRecorder Blobs: ", recordedBlobs);
@@ -1883,19 +1885,19 @@ class RoomClient {
     }
   }
 
-  pauseRecording() {
+  pauseRecording () {
     this._isRecording = false;
     this.mediaRecorder.pause();
     this.event(_EVENTS.pauseRec);
   }
 
-  resumeRecording() {
+  resumeRecording () {
     this._isRecording = true;
     this.mediaRecorder.resume();
     this.event(_EVENTS.resumeRec);
   }
 
-  stopRecording() {
+  stopRecording () {
     this._isRecording = false;
     this.mediaRecorder.stop();
     if (this.recScreenStream) {
@@ -1913,7 +1915,7 @@ class RoomClient {
   // FILE SHARING
   // ####################################################
 
-  selectFileToShare(peer_id, broadcast = true) {
+  selectFileToShare (peer_id, broadcast = true) {
     this.sound("open");
 
     Swal.fire({
@@ -1962,7 +1964,7 @@ class RoomClient {
     });
   }
 
-  handleFileInfo(data) {
+  handleFileInfo (data) {
     this.incomingFileInfo = data;
     this.incomingFileData = [];
     this.receiveBuffer = [];
@@ -1986,7 +1988,7 @@ class RoomClient {
     this.receiveInProgress = true;
   }
 
-  sendFileData(peer_id, broadcast) {
+  sendFileData (peer_id, broadcast) {
     console.log("Send file ", {
       name: this.fileToSend.name,
       size: this.bytesToSize(this.fileToSend.size),
@@ -2055,11 +2057,11 @@ class RoomClient {
     readSlice(0);
   }
 
-  sendFSData(data) {
+  sendFSData (data) {
     if (data) this.socket.emit("file", data);
   }
 
-  abortFileTransfer() {
+  abortFileTransfer () {
     if (this.fileReader && this.fileReader.readyState === 1) {
       this.fileReader.abort();
       sendFileDiv.style.display = "none";
@@ -2070,11 +2072,11 @@ class RoomClient {
     }
   }
 
-  hideFileTransfer() {
+  hideFileTransfer () {
     receiveFileDiv.style.display = "none";
   }
 
-  handleFileAbort(data) {
+  handleFileAbort (data) {
     this.receiveBuffer = [];
     this.incomingFileData = [];
     this.receivedSize = 0;
@@ -2088,7 +2090,7 @@ class RoomClient {
     );
   }
 
-  handleFile(data) {
+  handleFile (data) {
     if (!this.receiveInProgress) return;
     this.receiveBuffer.push(data.fileData);
     this.receivedSize += data.fileData.byteLength;
@@ -2105,7 +2107,7 @@ class RoomClient {
     }
   }
 
-  endFileDownload() {
+  endFileDownload () {
     this.sound("download", true);
 
     // save received file into Blob
@@ -2170,7 +2172,7 @@ class RoomClient {
     }
   }
 
-  saveBlobToFile(blob, file) {
+  saveBlobToFile (blob, file) {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.style.display = "none";
@@ -2184,7 +2186,7 @@ class RoomClient {
     }, 100);
   }
 
-  bytesToSize(bytes) {
+  bytesToSize (bytes) {
     let sizes = ["Bytes", "KB", "MB", "GB", "TB"];
     if (bytes == 0) return "0 Byte";
     let i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
@@ -2195,7 +2197,7 @@ class RoomClient {
   // YOUTUBE SHARE VIDEO
   // ####################################################
 
-  youTubeShareVideo() {
+  youTubeShareVideo () {
     this.sound("open");
 
     Swal.fire({
@@ -2238,7 +2240,7 @@ class RoomClient {
     });
   }
 
-  getYoutubeEmbed(url) {
+  getYoutubeEmbed (url) {
     let regExp =
       /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
     let match = url.match(regExp);
@@ -2247,7 +2249,7 @@ class RoomClient {
       : false;
   }
 
-  youTubeAction(data) {
+  youTubeAction (data) {
     let action = data.action;
     switch (action) {
       case "open":
@@ -2269,7 +2271,7 @@ class RoomClient {
     }
   }
 
-  openYouTube(data) {
+  openYouTube (data) {
     let d, iframe;
     let peer_name = data.peer_name;
     let you_tube_url = data.you_tube_url;
@@ -2296,7 +2298,7 @@ class RoomClient {
     this.sound("joined");
   }
 
-  closeYouTube(emit = false) {
+  closeYouTube (emit = false) {
     if (emit) {
       let data = {
         peer_name: this.peer_name,
@@ -2317,7 +2319,7 @@ class RoomClient {
   // ROOM ACTION
   // ####################################################
 
-  roomAction(action, emit = true) {
+  roomAction (action, emit = true) {
     if (emit) this.socket.emit("roomAction", action);
     switch (action) {
       case "lock":
@@ -2340,7 +2342,7 @@ class RoomClient {
   // HANDLE ROOM ACTION
   // ####################################################
 
-  roomIsLocked() {
+  roomIsLocked () {
     this.sound("locked", true);
     this.event(_EVENTS.roomLock);
     console.log("Room is Locked, try with another one");
@@ -2368,7 +2370,7 @@ class RoomClient {
   // PEER ACTION
   // ####################################################
 
-  peerAction(from_peer_name, id, action, emit = true, broadcast = false) {
+  peerAction (from_peer_name, id, action, emit = true, broadcast = false) {
     let peer_id = id;
     if (emit) {
       if (!broadcast) {
@@ -2459,9 +2461,9 @@ class RoomClient {
             this.userLog(
               "warning",
               from_peer_name +
-                "  " +
-                _PEER.audioOff +
-                " has closed yours audio",
+              "  " +
+              _PEER.audioOff +
+              " has closed yours audio",
               "top-end",
               10000
             );
@@ -2473,9 +2475,9 @@ class RoomClient {
             this.userLog(
               "warning",
               from_peer_name +
-                "  " +
-                _PEER.videoOff +
-                " has closed yours video",
+              "  " +
+              _PEER.videoOff +
+              " has closed yours video",
               "top-end",
               10000
             );
@@ -2490,7 +2492,7 @@ class RoomClient {
   // UPDATE PEER INFO
   // ####################################################
 
-  updatePeerInfo(peer_name, peer_id, type, status, emit = true) {
+  updatePeerInfo (peer_name, peer_id, type, status, emit = true) {
     if (emit) {
       switch (type) {
         case "audio":
@@ -2551,7 +2553,7 @@ class RoomClient {
     }
   }
 
-  checkPeerInfoStatus(peer_info) {
+  checkPeerInfoStatus (peer_info) {
     let peer_id = peer_info.peer_id;
     let peer_hand_status = peer_info.peer_hand;
     if (peer_hand_status) {
@@ -2561,7 +2563,7 @@ class RoomClient {
     //...
   }
 
-  popupPeerInfo(id, peer_info) {
+  popupPeerInfo (id, peer_info) {
     if (this.debug) {
       this.setTippy(
         id,
