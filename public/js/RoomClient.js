@@ -1035,17 +1035,19 @@ class RoomClient {
         s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
         spanTag.appendChild(s);
         s.onclick =  function (){
-          alert("Make as Speaker");
+          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.visibility = '';
+          document.getElementById(peer_info.peer_id + "__enableAudience").style.visibility = 'none';
         } 
 
         //toggle audience 
         a = document.createElement("i");
         a.id = peer_info.peer_id + "__enableAudience";
-        a.className = "fas user-alt-slash disableSpeaker";
+        a.className = "fas user-alt-slash enableAudience";
         a.style.cssText = "display: flex;left: 50px;cursor: pointer;";
         spanTag.appendChild(a);
         a.onclick =  function (){
-          alert("Make as Audience");
+          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.visibility = 'none';
+          document.getElementById(peer_info.peer_id + "__enableAudience").style.visibility = '';
         } 
 
         d.appendChild(elem);
@@ -1143,17 +1145,19 @@ class RoomClient {
     s.style.cssText = "display: flex;left: 25px;cursor: pointer;color:grey;";
     spanTag.appendChild(s);
     s.onclick =  function (){
-          alert("Speaker");
+          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.visibility = '';
+          document.getElementById(peer_info.peer_id + "__enableAudience").style.visibility = 'none';
         } 
 
     //toggle audience 
     a = document.createElement("i");
     a.id = peer_info.peer_id + "__enableAudience";
-    a.className = "fas fa-user-alt-slash disableSpeaker";
+    a.className = "fas fa-user-alt-slash enableAudience";
     a.style.cssText = "display: flex;left: 50px;cursor: pointer;";
     spanTag.appendChild(a);
     a.onclick =  function (){
-          alert("Audience");
+          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.visibility = 'none';
+          document.getElementById(peer_info.peer_id + "__enableAudience").style.visibility = '';
         } 
 
     d.appendChild(i);
