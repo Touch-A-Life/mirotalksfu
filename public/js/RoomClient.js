@@ -1123,6 +1123,7 @@ class RoomClient {
     a.style.cssText = "left: 50px;cursor: pointer;color:red;";
     spanTag.appendChild(a);
 
+    console.log("hello", remotePeer);
     if (!remotePeer) {
       a.onclick = function () {
         var audienceRef = document.getElementById(peer_info.peer_id + "__enableAudience");
