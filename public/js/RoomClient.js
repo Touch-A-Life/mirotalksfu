@@ -1156,7 +1156,7 @@ class RoomClient {
     s.className = "fas fa-phone-volume enableSpeaker";
     s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
     spanTag.appendChild(s);
-    s.onclick = toggleAudienceSpeaker(false, peer_info.peer_id);
+    s.onclick = this.toggleAudienceSpeaker(false, peer_info.peer_id);
 
     //toggle audience 
     a = document.createElement("i");
@@ -1164,7 +1164,7 @@ class RoomClient {
     a.className = "fas fa-user-alt-slash enableAudience";
     a.style.cssText = "left: 50px;cursor: pointer;";
     spanTag.appendChild(a);
-    a.onclick = toggleAudienceSpeaker(true, peer_info.peer_id);
+    a.onclick = this.toggleAudienceSpeaker(true, peer_info.peer_id);
 
     d.appendChild(i);
     d.appendChild(p);
