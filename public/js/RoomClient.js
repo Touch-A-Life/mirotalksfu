@@ -58,21 +58,21 @@ const _EVENTS = {
 let recordedBlobs;
 
 function toggleAudienceSpeaker (status = false, peerId = null) {
-    console.log("hello", this.peer_id);
-    var audienceRef = document.getElementById(this.peer_id + "__enableAudience");
-    var speakerRef = document.getElementById(this.peer_id + "__enableSpeaker");
-    if (audienceRef && speakerRef && peerId) {
-      if (status) {
-        audienceRef.style.display = "none";
-        speakerRef.style.cssText = "display: flex;left: 25px;cursor: pointer;";
-      } else {
-        audienceRef.style.display = "display: flex;left: 25px;cursor: pointer;";
-        speakerRef.style.cssText = "none";
-      }
-    }else{
-      console.log("NOT FOUND hello")
+  console.log("hello", peerId);
+  var audienceRef = document.getElementById(peerId + "__enableAudience");
+  var speakerRef = document.getElementById(peerId + "__enableSpeaker");
+  if (audienceRef && speakerRef && peerId) {
+    if (status) {
+      audienceRef.style.display = "none";
+      speakerRef.style.cssText = "display: flex;left: 25px;cursor: pointer;";
+    } else {
+      audienceRef.style.display = "display: flex;left: 25px;cursor: pointer;";
+      speakerRef.style.cssText = "none";
     }
+  } else {
+    console.log("NOT FOUND hello")
   }
+}
 
 class RoomClient {
   constructor(
