@@ -1032,7 +1032,7 @@ class RoomClient {
         s = document.createElement("i");
         s.id = peer_info.peer_id + "__enableSpeaker";
         s.className = "fas fa-phone-volume enableSpeaker";
-        s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
+        s.style.cssText = "left: 25px;cursor: pointer;";
         spanTag.appendChild(s);
         s.onclick =  function (){
           console.log("hello 3");
@@ -1144,11 +1144,11 @@ class RoomClient {
     s = document.createElement("i");
     s.id = peer_info.peer_id + "__enableSpeaker";
     s.className = "fas fa-phone-volume enableSpeaker";
-    s.style.cssText = "display: flex;left: 25px;cursor: pointer;color:grey;";
+    s.style.cssText = "left: 25px;cursor: pointer;color:grey;";
     spanTag.appendChild(s);
     s.onclick =  function (){
           console.log("hello 1");
-          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "left: 25px;cursor: pointer;";
+          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.display = "none";
           document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "display: flex;left: 25px;cursor: pointer;";
         } 
 
@@ -1160,7 +1160,7 @@ class RoomClient {
     spanTag.appendChild(a);
     a.onclick =  function (){
           console.log("hello 2");
-          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "left: 25px;cursor: pointer;";
+          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.display = "none";
           document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "display: flex;left: 25px;cursor: pointer;";
         } 
 
