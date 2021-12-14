@@ -231,3 +231,7 @@ custom css for chat_mic animation postion
 /*
 End of custom css for animation mic icon
 */
+
+.displayElement {
+  display: 'flex !important';
+}
