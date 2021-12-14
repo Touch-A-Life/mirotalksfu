@@ -1045,7 +1045,7 @@ class RoomClient {
         a = document.createElement("i");
         a.id = peer_info.peer_id + "__enableAudience";
         a.className = "fas user-alt-slash enableAudience";
-        a.style.cssText = "display: flex;left: 50px;cursor: pointer;";
+        a.style.cssText = "left: 50px;cursor: pointer;";
         spanTag.appendChild(a);
         a.onclick =  function (){
           document.getElementById(peer_info.peer_id + "__enableSpeaker").classList.toggle("displayElement");
@@ -1157,7 +1157,7 @@ class RoomClient {
     a = document.createElement("i");
     a.id = peer_info.peer_id + "__enableAudience";
     a.className = "fas fa-user-alt-slash enableAudience";
-    a.style.cssText = "display: flex;left: 50px;cursor: pointer;";
+    a.style.cssText = "left: 50px;cursor: pointer;color:grey;";
     spanTag.appendChild(a);
     a.onclick =  function (){
           document.getElementById(peer_info.peer_id + "__enableSpeaker").classList.toggle("displayElement");
