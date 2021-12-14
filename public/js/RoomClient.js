@@ -2494,10 +2494,12 @@ class RoomClient {
           let peer_hand = this.getPeerHandBtn(peer_id);
           if (status) {
             if (peer_hand) peer_hand.style.display = "flex";
+            document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
             this.event(_EVENTS.raiseHand);
             this.sound("raiseHand", true);
           } else {
             if (peer_hand) peer_hand.style.display = "none";
+            document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "none";
             this.event(_EVENTS.lowerHand);
           }
           break;
