@@ -1123,7 +1123,6 @@ class RoomClient {
     a.style.cssText = "left: 50px;cursor: pointer;color:red;";
     spanTag.appendChild(a);
 
-    console.log("hello", remotePeer);
     if (!remotePeer) {
       a.onclick = function () {
         var audienceRef = document.getElementById(peer_info.peer_id + "__enableAudience");
@@ -2502,6 +2501,7 @@ class RoomClient {
           let peer_hand = this.getPeerHandBtn(peer_id);
           if (status) {
             if (peer_hand) peer_hand.style.display = "flex";
+            document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
             this.userLog(
               "warning",
               peer_name + "  " + _PEER.raiseHand + " has raised the hand",
@@ -2511,13 +2511,9 @@ class RoomClient {
             this.sound("raiseHand", true);
           } else {
             if (peer_hand) peer_hand.style.display = "none";
+            document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "none";
           }
           break;
-        // case "speaking":
-        //   this.peer_info.peer_speaking = status;
-        //   let peer_speaking = this.getPeerSpeakingTag(peer_id);
-        //   peer_speaking.innerHTML = status ? "Finally speaking" : "";
-        //   break;
       }
     }
   }
