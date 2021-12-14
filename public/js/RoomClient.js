@@ -1015,38 +1015,9 @@ class RoomClient {
         b.id = peer_info.peer_id + "__audio";
         b.className = peer_info.peer_audio ? html.audioOn : html.audioOff;
 
-        //toggle speaker 
-        var spanTag = document.createElement("span");
-        spanTag.id = peer_info.peer_id + "__toggleAudienceRole";
-        spanTag.className = "toggleAudienceRole";
-
-        s = document.createElement("i");
-        s.id = peer_info.peer_id + "__enableSpeaker";
-        s.className = "fas fa-phone-volume enableSpeaker";
-        s.style.cssText = "left: 25px;cursor: pointer;";
-        spanTag.appendChild(s);
-        s.onclick = function () {
-          console.log("hello 3");
-          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "left: 25px;cursor: pointer;";
-          document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "display: flex;left: 25px;cursor: pointer;";
-        }
-
-        //toggle audience 
-        a = document.createElement("i");
-        a.id = peer_info.peer_id + "__enableAudience";
-        a.className = "fas fa-phone-volume enableAudience";
-        a.style.cssText = "left: 50px;cursor: pointer;";
-        spanTag.appendChild(a);
-        a.onclick = function () {
-          console.log("hello 4");
-          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "display: flex;left: 25px;cursor: pointer;";
-          document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "left: 25px;cursor: pointer;";
-        }
-
         d.appendChild(elem);
         d.appendChild(p);
         d.appendChild(i);
-        d.appendChild(spanTag);
         d.appendChild(b);
         this.videoMediaContainer.appendChild(d);
         this.attachMediaStream(elem, stream, type, "Consumer");
