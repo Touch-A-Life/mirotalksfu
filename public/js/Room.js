@@ -638,15 +638,19 @@ function handleButtons() {
   //     //rc.closeThenProduce(RoomClient.mediaType.video, null, true);
   // };
   raiseHandIcon.onclick = () => {
+    document.getElementById(rc.peer_id + "____toggleAudienceRole").style.display = "";
     rc.updatePeerInfo(peer_name, rc.peer_id, "hand", true);
   };
   lowerHandIcon.onclick = () => {
+    document.getElementById(rc.peer_id + "____toggleAudienceRole").style.display = "none";
     rc.updatePeerInfo(peer_name, rc.peer_id, "hand", false);
   };
   raiseHandButton.onclick = () => {
+    document.getElementById(rc.peer_id + "____toggleAudienceRole").style.display = "";
     rc.updatePeerInfo(peer_name, rc.peer_id, "hand", true);
   };
   lowerHandButton.onclick = () => {
+    document.getElementById(rc.peer_id + "____toggleAudienceRole").style.display = "none";
     rc.updatePeerInfo(peer_name, rc.peer_id, "hand", false);
   };
   startAudioButton.onclick = () => {
