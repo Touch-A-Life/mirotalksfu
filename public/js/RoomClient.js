@@ -57,11 +57,11 @@ const _EVENTS = {
 
 let recordedBlobs;
 
-function toggleAudienceSpeaker (status = false) {
+function toggleAudienceSpeaker (status = false, peerId = null) {
     console.log("hello", this.peer_id);
     var audienceRef = document.getElementById(this.peer_id + "__enableAudience");
     var speakerRef = document.getElementById(this.peer_id + "__enableSpeaker");
-    if (audienceRef && speakerRef) {
+    if (audienceRef && speakerRef && peerId) {
       if (status) {
         audienceRef.style.display = "none";
         speakerRef.style.cssText = "display: flex;left: 25px;cursor: pointer;";
@@ -1150,7 +1150,7 @@ class RoomClient {
     s.className = "fas fa-phone-volume enableSpeaker";
     s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
     spanTag.appendChild(s);
-    s.onclick = toggleAudienceSpeaker(false);
+    s.onclick = toggleAudienceSpeaker(false, this.peer_id);
 
     //toggle audience 
     a = document.createElement("i");
@@ -1158,7 +1158,7 @@ class RoomClient {
     a.className = "fas fa-user-alt-slash enableAudience";
     a.style.cssText = "left: 50px;cursor: pointer;";
     spanTag.appendChild(a);
-    a.onclick = toggleAudienceSpeaker(true);
+    a.onclick = toggleAudienceSpeaker(true, this.peer_id);
 
     d.appendChild(i);
     d.appendChild(p);
