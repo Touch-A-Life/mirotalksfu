@@ -1092,20 +1092,21 @@ class RoomClient {
     h.id = peer_info.peer_id + "__hand";
     h.className = "fas fa-hand-paper pulsate";
 
-    //toggle speaker 
-    var spanTag = document.createElement("span");
-    spanTag.id = peer_info.peer_id + "__toggleAudienceRole";
-    spanTag.className = "toggleAudienceRole";
-    spanTag.style.cssText = "display: none;";
+    if (remotePeer) {
+      //toggle speaker 
+      var spanTag = document.createElement("span");
+      spanTag.id = peer_info.peer_id + "__toggleAudienceRole";
+      spanTag.className = "toggleAudienceRole";
+      spanTag.style.cssText = "display: none;";
 
-    s = document.createElement("i");
-    s.id = peer_info.peer_id + "__enableSpeaker";
-    s.className = "fas fa-phone-volume enableSpeaker";
-    s.title = "Make as speaker";
-    s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
-    spanTag.appendChild(s);
+      s = document.createElement("i");
+      s.id = peer_info.peer_id + "__enableSpeaker";
+      s.className = "fas fa-phone-volume enableSpeaker";
+      s.title = "Make as speaker";
+      s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
+      spanTag.appendChild(s);
 
-    if (!remotePeer) {
+
       s.onclick = function () {
         var audienceRef = document.getElementById(peer_info.peer_id + "__enableAudience");
         var speakerRef = document.getElementById(peer_info.peer_id + "__enableSpeaker");
@@ -1113,17 +1114,17 @@ class RoomClient {
         speakerRef.style.display = "none";
         audienceRef.style.cssText = "display: flex;left: 25px;cursor: pointer;color:red;";
       }
-    }
 
-    //toggle audience 
-    a = document.createElement("i");
-    a.id = peer_info.peer_id + "__enableAudience";
-    a.className = "fas fa-phone-volume enableAudience";
-    a.title = "Make as audience";
-    a.style.cssText = "left: 50px;cursor: pointer;color:red;";
-    spanTag.appendChild(a);
 
-    if (!remotePeer) {
+      //toggle audience 
+      a = document.createElement("i");
+      a.id = peer_info.peer_id + "__enableAudience";
+      a.className = "fas fa-phone-volume enableAudience";
+      a.title = "Make as audience";
+      a.style.cssText = "left: 50px;cursor: pointer;color:red;";
+      spanTag.appendChild(a);
+
+
       a.onclick = function () {
         var audienceRef = document.getElementById(peer_info.peer_id + "__enableAudience");
         var speakerRef = document.getElementById(peer_info.peer_id + "__enableSpeaker");
@@ -2523,9 +2524,11 @@ class RoomClient {
     let peer_hand_status = peer_info.peer_hand;
     if (peer_hand_status) {
       let peer_hand = this.getPeerHandBtn(peer_id);
-      if (peer_hand) peer_hand.style.display = "flex";
+      if (peer_hand) {
+        peer_hand.style.display = "flex";
+        document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
+      }
     }
-    //...
   }
 
   popupPeerInfo (id, peer_info) {
