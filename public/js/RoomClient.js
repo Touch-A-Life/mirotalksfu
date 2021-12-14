@@ -170,16 +170,6 @@ class RoomClient {
     );
   }
 
-  toggleAudienceSpeaker (status = false) {
-    if (!status) {
-      document.getElementById(this.peer_id + "__enableAudience").style.display = "none";
-      document.getElementById(this.peer_id + "__enableSpeaker").style.cssText = "display: flex;left: 25px;cursor: pointer;";
-    } else {
-      document.getElementById(this.peer_id + "__enableAudience").style.display = "display: flex;left: 25px;cursor: pointer;";
-      document.getElementById(this.peer_id + "__enableSpeaker").style.cssText = "none";
-    }
-  }
-
   // ####################################################
   // GET STARTED
   // ####################################################
@@ -2584,6 +2574,17 @@ class RoomClient {
         ),
         "top-start"
       );
+    }
+  }
+
+  toggleAudienceSpeaker (status = false) {
+    console.log("hello", this, this.peer_id);
+    if (!status) {
+      document.getElementById(this.peer_id + "__enableAudience").style.display = "none";
+      document.getElementById(this.peer_id + "__enableSpeaker").style.cssText = "display: flex;left: 25px;cursor: pointer;";
+    } else {
+      document.getElementById(this.peer_id + "__enableAudience").style.display = "display: flex;left: 25px;cursor: pointer;";
+      document.getElementById(this.peer_id + "__enableSpeaker").style.cssText = "none";
     }
   }
 }
