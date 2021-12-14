@@ -57,6 +57,23 @@ const _EVENTS = {
 
 let recordedBlobs;
 
+toggleAudienceSpeaker (status = false) {
+    console.log("hello", this.peer_id);
+    var audienceRef = document.getElementById(this.peer_id + "__enableAudience");
+    var speakerRef = document.getElementById(this.peer_id + "__enableSpeaker");
+    if (audienceRef && speakerRef) {
+      if (status) {
+        audienceRef.style.display = "none";
+        speakerRef.style.cssText = "display: flex;left: 25px;cursor: pointer;";
+      } else {
+        audienceRef.style.display = "display: flex;left: 25px;cursor: pointer;";
+        speakerRef.style.cssText = "none";
+      }
+    }else{
+      console.log("NOT FOUND hello")
+    }
+  }
+
 class RoomClient {
   constructor(
     remoteAudioEl,
@@ -797,12 +814,6 @@ class RoomClient {
     pSpeaking.className = "chat_mic";
     pSpeaking.innerHTML = "";
 
-    //create audience/speaker tags
-    // let pAudienceSpeaker = document.createElement("p");
-    // pAudienceSpeaker.id = this.peer_id + "__audienceSpeaker";
-    // pAudienceSpeaker.className = "audienceSpeakerAction";
-    // pAudienceSpeaker.innerHTML = "<i class='fa fa-bullhorn'></i>";
-
     i = document.createElement("i");
     i.id = this.peer_id + "__hand";
     // i.className = "fas fa-hand-paper pulsate";
@@ -813,7 +824,6 @@ class RoomClient {
     d.appendChild(elem);
     d.appendChild(i);
     d.appendChild(p);
-    // d.appendChild(pAudienceSpeaker);
     d.appendChild(pSpeaking);
     d.appendChild(b);
     this.videoMediaContainer.appendChild(d);
@@ -1123,12 +1133,6 @@ class RoomClient {
     pSpeaking.className = "chat_mic";
     pSpeaking.innerHTML = "";
 
-    //create audience/speaker tags
-    // let pAudienceSpeaker = document.createElement("p");
-    // pAudienceSpeaker.id = this.peer_id + "__audienceSpeaker";
-    // pAudienceSpeaker.className = "audienceSpeakerAction";
-    // pAudienceSpeaker.innerHTML = "<i class='fa fa-bullhorn'></i>";
-
     b = document.createElement("button");
     b.id = peer_id + "__audio";
     b.className = peer_audio ? html.audioOn : html.audioOff;
@@ -1146,7 +1150,7 @@ class RoomClient {
     s.className = "fas fa-phone-volume enableSpeaker";
     s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
     spanTag.appendChild(s);
-    s.onclick = this.toggleAudienceSpeaker(false, peer_info.peer_id);
+    s.onclick = toggleAudienceSpeaker(false);
 
     //toggle audience 
     a = document.createElement("i");
@@ -1154,11 +1158,10 @@ class RoomClient {
     a.className = "fas fa-user-alt-slash enableAudience";
     a.style.cssText = "left: 50px;cursor: pointer;";
     spanTag.appendChild(a);
-    a.onclick = this.toggleAudienceSpeaker(true, peer_info.peer_id);
+    a.onclick = toggleAudienceSpeaker(true);
 
     d.appendChild(i);
     d.appendChild(p);
-    // d.appendChild(pAudienceSpeaker);
     d.appendChild(pSpeaking);
     d.appendChild(b);
     d.appendChild(h);
@@ -2574,23 +2577,6 @@ class RoomClient {
         ),
         "top-start"
       );
-    }
-  }
-
-  toggleAudienceSpeaker (status = false) {
-    console.log("hello", this.peer_id);
-    var audienceRef = document.getElementById(this.peer_id + "__enableAudience");
-    var speakerRef = document.getElementById(this.peer_id + "__enableSpeaker");
-    if (audienceRef && speakerRef) {
-      if (status) {
-        audienceRef.style.display = "none";
-        speakerRef.style.cssText = "display: flex;left: 25px;cursor: pointer;";
-      } else {
-        audienceRef.style.display = "display: flex;left: 25px;cursor: pointer;";
-        speakerRef.style.cssText = "none";
-      }
-    }else{
-      console.log("NOT FOUND hello")
     }
   }
 }
