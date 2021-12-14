@@ -66,13 +66,13 @@ let isButtonsVisible = false;
 
 const socket = io();
 
-function getQueryString(url = "", keyToReturn = "") {
+function getQueryString (url = "", keyToReturn = "") {
   const urlParams = new URLSearchParams(url);
   const myParam = urlParams.get(keyToReturn);
   return myParam;
 }
 
-function getRandomNumber(length) {
+function getRandomNumber (length) {
   let result = "";
   let characters = "0123456789";
   let charactersLength = characters.length;
@@ -82,7 +82,7 @@ function getRandomNumber(length) {
   return result;
 }
 
-function initClient() {
+function initClient () {
   if (!DetectRTC.isMobileDevice) {
     setTippy("tabDevicesBtn", "Devices", "top");
     setTippy("tabWhiteboardBtn", "Whiteboard", "top");
@@ -115,7 +115,7 @@ function initClient() {
   initEnumerateDevices();
 }
 
-function setTippy(elem, content, placement) {
+function setTippy (elem, content, placement) {
   tippy(document.getElementById(elem), {
     content: content,
     placement: placement,
@@ -126,7 +126,7 @@ function setTippy(elem, content, placement) {
 // ENUMERATE DEVICES
 // ####################################################
 
-async function initEnumerateDevices() {
+async function initEnumerateDevices () {
   if (isEnumerateDevices) return;
   console.log("01 ----> init Enumerate Devices");
 
@@ -162,7 +162,7 @@ async function initEnumerateDevices() {
   }
 }
 
-function enumerateAudioDevices(stream) {
+function enumerateAudioDevices (stream) {
   console.log("02 ----> Get Audio Devices");
   navigator.mediaDevices
     .enumerateDevices()
@@ -185,7 +185,7 @@ function enumerateAudioDevices(stream) {
     });
 }
 
-function enumerateVideoDevices(stream) {
+function enumerateVideoDevices (stream) {
   console.log("03 ----> Get Video Devices");
   navigator.mediaDevices
     .enumerateDevices()
@@ -205,13 +205,13 @@ function enumerateVideoDevices(stream) {
     });
 }
 
-function stopTracks(stream) {
+function stopTracks (stream) {
   stream.getTracks().forEach((track) => {
     track.stop();
   });
 }
 
-function appenChild(device, el) {
+function appenChild (device, el) {
   let option = document.createElement("option");
   option.value = device.deviceId;
   option.innerText = device.label;
@@ -222,7 +222,7 @@ function appenChild(device, el) {
 // SOME PEER INFO
 // ####################################################
 
-function getPeerInfo() {
+function getPeerInfo () {
   peer_info = {
     detect_rtc_version: DetectRTC.version,
     is_webrtc_supported: DetectRTC.isWebRTCSupported,
@@ -240,7 +240,7 @@ function getPeerInfo() {
   };
 }
 
-function getPeerGeoLocation() {
+function getPeerGeoLocation () {
   fetch(url.ipLookup)
     .then((res) => res.json())
     .then((outJson) => {
@@ -253,7 +253,7 @@ function getPeerGeoLocation() {
 // ENTER YOUR NAME | Enable/Disable AUDIO/VIDEO
 // ####################################################
 
-function whoAreYou() {
+function whoAreYou () {
   console.log("04 ----> Who are you");
   const userName = getQueryString(window.location.search, "userName");
   const profileImageUrl = getQueryString(
@@ -301,14 +301,14 @@ function whoAreYou() {
   if (!isVideoAllowed) initVideoButton.className = "hidden";
 }
 
-function handleAudio(e) {
+function handleAudio (e) {
   isAudioOn = isAudioOn ? false : true;
   e.target.className = "fas fa-microphone" + (isAudioOn ? "" : "-slash");
   setColor(e.target, isAudioOn ? "white" : "red");
   setColor(startAudioButton, isAudioOn ? "white" : "red");
 }
 
-function handleVideo(e) {
+function handleVideo (e) {
   isVideoOn = isVideoOn ? false : true;
   e.target.className = "fas fa-video" + (isVideoOn ? "" : "-slash");
   setColor(e.target, isVideoOn ? "white" : "red");
@@ -319,7 +319,7 @@ function handleVideo(e) {
 // SHARE ROOM
 // ####################################################
 
-async function shareRoom(useNavigator = false) {
+async function shareRoom (useNavigator = false) {
   if (navigator.share && useNavigator) {
     try {
       await navigator.share({ url: RoomURL });
@@ -330,7 +330,7 @@ async function shareRoom(useNavigator = false) {
   } else {
     share();
   }
-  function share() {
+  function share () {
     sound("open");
 
     Swal.fire({
@@ -382,7 +382,7 @@ async function shareRoom(useNavigator = false) {
 // ROOM UTILITY
 // ####################################################
 
-function makeRoomQR() {
+function makeRoomQR () {
   let qrSize = DetectRTC.isMobileDevice ? 128 : 256;
   let qr = new QRious({
     element: document.getElementById("qrRoom"),
@@ -393,7 +393,7 @@ function makeRoomQR() {
   });
 }
 
-function copyRoomURL() {
+function copyRoomURL () {
   let tmpInput = document.createElement("input");
   document.body.appendChild(tmpInput);
   tmpInput.value = RoomURL;
@@ -404,7 +404,7 @@ function copyRoomURL() {
   userLog("info", "Room URL copied to clipboard", "top-end");
 }
 
-function shareRoomByEmail(message) {
+function shareRoomByEmail (message) {
   let email = message.email;
   let subject = message.subject;
   let emailBody = message.body;
@@ -416,7 +416,7 @@ function shareRoomByEmail(message) {
 // JOIN TO ROOM
 // ####################################################
 
-function joinRoom(peer_name, room_id, profileImageUrl) {
+function joinRoom (peer_name, room_id, profileImageUrl) {
   if (rc && rc.isConnected()) {
     console.log("Already connected to a room");
   } else {
@@ -439,7 +439,7 @@ function joinRoom(peer_name, room_id, profileImageUrl) {
   }
 }
 
-function roomIsReady() {
+function roomIsReady () {
   show(exitButton);
   show(shareButton);
   show(startRecButton);
@@ -483,15 +483,15 @@ function roomIsReady() {
   });
 }
 
-function hide(elem) {
+function hide (elem) {
   elem.className = "hidden";
 }
 
-function show(elem) {
+function show (elem) {
   elem.className = "";
 }
 
-function setColor(elem, color) {
+function setColor (elem, color) {
   elem.style.color = color;
 }
 
@@ -499,7 +499,7 @@ function setColor(elem, color) {
 // SET CHAT MOBILE
 // ####################################################
 
-function setChatSize() {
+function setChatSize () {
   document.documentElement.style.setProperty("--msger-width", "99%");
   document.documentElement.style.setProperty("--msger-height", "99%");
 }
@@ -508,16 +508,16 @@ function setChatSize() {
 // SESSION TIMER
 // ####################################################
 
-function startSessionTimer() {
+function startSessionTimer () {
   sessionTime.style.display = "inline";
   let callStartTime = Date.now();
-  setInterval(function printTime() {
+  setInterval(function printTime () {
     let callElapsedTime = Date.now() - callStartTime;
     sessionTime.innerHTML = " " + getTimeToString(callElapsedTime);
   }, 1000);
 }
 
-function getTimeToString(time) {
+function getTimeToString (time) {
   let diffInHrs = time / 3600000;
   let hh = Math.floor(diffInHrs);
   let diffInMin = (diffInHrs - hh) * 60;
@@ -534,7 +534,7 @@ function getTimeToString(time) {
 // RECORDING TIMER
 // ####################################################
 
-function secondsToHms(d) {
+function secondsToHms (d) {
   d = Number(d);
   let h = Math.floor(d / 3600);
   let m = Math.floor((d % 3600) / 60);
@@ -545,16 +545,16 @@ function secondsToHms(d) {
   return hDisplay + " " + mDisplay + " " + sDisplay;
 }
 
-function startRecordingTimer() {
+function startRecordingTimer () {
   recElapsedTime = 0;
-  recTimer = setInterval(function printTime() {
+  recTimer = setInterval(function printTime () {
     if (rc.isRecording()) {
       recElapsedTime++;
       recordingStatus.innerHTML = "🔴 REC " + secondsToHms(recElapsedTime);
     }
   }, 1000);
 }
-function stopRecordingTimer() {
+function stopRecordingTimer () {
   clearInterval(recTimer);
 }
 
@@ -562,7 +562,7 @@ function stopRecordingTimer() {
 // HTML BUTTONS
 // ####################################################
 
-function handleButtons() {
+function handleButtons () {
   // enableSpeaker.onclick = () => {
   //   console.log("click Enable speaker");
   // };
@@ -638,19 +638,21 @@ function handleButtons() {
   //     //rc.closeThenProduce(RoomClient.mediaType.video, null, true);
   // };
   raiseHandIcon.onclick = () => {
-    document.getElementById(rc.peer_id + "____toggleAudienceRole").style.display = "";
+    console.log("hello", rc.peer_id);
+    document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "";
     rc.updatePeerInfo(peer_name, rc.peer_id, "hand", true);
   };
   lowerHandIcon.onclick = () => {
-    document.getElementById(rc.peer_id + "____toggleAudienceRole").style.display = "none";
+    document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "none";
     rc.updatePeerInfo(peer_name, rc.peer_id, "hand", false);
   };
   raiseHandButton.onclick = () => {
-    document.getElementById(rc.peer_id + "____toggleAudienceRole").style.display = "";
+    console.log("hello 2", rc.peer_id);
+    document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "";
     rc.updatePeerInfo(peer_name, rc.peer_id, "hand", true);
   };
   lowerHandButton.onclick = () => {
-    document.getElementById(rc.peer_id + "____toggleAudienceRole").style.display = "none";
+    document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "none";
     rc.updatePeerInfo(peer_name, rc.peer_id, "hand", false);
   };
   startAudioButton.onclick = () => {
@@ -766,7 +768,7 @@ function handleButtons() {
 // HTML SELECTS
 // ####################################################
 
-function handleSelects() {
+function handleSelects () {
   // devices options
   microphoneSelect.onchange = () => {
     rc.closeThenProduce(RoomClient.mediaType.audio, microphoneSelect.value);
@@ -804,7 +806,7 @@ function handleSelects() {
 // HTML INPUTS
 // ####################################################
 
-function handleInputs() {
+function handleInputs () {
   chatMessage.onkeyup = (e) => {
     if (e.keyCode === 13) {
       e.preventDefault();
@@ -821,7 +823,7 @@ function handleInputs() {
 // ROOM CLIENT EVENT LISTNERS
 // ####################################################
 
-function handleRoomClientEvents() {
+function handleRoomClientEvents () {
   // rc.on(RoomClient.EVENTS.startRec, () => {
   //     console.log('Room Client start recoding');
   //     hide(startRecButton);
@@ -954,7 +956,7 @@ function handleRoomClientEvents() {
 // UTILITY
 // ####################################################
 
-function userLog(icon, message, position, timer = 3000) {
+function userLog (icon, message, position, timer = 3000) {
   const Toast = Swal.mixin({
     background: swalBackground,
     toast: true,
@@ -968,7 +970,7 @@ function userLog(icon, message, position, timer = 3000) {
   });
 }
 
-function saveDataToFile(dataURL, fileName) {
+function saveDataToFile (dataURL, fileName) {
   const a = document.createElement("a");
   a.style.display = "none";
   a.href = dataURL;
@@ -981,14 +983,14 @@ function saveDataToFile(dataURL, fileName) {
   }, 100);
 }
 
-function getDataTimeString() {
+function getDataTimeString () {
   const d = new Date();
   const date = d.toISOString().split("T")[0];
   const time = d.toTimeString().split(" ")[0];
   return `${date}-${time}`;
 }
 
-function showButtons() {
+function showButtons () {
   if (
     isButtonsVisible ||
     (rc.isMobileDevice && rc.isChatOpen) ||
@@ -1007,7 +1009,7 @@ function showButtons() {
 // UTILITY
 // ####################################################
 
-async function sound(name, play = false) {
+async function sound (name, play = false) {
   if (!play) return false;
 
   let sound = "../sounds/" + name + ".wav";
@@ -1019,7 +1021,7 @@ async function sound(name, play = false) {
   }
 }
 
-function isImageURL(url) {
+function isImageURL (url) {
   return url.match(/\.(jpeg|jpg|gif|png|tiff|bmp)$/) != null;
 }
 
@@ -1027,7 +1029,7 @@ function isImageURL(url) {
 // HANDLE WHITEBOARD
 // ####################################################
 
-function toggleWhiteboard() {
+function toggleWhiteboard () {
   if (!wbIsOpen) rc.sound("open");
   let whiteboard = rc.getId("whiteboard");
   whiteboard.classList.toggle("show");
@@ -1036,20 +1038,20 @@ function toggleWhiteboard() {
   wbIsOpen = wbIsOpen ? false : true;
 }
 
-function setupWhiteboard() {
+function setupWhiteboard () {
   setupWhiteboardCanvas();
   setupWhiteboardCanvasSize();
   setupWhiteboardLocalListners();
 }
 
-function setupWhiteboardCanvas() {
+function setupWhiteboardCanvas () {
   wbCanvas = new fabric.Canvas("wbCanvas");
   wbCanvas.freeDrawingBrush.color = "#FFFFFF";
   wbCanvas.freeDrawingBrush.width = 3;
   whiteboardIsDrawingMode(true);
 }
 
-function setupWhiteboardCanvasSize() {
+function setupWhiteboardCanvasSize () {
   let optimalSize = [wbWidth, wbHeight];
   let scaleFactorX = window.innerWidth / optimalSize[0];
   let scaleFactorY = window.innerHeight / optimalSize[1];
@@ -1079,12 +1081,12 @@ function setupWhiteboardCanvasSize() {
   wbCanvas.renderAll();
 }
 
-function setWhiteboardSize(w, h) {
+function setWhiteboardSize (w, h) {
   document.documentElement.style.setProperty("--wb-width", w);
   document.documentElement.style.setProperty("--wb-height", h);
 }
 
-function whiteboardIsDrawingMode(status) {
+function whiteboardIsDrawingMode (status) {
   wbCanvas.isDrawingMode = status;
   if (status) {
     setColor(whiteboardPencilBtn, "green");
@@ -1097,13 +1099,13 @@ function whiteboardIsDrawingMode(status) {
   }
 }
 
-function whiteboardIsEraser(status) {
+function whiteboardIsEraser (status) {
   whiteboardIsDrawingMode(false);
   wbIsEraser = status;
   setColor(whiteboardEraserBtn, wbIsEraser ? "green" : "white");
 }
 
-function whiteboardAddObj(type) {
+function whiteboardAddObj (type) {
   switch (type) {
     case "imgUrl":
       Swal.fire({
@@ -1218,7 +1220,7 @@ function whiteboardAddObj(type) {
   }
 }
 
-function addWbCanvasObj(obj) {
+function addWbCanvasObj (obj) {
   if (obj) {
     wbCanvas.add(obj);
     whiteboardIsDrawingMode(false);
@@ -1226,7 +1228,7 @@ function addWbCanvasObj(obj) {
   }
 }
 
-function setupWhiteboardLocalListners() {
+function setupWhiteboardLocalListners () {
   wbCanvas.on("mouse:down", function (e) {
     mouseDown(e);
   });
@@ -1241,7 +1243,7 @@ function setupWhiteboardLocalListners() {
   });
 }
 
-function mouseDown(e) {
+function mouseDown (e) {
   wbIsDrawing = true;
   if (wbIsEraser && e.target) {
     wbCanvas.remove(e.target);
@@ -1249,12 +1251,12 @@ function mouseDown(e) {
   }
 }
 
-function mouseUp() {
+function mouseUp () {
   wbIsDrawing = false;
   wbCanvasToJson();
 }
 
-function mouseMove() {
+function mouseMove () {
   if (wbIsEraser) {
     wbCanvas.hoverCursor = "not-allowed";
     return;
@@ -1262,33 +1264,33 @@ function mouseMove() {
   if (!wbIsDrawing) return;
 }
 
-function objectAdded() {
+function objectAdded () {
   if (!wbIsRedoing) wbPop = [];
   wbIsRedoing = false;
 }
 
-function wbCanvasBackgroundColor(color) {
+function wbCanvasBackgroundColor (color) {
   document.documentElement.style.setProperty("--wb-bg", color);
   wbBackgroundColorEl.value = color;
   wbCanvas.setBackgroundColor(color);
   wbCanvas.renderAll();
 }
 
-function wbCanvasUndo() {
+function wbCanvasUndo () {
   if (wbCanvas._objects.length > 0) {
     wbPop.push(wbCanvas._objects.pop());
     wbCanvas.renderAll();
   }
 }
 
-function wbCanvasRedo() {
+function wbCanvasRedo () {
   if (wbPop.length > 0) {
     wbIsRedoing = true;
     wbCanvas.add(wbPop.pop());
   }
 }
 
-function wbCanvasSaveImg() {
+function wbCanvasSaveImg () {
   const dataURL = wbCanvas.toDataURL({
     width: wbCanvas.getWidth(),
     height: wbCanvas.getHeight(),
@@ -1301,28 +1303,28 @@ function wbCanvasSaveImg() {
   saveDataToFile(dataURL, fileName);
 }
 
-function wbCanvasToJson() {
+function wbCanvasToJson () {
   if (rc.thereIsParticipants()) {
     let wbCanvasJson = JSON.stringify(wbCanvas.toJSON());
     rc.socket.emit("wbCanvasToJson", wbCanvasJson);
   }
 }
 
-function JsonToWbCanvas(json) {
+function JsonToWbCanvas (json) {
   if (!wbIsOpen) toggleWhiteboard();
 
   wbCanvas.loadFromJSON(json);
   wbCanvas.renderAll();
 }
 
-function getWhiteboardAction(action) {
+function getWhiteboardAction (action) {
   return {
     peer_name: peer_name,
     action: action,
   };
 }
 
-function confirmClearBoard() {
+function confirmClearBoard () {
   Swal.fire({
     background: swalBackground,
     imageUrl: image.delete,
@@ -1345,7 +1347,7 @@ function confirmClearBoard() {
   });
 }
 
-function whiteboardAction(data, emit = true) {
+function whiteboardAction (data, emit = true) {
   if (emit) {
     if (rc.thereIsParticipants()) {
       rc.socket.emit("whiteboardAction", data);
@@ -1382,14 +1384,14 @@ function whiteboardAction(data, emit = true) {
 // HANDLE PARTICIPANTS
 // ####################################################
 
-function toggleParticipants() {
+function toggleParticipants () {
   let participants = rc.getId("participants");
   participants.classList.toggle("show");
   participants.style.top = "50%";
   participants.style.left = "50%";
 }
 
-async function getRoomParticipants(refresh = false) {
+async function getRoomParticipants (refresh = false) {
   let room_info = await rc.getRoomInfo();
   let peers = new Map(JSON.parse(room_info.peers));
   let table = await getParticipantsTable(peers);
@@ -1404,7 +1406,7 @@ async function getRoomParticipants(refresh = false) {
   }
 }
 
-async function getParticipantsTable(peers) {
+async function getParticipantsTable (peers) {
   let table = `
     <table>
     <tr>
@@ -1464,7 +1466,7 @@ async function getParticipantsTable(peers) {
   return table;
 }
 
-function refreshParticipantsCount(count) {
+function refreshParticipantsCount (count) {
   participantsTitle.innerHTML = `<i class="fas fa-users"></i> Participants ( ${count} )`;
   participantsCountMenu.innerHTML = `(${count})`;
 }
@@ -1473,7 +1475,7 @@ function refreshParticipantsCount(count) {
 // ABOUT
 // ####################################################
 
-function showAbout() {
+function showAbout () {
   sound("open");
 
   Swal.fire({
@@ -1500,7 +1502,7 @@ function showAbout() {
 /*
  * Start Audio level functions
  */
-function handleSuccessMeter(stream) {
+function handleSuccessMeter (stream) {
   // Put variables in global scope to make them available to the
   // browser console.
   window.stream = stream;
@@ -1526,7 +1528,7 @@ function handleSuccessMeter(stream) {
   });
 }
 
-function handleErrorMeter(error) {
+function handleErrorMeter (error) {
   console.log(
     "navigator.MediaDevices.getUserMedia error: ",
     error.message,
@@ -1534,7 +1536,7 @@ function handleErrorMeter(error) {
   );
 }
 
-function startMeter() {
+function startMeter () {
   console.log("Requesting local stream");
 
   try {
@@ -1550,7 +1552,7 @@ function startMeter() {
     .catch(handleErrorMeter);
 }
 
-function stopMeter() {
+function stopMeter () {
   console.log("Stopping local stream");
 
   window.stream.getTracks().forEach((track) => track.stop());
