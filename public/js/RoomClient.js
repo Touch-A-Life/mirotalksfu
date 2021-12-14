@@ -1110,6 +1110,9 @@ class RoomClient {
     p.id = peer_id + "__name";
     p.innerHTML = "👤 " + peer_name + (remotePeer ? "" : " (me) ");
 
+    var audienceRef = document.getElementById(peer_info.peer_id + "__enableAudience");
+    var speakerRef = document.getElementById(peer_info.peer_id + "__enableSpeaker");
+
     //create speaking tag
     pSpeaking = document.createElement("p");
     pSpeaking.id = peer_id + "__speaking";
@@ -1134,9 +1137,6 @@ class RoomClient {
     s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
     spanTag.appendChild(s);
     s.onclick = function () {
-      var audienceRef = document.getElementById(peer_info.peer_id + "__enableAudience");
-      var speakerRef = document.getElementById(peer_info.peer_id + "__enableSpeaker");
-
       speakerRef.style.display = "none";
       audienceRef.style.cssText = "display: flex;left: 25px;cursor: pointer;";
     }
@@ -1148,9 +1148,6 @@ class RoomClient {
     a.style.cssText = "left: 50px;cursor: pointer;";
     spanTag.appendChild(a);
     a.onclick = function () {
-      var audienceRef = document.getElementById(peer_info.peer_id + "__enableAudience");
-      var speakerRef = document.getElementById(peer_info.peer_id + "__enableSpeaker");
-
       audienceRef.style.display = "none";
       speakerRef.style.cssText = "display: flex;left: 25px;cursor: pointer;";
     }
