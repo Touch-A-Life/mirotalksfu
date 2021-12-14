@@ -50,9 +50,7 @@ const _EVENTS = {
   resumeScreen: "resumeScreen",
   stopScreen: "stopScreen",
   roomLock: "roomLock",
-  roomUnlock: "roomUnlock",
-  disableSpeaker: "disableSpeaker",
-  enableSpeaker: "enableSpeaker",
+  roomUnlock: "roomUnlock"
 };
 
 let recordedBlobs;
