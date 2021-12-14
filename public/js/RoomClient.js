@@ -1140,7 +1140,8 @@ class RoomClient {
     d.appendChild(pSpeaking);
     d.appendChild(b);
     d.appendChild(h);
-    d.appendChild(spanTag);
+
+    if (remotePeer) d.appendChild(spanTag);
 
     this.videoMediaContainer.appendChild(d);
     this.setVideoAvatarImgName(i.id, peer_name, peer_img);
@@ -2474,7 +2475,7 @@ class RoomClient {
           let peer_hand = this.getPeerHandBtn(peer_id);
           if (status) {
             if (peer_hand) peer_hand.style.display = "flex";
-            if(document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
+            if (document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
             this.event(_EVENTS.raiseHand);
             this.sound("raiseHand", true);
           } else {
@@ -2503,7 +2504,7 @@ class RoomClient {
           let peer_hand = this.getPeerHandBtn(peer_id);
           if (status) {
             if (peer_hand) peer_hand.style.display = "flex";
-            document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
+            if(document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
             this.userLog(
               "warning",
               peer_name + "  " + _PEER.raiseHand + " has raised the hand",
@@ -2513,7 +2514,7 @@ class RoomClient {
             this.sound("raiseHand", true);
           } else {
             if (peer_hand) peer_hand.style.display = "none";
-            document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "none";
+            if(document.getElementById(rc.peer_id + "__toggleAudienceRole")) document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "none";
           }
           break;
       }
