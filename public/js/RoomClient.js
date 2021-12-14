@@ -2578,13 +2578,19 @@ class RoomClient {
   }
 
   toggleAudienceSpeaker (status = false) {
-    console.log("hello", this, this.peer_id);
-    if (!status) {
-      document.getElementById(this.peer_id + "__enableAudience").style.display = "none";
-      document.getElementById(this.peer_id + "__enableSpeaker").style.cssText = "display: flex;left: 25px;cursor: pointer;";
-    } else {
-      document.getElementById(this.peer_id + "__enableAudience").style.display = "display: flex;left: 25px;cursor: pointer;";
-      document.getElementById(this.peer_id + "__enableSpeaker").style.cssText = "none";
+    console.log("hello", this.peer_id);
+    var audienceRef = document.getElementById(this.peer_id + "__enableAudience");
+    var speakerRef = document.getElementById(this.peer_id + "__enableSpeaker");
+    if (audienceRef && speakerRef) {
+      if (status) {
+        audienceRef.style.display = "none";
+        speakerRef.style.cssText = "display: flex;left: 25px;cursor: pointer;";
+      } else {
+        audienceRef.style.display = "display: flex;left: 25px;cursor: pointer;";
+        speakerRef.style.cssText = "none";
+      }
+    }else{
+      console.log("NOT FOUND hello")
     }
   }
 }
