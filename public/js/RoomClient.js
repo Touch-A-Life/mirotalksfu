@@ -1035,8 +1035,8 @@ class RoomClient {
         s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
         spanTag.appendChild(s);
         s.onclick =  function (){
-          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.visibility = '';
-          document.getElementById(peer_info.peer_id + "__enableAudience").style.visibility = 'none';
+          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.display = '';
+          document.getElementById(peer_info.peer_id + "__enableAudience").style.display = 'none';
         } 
 
         //toggle audience 
@@ -1046,8 +1046,8 @@ class RoomClient {
         a.style.cssText = "display: flex;left: 50px;cursor: pointer;";
         spanTag.appendChild(a);
         a.onclick =  function (){
-          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.visibility = 'none';
-          document.getElementById(peer_info.peer_id + "__enableAudience").style.visibility = '';
+          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.display = 'none';
+          document.getElementById(peer_info.peer_id + "__enableAudience").style.display = '';
         } 
 
         d.appendChild(elem);
@@ -1145,8 +1145,8 @@ class RoomClient {
     s.style.cssText = "display: flex;left: 25px;cursor: pointer;color:grey;";
     spanTag.appendChild(s);
     s.onclick =  function (){
-          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.visibility = '';
-          document.getElementById(peer_info.peer_id + "__enableAudience").style.visibility = 'none';
+          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.display = '';
+          document.getElementById(peer_info.peer_id + "__enableAudience").style.display = 'none';
         } 
 
     //toggle audience 
@@ -1156,8 +1156,8 @@ class RoomClient {
     a.style.cssText = "display: flex;left: 50px;cursor: pointer;";
     spanTag.appendChild(a);
     a.onclick =  function (){
-          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.visibility = 'none';
-          document.getElementById(peer_info.peer_id + "__enableAudience").style.visibility = '';
+          document.getElementById(peer_info.peer_id + "__enableSpeaker").style.display = 'none';
+          document.getElementById(peer_info.peer_id + "__enableAudience").style.display = '';
         } 
 
     d.appendChild(i);
