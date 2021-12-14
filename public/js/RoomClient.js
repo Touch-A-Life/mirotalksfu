@@ -1035,6 +1035,7 @@ class RoomClient {
         s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
         spanTag.appendChild(s);
         s.onclick =  function (){
+          console.log("hello 3");
           document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "left: 25px;cursor: pointer;";
           document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "display: flex;left: 25px;cursor: pointer;";
         } 
@@ -1046,6 +1047,7 @@ class RoomClient {
         a.style.cssText = "left: 50px;cursor: pointer;";
         spanTag.appendChild(a);
         a.onclick =  function (){
+          console.log("hello 4");
           document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "display: flex;left: 25px;cursor: pointer;";
           document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "left: 25px;cursor: pointer;";
         } 
@@ -1145,6 +1147,7 @@ class RoomClient {
     s.style.cssText = "display: flex;left: 25px;cursor: pointer;color:grey;";
     spanTag.appendChild(s);
     s.onclick =  function (){
+          console.log("hello 1");
           document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "left: 25px;cursor: pointer;";
           document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "display: flex;left: 25px;cursor: pointer;";
         } 
@@ -1156,6 +1159,7 @@ class RoomClient {
     a.style.cssText = "left: 50px;cursor: pointer;color:grey;";
     spanTag.appendChild(a);
     a.onclick =  function (){
+          console.log("hello 2");
           document.getElementById(peer_info.peer_id + "__enableSpeaker").style.cssText = "left: 25px;cursor: pointer;";
           document.getElementById(peer_info.peer_id + "__enableAudience").style.cssText = "display: flex;left: 25px;cursor: pointer;";
         } 
