@@ -1136,7 +1136,7 @@ class RoomClient {
     s.className = "fas fa-phone-volume enableSpeaker";
     s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
     spanTag.appendChild(s);
-    s.onclick = function () {
+    s.onclick = function (audienceRef, speakerRef) {
       speakerRef.style.display = "none";
       audienceRef.style.cssText = "display: flex;left: 25px;cursor: pointer;";
     }
@@ -1147,7 +1147,7 @@ class RoomClient {
     a.className = "fas fa-user-alt-slash enableAudience";
     a.style.cssText = "left: 50px;cursor: pointer;";
     spanTag.appendChild(a);
-    a.onclick = function () {
+    a.onclick = function (audienceRef, speakerRef) {
       audienceRef.style.display = "none";
       speakerRef.style.cssText = "display: flex;left: 25px;cursor: pointer;";
     }
