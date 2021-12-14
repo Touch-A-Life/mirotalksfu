@@ -1025,12 +1025,17 @@ class RoomClient {
         b.className = peer_info.peer_audio ? html.audioOn : html.audioOff;
 
         //toggle speaker 
+        var spanTag = document.createElement("span");
+        spanTag.id = peer_info.peer_id + "__toggleAudienceRole";
+        spanTag.className = "toggleAudienceRole";
+
         s = document.createElement("i");
         s.id = peer_info.peer_id + "__enableSpeaker";
         s.className = "fas fa-phone-volume enableSpeaker";
         s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
+        spanTag.appendChild(s);
         s.onclick =  function (){
-          alert("Enable");
+          alert("Make as Speaker");
         } 
 
         //toggle audience 
@@ -1038,15 +1043,15 @@ class RoomClient {
         a.id = peer_info.peer_id + "__enableAudience";
         a.className = "fas user-alt-slash disableSpeaker";
         a.style.cssText = "display: flex;left: 50px;cursor: pointer;";
+        spanTag.appendChild(a);
         a.onclick =  function (){
-          alert("Disable");
+          alert("Make as Audience");
         } 
 
         d.appendChild(elem);
         d.appendChild(p);
         d.appendChild(i);
-        d.appendChild(s);
-        d.appendChild(a);
+        d.appendChild(spanTag);
         d.appendChild(b);
         this.videoMediaContainer.appendChild(d);
         this.attachMediaStream(elem, stream, type, "Consumer");
@@ -1128,10 +1133,15 @@ class RoomClient {
     h.className = "fas fa-hand-paper pulsate";
 
     //toggle speaker 
+    var spanTag = document.createElement("span");
+    spanTag.id = peer_info.peer_id + "__toggleAudienceRole";
+    spanTag.className = "toggleAudienceRole";
+
     s = document.createElement("i");
     s.id = peer_info.peer_id + "__enableSpeaker";
     s.className = "fas fa-phone-volume enableSpeaker";
     s.style.cssText = "display: flex;left: 25px;cursor: pointer;color:grey;";
+    spanTag.appendChild(s);
     s.onclick =  function (){
           alert("Speaker");
         } 
@@ -1141,6 +1151,7 @@ class RoomClient {
     a.id = peer_info.peer_id + "__enableAudience";
     a.className = "fas fa-user-alt-slash disableSpeaker";
     a.style.cssText = "display: flex;left: 50px;cursor: pointer;";
+    spanTag.appendChild(a);
     a.onclick =  function (){
           alert("Audience");
         } 
@@ -1151,8 +1162,8 @@ class RoomClient {
     d.appendChild(pSpeaking);
     d.appendChild(b);
     d.appendChild(h);
-    d.appendChild(s);
-    d.appendChild(a);
+    d.appendChild(spanTag);
+
     this.videoMediaContainer.appendChild(d);
     this.setVideoAvatarImgName(i.id, peer_name, peer_img);
     this.getId(i.id).style.display = "block";
