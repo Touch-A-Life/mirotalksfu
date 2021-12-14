@@ -1092,9 +1092,10 @@ class RoomClient {
     h.id = peer_info.peer_id + "__hand";
     h.className = "fas fa-hand-paper pulsate";
 
+    var spanTag = "";
     if (remotePeer) {
       //toggle speaker 
-      var spanTag = document.createElement("span");
+      spanTag = document.createElement("span");
       spanTag.id = peer_info.peer_id + "__toggleAudienceRole";
       spanTag.className = "toggleAudienceRole";
       spanTag.style.cssText = "display: none;";
@@ -2473,12 +2474,12 @@ class RoomClient {
           let peer_hand = this.getPeerHandBtn(peer_id);
           if (status) {
             if (peer_hand) peer_hand.style.display = "flex";
-            document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
+            if(document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
             this.event(_EVENTS.raiseHand);
             this.sound("raiseHand", true);
           } else {
             if (peer_hand) peer_hand.style.display = "none";
-            document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "none";
+            if (document.getElementById(rc.peer_id + "__toggleAudienceRole")) document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "none";
             this.event(_EVENTS.lowerHand);
           }
           break;
