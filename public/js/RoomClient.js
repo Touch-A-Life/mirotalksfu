@@ -1104,12 +1104,15 @@ class RoomClient {
     s.title = "Make as speaker";
     s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
     spanTag.appendChild(s);
-    s.onclick = function () {
-      var audienceRef = document.getElementById(peer_info.peer_id + "__enableAudience");
-      var speakerRef = document.getElementById(peer_info.peer_id + "__enableSpeaker");
 
-      speakerRef.style.display = "none";
-      audienceRef.style.cssText = "display: flex;left: 25px;cursor: pointer;color:red;";
+    if (!remotePeer) {
+      s.onclick = function () {
+        var audienceRef = document.getElementById(peer_info.peer_id + "__enableAudience");
+        var speakerRef = document.getElementById(peer_info.peer_id + "__enableSpeaker");
+
+        speakerRef.style.display = "none";
+        audienceRef.style.cssText = "display: flex;left: 25px;cursor: pointer;color:red;";
+      }
     }
 
     //toggle audience 
@@ -1119,12 +1122,15 @@ class RoomClient {
     a.title = "Make as audience";
     a.style.cssText = "left: 50px;cursor: pointer;color:red;";
     spanTag.appendChild(a);
-    a.onclick = function () {
-      var audienceRef = document.getElementById(peer_info.peer_id + "__enableAudience");
-      var speakerRef = document.getElementById(peer_info.peer_id + "__enableSpeaker");
 
-      audienceRef.style.display = "none";
-      speakerRef.style.cssText = "display: flex;left: 25px;cursor: pointer;";
+    if (!remotePeer) {
+      a.onclick = function () {
+        var audienceRef = document.getElementById(peer_info.peer_id + "__enableAudience");
+        var speakerRef = document.getElementById(peer_info.peer_id + "__enableSpeaker");
+
+        audienceRef.style.display = "none";
+        speakerRef.style.cssText = "display: flex;left: 25px;cursor: pointer;";
+      }
     }
 
     d.appendChild(i);
