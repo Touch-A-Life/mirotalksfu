@@ -1131,9 +1131,9 @@ class RoomClient {
     s = document.createElement("i");
     s.id = peer_info.peer_id + "__enableSpeaker";
     s.className = "fas fa-phone-volume enableSpeaker";
-    s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
+    s.style.cssText = "display: flex;left: 25px;cursor: pointer;color:grey;";
     s.onclick =  function (){
-          alert("Enable 2");
+          alert("Speaker");
         } 
 
     //toggle audience 
@@ -1142,7 +1142,7 @@ class RoomClient {
     a.className = "fas fa-user-alt-slash disableSpeaker";
     a.style.cssText = "display: flex;left: 50px;cursor: pointer;";
     a.onclick =  function (){
-          alert("Disable 2");
+          alert("Audience");
         } 
 
     d.appendChild(i);
