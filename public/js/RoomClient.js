@@ -2509,7 +2509,7 @@ class RoomClient {
           if (status) {
             console.log("hello 21");
             if (peer_hand) peer_hand.style.display = "flex";
-            if (document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
+            // if (document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
             this.userLog(
               "warning",
               peer_name + "  " + _PEER.raiseHand + " has raised the hand",
@@ -2520,7 +2520,7 @@ class RoomClient {
           } else {
             console.log("hello 22");
             if (peer_hand) peer_hand.style.display = "none";
-            if (document.getElementById(rc.peer_id + "__toggleAudienceRole")) document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "none";
+            // if (document.getElementById(rc.peer_id + "__toggleAudienceRole")) document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "none";
           }
           break;
       }
