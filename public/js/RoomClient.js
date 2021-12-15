@@ -2474,11 +2474,13 @@ class RoomClient {
           this.peer_info.peer_hand = status;
           let peer_hand = this.getPeerHandBtn(peer_id);
           if (status) {
+            console.log("hello 11");
             if (peer_hand) peer_hand.style.display = "flex";
             if (document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
             this.event(_EVENTS.raiseHand);
             this.sound("raiseHand", true);
           } else {
+            console.log("hello 12");
             if (peer_hand) peer_hand.style.display = "none";
             if (document.getElementById(rc.peer_id + "__toggleAudienceRole")) document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "none";
             this.event(_EVENTS.lowerHand);
@@ -2503,8 +2505,9 @@ class RoomClient {
         case "hand":
           let peer_hand = this.getPeerHandBtn(peer_id);
           if (status) {
+            console.log("hello 21");
             if (peer_hand) peer_hand.style.display = "flex";
-            if(document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
+            if (document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
             this.userLog(
               "warning",
               peer_name + "  " + _PEER.raiseHand + " has raised the hand",
@@ -2513,8 +2516,9 @@ class RoomClient {
             );
             this.sound("raiseHand", true);
           } else {
+            console.log("hello 22");
             if (peer_hand) peer_hand.style.display = "none";
-            if(document.getElementById(rc.peer_id + "__toggleAudienceRole")) document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "none";
+            if (document.getElementById(rc.peer_id + "__toggleAudienceRole")) document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "none";
           }
           break;
       }
@@ -2528,6 +2532,7 @@ class RoomClient {
       let peer_hand = this.getPeerHandBtn(peer_id);
       if (peer_hand) {
         peer_hand.style.display = "flex";
+        console.log("hello 33")
         document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
       }
     }
