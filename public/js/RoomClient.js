@@ -2476,8 +2476,8 @@ class RoomClient {
           if (status) {
             console.log("hello 11", peer_id, document.getElementById(peer_id + "__toggleAudienceRole"));
             if (peer_hand) peer_hand.style.display = "flex";
-            if (document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
-            if (document.getElementById(peer_id + "__enableSpeaker")) document.getElementById(peer_id + "__enableSpeaker").style.display = "flex";
+            if (document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "none";
+            if (document.getElementById(peer_id + "__enableSpeaker")) document.getElementById(peer_id + "__enableSpeaker").style.display = "flex !important";
             this.event(_EVENTS.raiseHand);
             this.sound("raiseHand", true);
           } else {
