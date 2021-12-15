@@ -1104,7 +1104,7 @@ class RoomClient {
       s.id = peer_info.peer_id + "__enableSpeaker";
       s.className = "fas fa-phone-volume enableSpeaker";
       s.title = "Make as speaker";
-      s.style.cssText = "display: flex;left: 25px;cursor: pointer;";
+      s.style.cssText = "left: 25px;cursor: pointer;";
       spanTag.appendChild(s);
 
 
@@ -2477,6 +2477,7 @@ class RoomClient {
             console.log("hello 11");
             if (peer_hand) peer_hand.style.display = "flex";
             if (document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
+            if (document.getElementById(peer_id + "__enableSpeaker")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "flex";
             this.event(_EVENTS.raiseHand);
             this.sound("raiseHand", true);
           } else {
