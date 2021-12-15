@@ -2483,7 +2483,7 @@ class RoomClient {
           } else {
             // console.log("hello 12", peer_id, document.getElementById(peer_id + "__toggleAudienceRole"));
             if (peer_hand) peer_hand.style.display = "none";
-            if (document.getElementById(rc.peer_id + "__toggleAudienceRole")) document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "none";
+            if (document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "none";
             // if (document.getElementById(peer_id + "__enableSpeaker")) document.getElementById(peer_id + "__enableSpeaker").style.display = "none";
             this.event(_EVENTS.lowerHand);
           }
@@ -2510,7 +2510,7 @@ class RoomClient {
             console.log("hello 21");
             if (peer_hand) peer_hand.style.display = "flex";
             if (document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
-            if (document.getElementById(rc.peer_id + "__enableSpeaker")) document.getElementById(rc.peer_id + "__enableSpeaker").style.display = "flex";
+            if (document.getElementById(peer_id + "__enableSpeaker")) document.getElementById(peer_id + "__enableSpeaker").style.display = "flex";
             this.userLog(
               "warning",
               peer_name + "  " + _PEER.raiseHand + " has raised the hand",
@@ -2521,8 +2521,8 @@ class RoomClient {
           } else {
             console.log("hello 22");
             if (peer_hand) peer_hand.style.display = "none";
-            if (document.getElementById(rc.peer_id + "__toggleAudienceRole")) document.getElementById(rc.peer_id + "__toggleAudienceRole").style.display = "none";
-            if (document.getElementById(rc.peer_id + "__enableSpeaker")) document.getElementById(rc.peer_id + "__enableSpeaker").style.display = "none";
+            if (document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "none";
+            if (document.getElementById(peer_id + "__enableSpeaker")) document.getElementById(peer_id + "__enableSpeaker").style.display = "none";
           }
           break;
       }
