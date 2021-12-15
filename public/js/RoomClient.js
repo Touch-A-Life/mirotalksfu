@@ -1104,7 +1104,7 @@ class RoomClient {
       s.id = peer_info.peer_id + "__enableSpeaker";
       s.className = "fas fa-phone-volume enableSpeaker";
       s.title = "Make as speaker";
-      s.style.cssText = "left: 25px;cursor: pointer;";
+      s.style.cssText = "display:flex;left: 25px;cursor: pointer;";
       spanTag.appendChild(s);
 
 
