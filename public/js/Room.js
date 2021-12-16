@@ -91,6 +91,7 @@ function getRandomNumber(length) {
 const currentUserId = getQueryString(window.location.search, 'userId');
 async function getCurrentUserInfo() {
     try {
+        console.log(webApiBaseUrl + '/user/' + currentUserId);
         const fetchUserDetails = await axios.get(webApiBaseUrl + '/user/' + currentUserId);
         getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
 
@@ -110,6 +111,7 @@ async function getCurrentUserInfo() {
 
 async function getRoomInfo() {
     try {
+        console.log(webApiBaseUrl + '/chatrooms/' + room_id);
         const fetchRoomDetails = await axios.get(webApiBaseUrl + '/chatrooms/' + room_id);
         getRoomDetails = fetchRoomDetails && fetchRoomDetails.data && fetchRoomDetails.data.data;
 
