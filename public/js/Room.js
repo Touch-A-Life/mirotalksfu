@@ -11,6 +11,7 @@ const RoomURL = window.location.href.split('?')[0];
 const swalBackground = 'linear-gradient(to left, #1f1e1e, #000000)';
 const swalImageUrl = '../images/pricing-illustration.svg';
 const webBaseUrl = 'https://touch-a-life-dev.web.app';
+const webApiBaseUrl = webBaseUrl + '/api/v1';
 const webBaseUrlAudioPath = '/chatTabs';
 
 const url = {
@@ -65,7 +66,9 @@ let wbPop = [];
 let isButtonsVisible = false;
 
 //Current user info
-let getUserDetails = {};
+let getUserDetails,
+    getRoomDetails = {};
+let isModerator = false;
 
 const socket = io();
 
@@ -88,14 +91,38 @@ function getRandomNumber(length) {
 const currentUserId = getQueryString(window.location.search, 'userId');
 async function getCurrentUserInfo() {
     try {
-        const fetchUserDetails = await axios.get(webBaseUrl + '/api/v1/user/' + currentUserId);
+        const fetchUserDetails = await axios.get(webApiBaseUrl + '/user/' + currentUserId);
         getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
+
+        if (!getUserDetails) {
+            window.location.href = `${webBaseUrl}/login?audioRoomId=${room_id}`;
+            return;
+        }
+
         currentUserName = `${getUserDetails && getUserDetails.name && getUserDetails.name.first_name} ${
             getUserDetails && getUserDetails.name && getUserDetails.name.last_name
         }`;
         currentUserProfileImageUrl = `${getUserDetails && getUserDetails.profile_image_url}`;
     } catch (e) {
         console.log('Failed to fetch the user details', currentUserId, e);
+    }
+}
+
+async function getRoomInfo() {
+    try {
+        const fetchRoomDetails = await axios.get(webApiBaseUrl + '/chatrooms/' + room_id);
+        getRoomDetails = fetchRoomDetails && fetchRoomDetails.data && fetchRoomDetails.data.data;
+
+        if (!getRoomDetails) {
+            window.location.href = `${webBaseUrl}`;
+            return;
+        }
+
+        if (getRoomDetails && getRoomDetails.ownerId == currentUserId) {
+            isModerator = true;
+        }
+    } catch (e) {
+        console.log('Failed to fetch the room details', room_id, e);
     }
 }
 
@@ -173,7 +200,12 @@ async function initEnumerateDevices() {
     if (!isAudioAllowed) {
         window.location.href = `/permission?room_id=${room_id}&message=Not allowed Audio`;
     } else {
-        await getCurrentUserInfo();
+        try {
+            await getCurrentUserInfo();
+            await getRoomInfo();
+        } catch (e) {
+            console.log('Fetching Error: User Info / Room Info', e);
+        }
         hide(loadingDiv);
         getPeerGeoLocation();
         whoAreYou();
