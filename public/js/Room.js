@@ -33,9 +33,11 @@ let participantsCount = 0;
 let rc = null;
 let producer = null;
 
-let peer_name = 'peer_' + getRandomNumber(5);
+let peer_name = '';
 let peer_geo = null;
 let peer_info = null;
+var currentUserName = '';
+var currentUserProfileImageUrl = '';
 
 let room_id = location.pathname.substring(6);
 let isEnumerateDevices = false;
@@ -83,15 +85,15 @@ function getRandomNumber(length) {
     return result;
 }
 
-const currentUserName = getQueryString(window.location.search, 'userName');
-const currentUserProfileImageUrl = getQueryString(window.location.search, 'profileImageUrl');
 const currentUserId = getQueryString(window.location.search, 'userId');
-
 async function getCurrentUserInfo() {
     try {
         const fetchUserDetails = await axios.get(webBaseUrl + '/api/v1/user/' + currentUserId);
         getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
-        // name =
+        currentUserName = `${getUserDetails && getUserDetails.name && getUserDetails.name.first_name} ${
+            getUserDetails && getUserDetails.name && getUserDetails.name.last_name
+        }`;
+        currentUserProfileImageUrl = `${getUserDetails && getUserDetails.profile_image_url}`;
     } catch (e) {
         console.log('Failed to fetch the user details', currentUserId, e);
     }
