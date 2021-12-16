@@ -96,7 +96,7 @@ async function getCurrentUserInfo() {
         getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
 
         if (!getUserDetails || !getUserDetails._id) {
-            console.log('USER NOR FOUND');
+            console.log('USER NOT FOUND');
             // window.location.href = `${webBaseUrl}`;
             // return;
         }
@@ -116,7 +116,7 @@ async function getRoomInfo() {
         getRoomDetails = fetchRoomDetails && fetchRoomDetails.data && fetchRoomDetails.data.data;
 
         if (!getRoomDetails || !getRoomDetails._id) {
-            console.log('ROOM NOR FOUND');
+            console.log('ROOM NOT FOUND');
             // window.location.href = `${webBaseUrl}`;
             // return;
         }
