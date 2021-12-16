@@ -2481,7 +2481,6 @@ class RoomClient {
             this.event(_EVENTS.raiseHand);
             this.sound("raiseHand", true);
           } else {
-            // console.log("hello 12", peer_id, document.getElementById(peer_id + "__toggleAudienceRole"));
             if (peer_hand) peer_hand.style.display = "none";
             if (document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "none";
             if (document.getElementById(peer_id + "__enableSpeaker")) document.getElementById(peer_id + "__enableSpeaker").style.display = "none";
@@ -2508,7 +2507,6 @@ class RoomClient {
         case "hand":
           let peer_hand = this.getPeerHandBtn(peer_id);
           if (status) {
-            console.log("hello 21");
             if (peer_hand) peer_hand.style.display = "flex";
             if (document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
             if (document.getElementById(peer_id + "__enableSpeaker")) document.getElementById(peer_id + "__enableSpeaker").style.display = "flex";
@@ -2521,7 +2519,6 @@ class RoomClient {
             );
             this.sound("raiseHand", true);
           } else {
-            console.log("hello 22");
             if (peer_hand) peer_hand.style.display = "none";
             if (document.getElementById(peer_id + "__toggleAudienceRole")) document.getElementById(peer_id + "__toggleAudienceRole").style.display = "none";
             if (document.getElementById(peer_id + "__enableSpeaker")) document.getElementById(peer_id + "__enableSpeaker").style.display = "none";
@@ -2539,8 +2536,6 @@ class RoomClient {
       let peer_hand = this.getPeerHandBtn(peer_id);
       if (peer_hand) {
         peer_hand.style.display = "flex";
-        console.log("hello 33")
-        document.getElementById(peer_id + "__toggleAudienceRole").style.display = "";
       }
     }
   }
