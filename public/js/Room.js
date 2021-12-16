@@ -120,9 +120,12 @@ async function getRoomInfo() {
         //     return;
         // }
 
+        console.log('hello ', getRoomDetails, currentUserId);
         if (getRoomDetails && getRoomDetails.ownerId == currentUserId) {
+            console.log('Hello YES');
             isModerator = true;
         }
+        console.log('Hello 2', isModerator);
     } catch (e) {
         console.log('Failed to fetch the room details', room_id, e);
     }
