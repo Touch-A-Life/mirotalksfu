@@ -95,10 +95,10 @@ async function getCurrentUserInfo() {
         const fetchUserDetails = await axios.get(webApiBaseUrl + '/user/' + currentUserId);
         getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
 
-        // if (!getUserDetails) {
-        //     window.location.href = `${webBaseUrl}/login?audioRoomId=${room_id}`;
-        //     return;
-        // }
+        if (!getUserDetails) {
+            window.location.href = `${webBaseUrl}/login?audioRoomId=${room_id}`;
+            return;
+        }
 
         currentUserName = `${getUserDetails && getUserDetails.name && getUserDetails.name.first_name} ${
             getUserDetails && getUserDetails.name && getUserDetails.name.last_name
@@ -114,10 +114,10 @@ async function getRoomInfo() {
         const fetchRoomDetails = await axios.get(webApiBaseUrl + '/chatrooms/' + room_id);
         getRoomDetails = fetchRoomDetails && fetchRoomDetails.data && fetchRoomDetails.data.data;
 
-        // if (!getRoomDetails) {
-        //     window.location.href = `${webBaseUrl}`;
-        //     return;
-        // }
+        if (!getRoomDetails) {
+            window.location.href = `${webBaseUrl}`;
+            return;
+        }
 
         if (getRoomDetails && getRoomDetails.ownerId == currentUserId) {
             isModerator = true;
