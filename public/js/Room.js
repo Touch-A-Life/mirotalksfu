@@ -270,6 +270,7 @@ function getPeerGeoLocation() {
 
 function whoAreYou() {
     console.log('04 ----> Who are you');
+    console.log('04 ----> Who are you', getUserDetails);
     const userName = currentUserName;
 
     if (!userName || userName.trim().length === 0) {
