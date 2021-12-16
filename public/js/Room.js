@@ -95,7 +95,7 @@ async function getCurrentUserInfo() {
         const fetchUserDetails = await axios.get(webApiBaseUrl + '/user/' + currentUserId);
         getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
 
-        if (!getUserDetails) {
+        if (!getUserDetails || !getUserDetails._id) {
             window.location.href = `${webBaseUrl}`;
             return;
         }
@@ -114,7 +114,7 @@ async function getRoomInfo() {
         const fetchRoomDetails = await axios.get(webApiBaseUrl + '/chatrooms/' + room_id);
         getRoomDetails = fetchRoomDetails && fetchRoomDetails.data && fetchRoomDetails.data.data;
 
-        if (!getRoomDetails) {
+        if (!getRoomDetails || !getRoomDetails._id) {
             window.location.href = `${webBaseUrl}`;
             return;
         }
