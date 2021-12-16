@@ -87,7 +87,7 @@ const currentUserName = getQueryString(window.location.search, 'userName');
 const currentUserProfileImageUrl = getQueryString(window.location.search, 'profileImageUrl');
 const currentUserId = getQueryString(window.location.search, 'userId');
 
-(async function getCurrentUserInfo() {
+async function getCurrentUserInfo() {
     try {
         console.log('Hello', webBaseUrl + '/api/v1/user/' + currentUserId);
         getUserDetails = await axios.get(webBaseUrl + '/api/v1/user/' + currentUserId);
@@ -95,7 +95,7 @@ const currentUserId = getQueryString(window.location.search, 'userId');
     } catch (e) {
         console.log('Failed to fetch the user details', currentUserId, e);
     }
-})();
+}
 
 function initClient() {
     if (!DetectRTC.isMobileDevice) {
@@ -171,6 +171,7 @@ async function initEnumerateDevices() {
     if (!isAudioAllowed) {
         window.location.href = `/permission?room_id=${room_id}&message=Not allowed Audio`;
     } else {
+        await getCurrentUserInfo();
         hide(loadingDiv);
         getPeerGeoLocation();
         whoAreYou();
