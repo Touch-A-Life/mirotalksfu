@@ -85,7 +85,6 @@ function getRandomNumber (length) {
 const currentUserName = getQueryString(window.location.search, "userName");
 const currentUserProfileImageUrl = getQueryString(window.location.search, "profileImageUrl");
 const currentUserId = getQueryString(window.location.search, "userId");
-console.log("Hello", currentUserName, currentUserProfileImageUrl, currentUserId);
 
 function initClient () {
   if (!DetectRTC.isMobileDevice) {
@@ -243,7 +242,7 @@ function getPeerInfo () {
     peer_audio: isAudioOn,
     peer_video: isVideoOn,
     peer_hand: false,
-    peer_img: getQueryString(window.location.search, "profileImageUrl"),
+    peer_img: currentUserProfileImageUrl,
   };
 }
 
@@ -262,11 +261,8 @@ function getPeerGeoLocation () {
 
 function whoAreYou () {
   console.log("04 ----> Who are you");
-  const userName = getQueryString(window.location.search, "userName");
-  const profileImageUrl = getQueryString(
-    window.location.search,
-    "profileImageUrl"
-  );
+  const userName = currentUserName;
+  const profileImageUrl = currentUserProfileImageUrl;
 
   if (!userName || userName.trim().length === 0) {
     window.location.href = `${webBaseUrl}/login?audioRoomId=${room_id}`;
