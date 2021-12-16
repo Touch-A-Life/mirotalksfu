@@ -295,7 +295,7 @@ function whoAreYou () {
   }).then(() => {
     getPeerInfo();
     shareRoom();
-    joinRoom(peer_name, room_id, profileImageUrl);
+    joinRoom(peer_name, room_id);
   });
 
   initAudioButton = document.getElementById("initAudioButton");
@@ -419,7 +419,7 @@ function shareRoomByEmail (message) {
 // JOIN TO ROOM
 // ####################################################
 
-function joinRoom (peer_name, room_id, profileImageUrl) {
+function joinRoom (peer_name, room_id) {
   if (rc && rc.isConnected()) {
     console.log("Already connected to a room");
   } else {
