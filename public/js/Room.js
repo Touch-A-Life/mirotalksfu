@@ -96,7 +96,7 @@ async function getCurrentUserInfo() {
         getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
 
         if (!getUserDetails) {
-            window.location.href = `${webBaseUrl}/login?audioRoomId=${room_id}`;
+            window.location.href = `${webBaseUrl}`;
             return;
         }
 
