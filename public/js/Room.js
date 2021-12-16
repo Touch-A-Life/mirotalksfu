@@ -436,7 +436,7 @@ function joinRoom (peer_name, room_id) {
       isAudioAllowed,
       isVideoAllowed,
       roomIsReady,
-      profileImageUrl
+      currentUserProfileImageUrl
     );
     handleRoomClientEvents();
   }
