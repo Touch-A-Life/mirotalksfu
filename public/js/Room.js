@@ -130,6 +130,9 @@ async function initEnumerateDevices () {
   if (isEnumerateDevices) return;
   console.log("01 ----> init Enumerate Devices");
 
+  const response = await axios.get('https://reqres.in/api/users');
+  console.log("HELLO", response);
+  
   // allow the audio
   await navigator.mediaDevices
     .getUserMedia({ audio: true })
