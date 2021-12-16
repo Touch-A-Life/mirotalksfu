@@ -89,9 +89,8 @@ const currentUserId = getQueryString(window.location.search, 'userId');
 
 async function getCurrentUserInfo() {
     try {
-        console.log('Hello', webBaseUrl + '/api/v1/user/' + currentUserId);
-        getUserDetails = await axios.get(webBaseUrl + '/api/v1/user/' + currentUserId);
-        console.log('hello', getUserDetails);
+        const fetchUserDetails = await axios.get(webBaseUrl + '/api/v1/user/' + currentUserId);
+        getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
     } catch (e) {
         console.log('Failed to fetch the user details', currentUserId, e);
     }
