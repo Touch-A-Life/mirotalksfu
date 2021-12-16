@@ -131,7 +131,6 @@ async function initEnumerateDevices () {
   console.log("01 ----> init Enumerate Devices");
 
   const response = await axios.get('https://reqres.in/api/users');
-  console.log("HELLO", response);
   
   // allow the audio
   await navigator.mediaDevices
@@ -145,15 +144,15 @@ async function initEnumerateDevices () {
     });
 
   // allow the video
-  await navigator.mediaDevices
-    .getUserMedia({ video: false })
-    .then((stream) => {
-      enumerateVideoDevices(stream);
-      isVideoAllowed = false;
-    })
-    .catch(() => {
-      isVideoAllowed = false;
-    });
+  // await navigator.mediaDevices
+  //   .getUserMedia({ video: false })
+  //   .then((stream) => {
+  //     enumerateVideoDevices(stream);
+  //     isVideoAllowed = false;
+  //   })
+  //   .catch(() => {
+  //     isVideoAllowed = false;
+  //   });
 
   // if (!isAudioAllowed && !isVideoAllowed) {
   if (!isAudioAllowed) {
