@@ -95,10 +95,10 @@ async function getCurrentUserInfo() {
         const fetchUserDetails = await axios.get(webApiBaseUrl + '/user/' + currentUserId);
         getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
 
-        // if (!getUserDetails) {
-        //     window.location.href = `${webBaseUrl}/login?audioRoomId=${room_id}`;
-        //     return;
-        // }
+        if (!getUserDetails) {
+            window.location.href = `${webBaseUrl}/login?audioRoomId=${room_id}`;
+            return;
+        }
 
         currentUserName = `${getUserDetails && getUserDetails.name && getUserDetails.name.first_name} ${
             getUserDetails && getUserDetails.name && getUserDetails.name.last_name
@@ -111,21 +111,17 @@ async function getCurrentUserInfo() {
 
 async function getRoomInfo() {
     try {
-        console.log(webApiBaseUrl + '/chatrooms/' + room_id);
         const fetchRoomDetails = await axios.get(webApiBaseUrl + '/chatrooms/' + room_id);
         getRoomDetails = fetchRoomDetails && fetchRoomDetails.data && fetchRoomDetails.data.data;
 
-        // if (!getRoomDetails) {
-        //     window.location.href = `${webBaseUrl}`;
-        //     return;
-        // }
+        if (!getRoomDetails) {
+            window.location.href = `${webBaseUrl}`;
+            return;
+        }
 
-        console.log('hello ', getRoomDetails, currentUserId);
         if (getRoomDetails && getRoomDetails.ownerId == currentUserId) {
-            console.log('Hello YES');
             isModerator = true;
         }
-        console.log('Hello 2', isModerator);
     } catch (e) {
         console.log('Failed to fetch the room details', room_id, e);
     }
@@ -312,7 +308,7 @@ function whoAreYou() {
     console.log('04 ----> Who are you');
 
     if (!currentUserName || currentUserName.trim().length === 0) {
-        //window.location.href = `${webBaseUrl}/login?audioRoomId=${room_id}`;
+        window.location.href = `${webBaseUrl}/login?audioRoomId=${room_id}`;
         return;
     }
 
