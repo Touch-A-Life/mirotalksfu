@@ -309,7 +309,7 @@ function whoAreYou() {
     console.log('04 ----> Who are you');
 
     if (!currentUserName || currentUserName.trim().length === 0) {
-        window.location.href = `${webBaseUrl}/login?audioRoomId=${room_id}`;
+        //window.location.href = `${webBaseUrl}/login?audioRoomId=${room_id}`;
         return;
     }
 
