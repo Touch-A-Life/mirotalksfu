@@ -69,6 +69,7 @@ class RoomClient {
         isVideoAllowed,
         successCallback,
         profileImageUrl,
+        isModerator,
     ) {
         this.remoteAudioEl = remoteAudioEl;
         this.videoMediaContainer = videoMediaContainer;
@@ -81,6 +82,7 @@ class RoomClient {
         this.peer_geo = peer_geo;
         this.peer_info = peer_info;
         this.peer_img = profileImageUrl;
+        this.peer_isModerator = isModerator;
 
         this.isAudioAllowed = isAudioAllowed;
         this.isVideoAllowed = isVideoAllowed;
@@ -159,6 +161,7 @@ class RoomClient {
                     room_id: this.room_id,
                     peer_info: this.peer_info,
                     peer_geo: this.peer_geo,
+                    peer_isModerator: this.peer_isModerator,
                 };
                 await this.join(data);
                 this.initSockets();
@@ -1019,6 +1022,7 @@ class RoomClient {
     // ####################################################
 
     async setVideoOff(peer_info, remotePeer = false) {
+        console.log('Hello2', peer_info);
         let d, i, h, b, p, pSpeaking, s, a;
         let peer_id = peer_info.peer_id;
         let peer_name = peer_info.peer_name;

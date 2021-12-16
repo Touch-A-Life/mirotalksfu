@@ -91,15 +91,12 @@ function getRandomNumber(length) {
 const currentUserId = getQueryString(window.location.search, 'userId');
 async function getCurrentUserInfo() {
     try {
-        console.log(webApiBaseUrl + '/user/' + currentUserId);
         const fetchUserDetails = await axios.get(webApiBaseUrl + '/user/' + currentUserId);
         getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
 
-        console.log('USER INFO', getUserDetails);
         if (!getUserDetails || !getUserDetails.unique_id) {
-            console.log('USER NOT FOUND');
-            // window.location.href = `${webBaseUrl}`;
-            // return;
+            window.location.href = `${webBaseUrl}`;
+            return;
         }
 
         currentUserName = `${getUserDetails && getUserDetails.name && getUserDetails.name.first_name} ${
@@ -117,9 +114,8 @@ async function getRoomInfo() {
         getRoomDetails = fetchRoomDetails && fetchRoomDetails.data && fetchRoomDetails.data.data;
 
         if (!getRoomDetails || !getRoomDetails._id) {
-            console.log('ROOM NOT FOUND');
-            // window.location.href = `${webBaseUrl}`;
-            // return;
+            window.location.href = `${webBaseUrl}`;
+            return;
         }
 
         if (getRoomDetails && getRoomDetails.ownerId == currentUserId) {
@@ -291,6 +287,7 @@ function getPeerInfo() {
         peer_video: isVideoOn,
         peer_hand: false,
         peer_img: currentUserProfileImageUrl,
+        peer_isModerator: isModerator,
     };
 }
 
@@ -484,6 +481,7 @@ function joinRoom(peer_name, room_id) {
             isVideoAllowed,
             roomIsReady,
             currentUserProfileImageUrl,
+            isModerator,
         );
         handleRoomClientEvents();
     }
