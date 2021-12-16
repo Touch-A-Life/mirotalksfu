@@ -91,7 +91,7 @@ async function getCurrentUserInfo() {
     try {
         const fetchUserDetails = await axios.get(webBaseUrl + '/api/v1/user/' + currentUserId);
         getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
-        name = 
+        // name =
     } catch (e) {
         console.log('Failed to fetch the user details', currentUserId, e);
     }
@@ -278,7 +278,9 @@ function whoAreYou() {
     }
 
     Swal.fire({
-        inputValue: `${getUserDetails && getUserDetails.name && getUserDetails.name.first_name} ${getUserDetails && getUserDetails.name && getUserDetails.name.last_name}`,
+        inputValue: `${getUserDetails && getUserDetails.name && getUserDetails.name.first_name} ${
+            getUserDetails && getUserDetails.name && getUserDetails.name.last_name
+        }`,
         allowOutsideClick: false,
         allowEscapeKey: false,
         background: swalBackground,
