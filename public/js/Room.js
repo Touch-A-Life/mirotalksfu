@@ -95,6 +95,7 @@ async function getCurrentUserInfo() {
         const fetchUserDetails = await axios.get(webApiBaseUrl + '/user/' + currentUserId);
         getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
 
+        console.log('USER INFO', getUserDetails);
         if (!getUserDetails || !getUserDetails._id) {
             console.log('USER NOT FOUND');
             // window.location.href = `${webBaseUrl}`;
