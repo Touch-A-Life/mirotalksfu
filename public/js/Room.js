@@ -87,7 +87,7 @@ const currentUserName = getQueryString(window.location.search, 'userName');
 const currentUserProfileImageUrl = getQueryString(window.location.search, 'profileImageUrl');
 const currentUserId = getQueryString(window.location.search, 'userId');
 
-(function getCurrentUserInfo() {
+(async function getCurrentUserInfo() {
     try {
         getUserDetails = await axios.get(webBaseUrl + '/api/v1/user/' + currentUserId);
         console.log('hello', getUserDetails);
