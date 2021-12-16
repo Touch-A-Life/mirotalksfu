@@ -1022,12 +1022,12 @@ class RoomClient {
     // ####################################################
 
     async setVideoOff(peer_info, remotePeer = false) {
-        console.log('Hello2', peer_info);
         let d, i, h, b, p, pSpeaking, s, a;
         let peer_id = peer_info.peer_id;
         let peer_name = peer_info.peer_name;
         let peer_audio = peer_info.peer_audio;
         let peer_img = peer_info.peer_img;
+        let isModerator = peer_info.peer_isModerator;
         d = document.createElement('div');
         d.className = 'Camera';
         d.id = peer_id + '__videoOff';
@@ -1053,7 +1053,7 @@ class RoomClient {
         h.className = 'fas fa-hand-paper pulsate';
 
         var spanTag = '';
-        if (remotePeer) {
+        if (isModerator) {
             //toggle speaker
             spanTag = document.createElement('span');
             spanTag.id = peer_info.peer_id + '__toggleAudienceRole';
