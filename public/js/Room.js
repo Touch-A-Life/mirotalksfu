@@ -91,6 +91,7 @@ async function getCurrentUserInfo() {
     try {
         const fetchUserDetails = await axios.get(webBaseUrl + '/api/v1/user/' + currentUserId);
         getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
+        name = 
     } catch (e) {
         console.log('Failed to fetch the user details', currentUserId, e);
     }
@@ -270,16 +271,14 @@ function getPeerGeoLocation() {
 
 function whoAreYou() {
     console.log('04 ----> Who are you');
-    console.log('04 ----> Who are you', getUserDetails);
-    const userName = currentUserName;
 
-    if (!userName || userName.trim().length === 0) {
+    if (!currentUserName || currentUserName.trim().length === 0) {
         window.location.href = `${webBaseUrl}/login?audioRoomId=${room_id}`;
         return;
     }
 
     Swal.fire({
-        inputValue: userName,
+        inputValue: `${getUserDetails && getUserDetails.name && getUserDetails.name.first_name} ${getUserDetails && getUserDetails.name && getUserDetails.name.last_name}`,
         allowOutsideClick: false,
         allowEscapeKey: false,
         background: swalBackground,
