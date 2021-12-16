@@ -82,6 +82,11 @@ function getRandomNumber (length) {
   return result;
 }
 
+const currentUserName = getQueryString(window.location.search, "userName");
+const currentUserProfileImageUrl = getQueryString(window.location.search, "profileImageUrl");
+const currentUserId = getQueryString(window.location.search, "userId");
+console.log("Hello", currentUserName, currentUserProfileImageUrl, currentUserId);
+
 function initClient () {
   if (!DetectRTC.isMobileDevice) {
     setTippy("tabDevicesBtn", "Devices", "top");
