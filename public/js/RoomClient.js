@@ -1098,7 +1098,7 @@ class RoomClient {
         d.appendChild(b);
         d.appendChild(h);
 
-        if (remotePeer) d.appendChild(spanTag);
+        if (isModerator) d.appendChild(spanTag);
 
         this.videoMediaContainer.appendChild(d);
         this.setVideoAvatarImgName(i.id, peer_name, peer_img);
