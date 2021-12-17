@@ -1053,6 +1053,7 @@ class RoomClient {
         h.className = 'fas fa-hand-paper pulsate';
 
         var spanTag = '';
+        console.log('Hello', isModerator);
         if (remotePeer) {
             //toggle speaker
             spanTag = document.createElement('span');
