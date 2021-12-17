@@ -1053,7 +1053,7 @@ class RoomClient {
         h.className = 'fas fa-hand-paper pulsate';
 
         var spanTag = '';
-        if (isModerator) {
+        if (remotePeer) {
             //toggle speaker
             spanTag = document.createElement('span');
             spanTag.id = peer_info.peer_id + '__toggleAudienceRole';
@@ -1098,7 +1098,7 @@ class RoomClient {
         d.appendChild(b);
         d.appendChild(h);
 
-        if (isModerator) d.appendChild(spanTag);
+        if (remotePeer) d.appendChild(spanTag);
 
         this.videoMediaContainer.appendChild(d);
         this.setVideoAvatarImgName(i.id, peer_name, peer_img);
