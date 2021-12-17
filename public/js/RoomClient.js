@@ -1028,6 +1028,8 @@ class RoomClient {
         let peer_audio = peer_info.peer_audio;
         let peer_img = peer_info.peer_img;
         let isModerator = peer_info.peer_isModerator;
+        console.log('hello 211', this.peer_isModerator);
+
         d = document.createElement('div');
         d.className = 'Camera';
         d.id = peer_id + '__videoOff';
