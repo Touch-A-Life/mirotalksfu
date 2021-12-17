@@ -1027,8 +1027,8 @@ class RoomClient {
         let peer_name = peer_info.peer_name;
         let peer_audio = peer_info.peer_audio;
         let peer_img = peer_info.peer_img;
-        let isModerator = peer_info.peer_isModerator;
-        console.log('hello 211', this.peer_isModerator);
+        let peer_isModerator = peer_info.peer_isModerator;
+        var currentUserIsModerator = this.peer_isModerator;
 
         d = document.createElement('div');
         d.className = 'Camera';
@@ -1040,7 +1040,7 @@ class RoomClient {
         p = document.createElement('p');
         p.id = peer_id + '__name';
         let innerHTMLStr = '👤 ' + peer_name + (remotePeer ? '' : ' (me) ');
-        p.innerHTML = innerHTMLStr + (isModerator ? ' - moderator' : '');
+        p.innerHTML = innerHTMLStr + (peer_isModerator ? ' - moderator' : '');
 
         //create speaking tag
         pSpeaking = document.createElement('p');
@@ -1056,7 +1056,7 @@ class RoomClient {
         h.className = 'fas fa-hand-paper pulsate';
 
         var spanTag = '';
-        if (remotePeer) {
+        if (remotePeer && currentUserIsModerator) {
             //toggle speaker
             spanTag = document.createElement('span');
             spanTag.id = peer_info.peer_id + '__toggleAudienceRole';
@@ -1101,7 +1101,7 @@ class RoomClient {
         d.appendChild(b);
         d.appendChild(h);
 
-        if (remotePeer) d.appendChild(spanTag);
+        if (remotePeer && currentUserIsModerator) d.appendChild(spanTag);
 
         this.videoMediaContainer.appendChild(d);
         this.setVideoAvatarImgName(i.id, peer_name, peer_img);
