@@ -1037,7 +1037,8 @@ class RoomClient {
         i.id = peer_id + '__img';
         p = document.createElement('p');
         p.id = peer_id + '__name';
-        p.innerHTML = '👤 ' + peer_name + (remotePeer ? '' : ' (me) ');
+        let innerHTMLStr = '👤 ' + peer_name + (remotePeer ? '' : ' (me) ');
+        p.innerHTML = innerHTMLStr + (isModerator ? ' - moderator' : '');
 
         //create speaking tag
         pSpeaking = document.createElement('p');
@@ -1053,7 +1054,6 @@ class RoomClient {
         h.className = 'fas fa-hand-paper pulsate';
 
         var spanTag = '';
-        console.log('Hello', isModerator);
         if (remotePeer) {
             //toggle speaker
             spanTag = document.createElement('span');
