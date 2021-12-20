@@ -1056,7 +1056,6 @@ class RoomClient {
         h.className = 'fas fa-hand-paper pulsate';
 
         var spanTag = '';
-        //show action tags only for admin
         if (remotePeer && currentUserIsModerator) {
             //toggle speaker
             spanTag = document.createElement('span');
