@@ -1066,7 +1066,7 @@ class RoomClient {
             s = document.createElement('i');
             s.id = peer_info.peer_id + '__enableSpeaker';
             s.className = 'fas fa-phone-volume enableSpeaker';
-            s.title = 'Make as speaker';
+            s.title = 'Make Speaker';
             s.style.cssText = 'display:flex;left: 25px;cursor: pointer;';
             spanTag.appendChild(s);
 
@@ -1082,7 +1082,7 @@ class RoomClient {
             a = document.createElement('i');
             a.id = peer_info.peer_id + '__enableAudience';
             a.className = 'fas fa-phone-volume enableAudience';
-            a.title = 'Make as audience';
+            a.title = 'Make Audience';
             a.style.cssText = 'left: 50px;cursor: pointer;color:red;';
             spanTag.appendChild(a);
 
