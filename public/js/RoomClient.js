@@ -1073,7 +1073,7 @@ class RoomClient {
             s.onclick = function () {
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
-
+                this.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', false);
                 speakerRef.style.display = 'none';
                 audienceRef.style.cssText = 'display: flex;left: 25px;cursor: pointer;color:red;';
             };
@@ -1089,6 +1089,7 @@ class RoomClient {
             a.onclick = function () {
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
+                this.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', true);
 
                 audienceRef.style.display = 'none';
                 speakerRef.style.cssText = 'display: flex;left: 25px;cursor: pointer;';
