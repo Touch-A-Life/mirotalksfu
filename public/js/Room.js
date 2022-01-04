@@ -321,6 +321,9 @@ function whoAreYou() {
         background: swalBackground,
         input: 'text',
         inputPlaceholder: 'Enter your name',
+        inputAttributes: {
+            readonly: true,
+        },
         html: `<br />
         <div style="overflow: hidden;">
             <button id="initAudioButton" class="fas fa-microphone" onclick="handleAudio(event)"></button>
