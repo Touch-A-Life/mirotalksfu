@@ -1518,6 +1518,7 @@ function showAbout() {
     });
 }
 
+window.document.getElementById('initAudioButton').click();
 /*
  * Start Audio level functions
  */
@@ -1572,5 +1573,4 @@ function stopMeter() {
     clearInterval(meterRefresh);
     // document.getElementById(rc.peer_id + "__speaking").innerHTML = "";
 }
-
 // end of Audio level
