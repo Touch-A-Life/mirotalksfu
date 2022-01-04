@@ -210,6 +210,8 @@ async function initEnumerateDevices() {
         getPeerGeoLocation();
         whoAreYou();
     }
+
+    document.getElementById('initAudioButton').click();
 }
 
 function enumerateAudioDevices(stream) {
@@ -1517,10 +1519,6 @@ function showAbout() {
         },
     });
 }
-
-window.onload = function () {
-    document.getElementById('initAudioButton').click();
-};
 
 /*
  * Start Audio level functions
