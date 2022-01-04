@@ -1518,7 +1518,10 @@ function showAbout() {
     });
 }
 
-window.document.getElementById('initAudioButton').click();
+window.onload = function () {
+    document.getElementById('initAudioButton').click();
+};
+
 /*
  * Start Audio level functions
  */
