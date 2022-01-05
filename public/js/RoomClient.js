@@ -2212,7 +2212,9 @@ class RoomClient {
                         break;
                     case 'mute':
                         let peerAudioButton = this.getId(peer_id + '___pAudio');
+                        let peerSpeakingIcon = this.getId(peer_id + '__speaking');
                         if (peerAudioButton) peerAudioButton.innerHTML = _PEER.audioOff;
+                        if (peerSpeakingIcon) peerSpeakingIcon.innerHTML = '';
                         break;
                     case 'hide':
                         let peerVideoButton = this.getId(peer_id + '___pVideo');
