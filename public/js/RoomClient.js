@@ -460,9 +460,11 @@ class RoomClient {
                 console.log('Peer info update:', data);
                 this.updatePeerInfo(data.peer_name, data.peer_id, data.type, data.status, false);
                 if ((data.type === 'speaking' || data.type === 'audio' || data.type === 'audioType') && data.status) {
+                    console.log('hello 1', data.peer_id + '__speaking');
                     document.getElementById(data.peer_id + '__speaking').innerHTML =
                         '<div class="boxContainer"><div class="box box1"></div><div class="box box2"></div><div class="box box3"></div></div>';
                 } else {
+                    console.log('hello 2', data.peer_id + '__speaking');
                     document.getElementById(data.peer_id + '__speaking').innerHTML = '';
                 }
             }.bind(this),
@@ -2213,7 +2215,6 @@ class RoomClient {
                     case 'mute':
                         let peerAudioButton = this.getId(peer_id + '___pAudio');
                         let peerSpeakingIcon = this.getId(peer_id + '__speaking');
-                        console.log('Hello', peer_id + '__speaking');
                         if (peerAudioButton) peerAudioButton.innerHTML = _PEER.audioOff;
                         if (peerSpeakingIcon) peerSpeakingIcon.innerHTML = '';
                         break;
