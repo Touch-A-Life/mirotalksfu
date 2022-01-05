@@ -212,8 +212,8 @@ async function initEnumerateDevices() {
     }
 
     document.getElementById('initAudioButton').click();
-    document.getElementById('startAudioButton').click();
-    hide(startAudioButton);
+    document.getElementById('startAudioButton').style.display = 'none';
+    console.log('Hello');
 }
 
 function enumerateAudioDevices(stream) {
