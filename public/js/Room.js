@@ -327,7 +327,7 @@ function whoAreYou() {
             readonly: true,
         },
         html: `<br />
-        <div style="overflow: hidden;">
+        <div style="overflow: hidden;display:none;">
             <button id="initAudioButton" class="fas fa-microphone" onclick="handleAudio(event)"></button>
             <button id="initVideoButton" class="fas fa-video" onclick="handleVideo(event)"></button>
         </div>`,
