@@ -211,9 +211,11 @@ async function initEnumerateDevices() {
         whoAreYou();
     }
 
+    //toggle audio button in popup modal
     document.getElementById('initAudioButton').click();
+
+    //hide mute/unmute button
     document.getElementById('startAudioButton').style.display = 'none';
-    console.log('Hello');
 }
 
 function enumerateAudioDevices(stream) {
@@ -1454,6 +1456,8 @@ async function getParticipantsTable(peers) {
 
     for (let peer of Array.from(peers.keys())) {
         let peer_info = peers.get(peer).peer_info;
+        console.log('peer info 1', _PEER);
+        console.log('peer info 2', peer_info);
         let peer_name = '👤 ' + peer_info.peer_name;
         let peer_audio = peer_info.peer_audio ? _PEER.audioOn : _PEER.audioOff;
         let peer_video = peer_info.peer_video ? _PEER.videoOn : _PEER.videoOff;
