@@ -2216,7 +2216,7 @@ class RoomClient {
                         let peerAudioButton = this.getId(peer_id + '___pAudio');
                         let peerSpeakingIcon = this.getId(peer_id + '__speaking');
                         if (peerAudioButton) peerAudioButton.innerHTML = _PEER.audioOff;
-                        if (peerSpeakingIcon) peerSpeakingIcon.innerHTML = '';
+                        if (peerSpeakingIcon) peerSpeakingIcon.style.display = 'none';
                         break;
                     case 'hide':
                         let peerVideoButton = this.getId(peer_id + '___pVideo');
@@ -2313,6 +2313,7 @@ class RoomClient {
     // ####################################################
 
     updatePeerInfo(peer_name, peer_id, type, status, emit = true) {
+        console.log('hello 123', peer_name, peer_id, type, status, emit);
         if (emit) {
             switch (type) {
                 case 'audio':
