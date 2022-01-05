@@ -1438,7 +1438,7 @@ async function getParticipantsTable(peers) {
     <tr>
         <th></th>
         <th></th>
-        <th></th>
+        <!--<th></th>-->
         <th></th>
         <!--<th></th>-->
         <th></th>
@@ -1451,7 +1451,7 @@ async function getParticipantsTable(peers) {
         <td><button id="muteAllButton" onclick="rc.peerAction('me','${rc.peer_id}','mute',true,true)">${_PEER.audioOff}</button></td>
         <!--<td><button id="hideAllButton" onclick="rc.peerAction('me','${rc.peer_id}','hide',true,true)">${_PEER.videoOff}</button></td>-->
         <td></td>
-        <td><button id="sendAllButton" onclick="rc.selectFileToShare('${rc.peer_id}')">${_PEER.sendFile}</button></td>
+        <!--<td><button id="sendAllButton" onclick="rc.selectFileToShare('${rc.peer_id}')">${_PEER.sendFile}</button></td>-->
         <td><button id="ejectAllButton" onclick="rc.peerAction('me','${rc.peer_id}','eject',true,true)">${_PEER.ejectPeer}</button></td>
     </tr>
     `
@@ -1474,7 +1474,7 @@ async function getParticipantsTable(peers) {
                 <td><button>${peer_audio}</button></td>
                 <!--<td><button>${peer_video}</button></td>-->
                 <td><button>${peer_hand}</button></td>
-                <td></td>
+                <!--<td></td>-->
                 <td></td>
             </tr>
             `;
@@ -1499,7 +1499,7 @@ async function getParticipantsTable(peers) {
                 <td>${audioButton}</td>
                 <!--<td>${videoButton}</td>-->
                 <td>${handButton}</td>
-                <td>${sendFile}</td>
+                <!--<td>${sendFile}</td>-->
                 <td>${ejectButton}</td>
             </tr>
             `;
