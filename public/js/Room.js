@@ -1432,6 +1432,7 @@ async function getRoomParticipants(refresh = false) {
 }
 
 async function getParticipantsTable(peers) {
+    var isModerator = rc.peer_isModerator;
     let table = `
     <table>
     <tr>
@@ -1443,7 +1444,8 @@ async function getParticipantsTable(peers) {
         <th></th>
     </tr>`;
 
-    table += `
+    table += isModerator
+        ? `
     <tr>
         <td>👥 All</td>
         <td><button id="muteAllButton" onclick="rc.peerAction('me','${rc.peer_id}','mute',true,true)">${_PEER.audioOff}</button></td>
@@ -1452,12 +1454,12 @@ async function getParticipantsTable(peers) {
         <td><button id="sendAllButton" onclick="rc.selectFileToShare('${rc.peer_id}')">${_PEER.sendFile}</button></td>
         <td><button id="ejectAllButton" onclick="rc.peerAction('me','${rc.peer_id}','eject',true,true)">${_PEER.ejectPeer}</button></td>
     </tr>
-    `;
+    `
+        : '';
 
     for (let peer of Array.from(peers.keys())) {
         let peer_info = peers.get(peer).peer_info;
         let peer_name = '👤 ' + peer_info.peer_name;
-        let isModerator = rc.peer_isModerator;
         let peer_audio = peer_info.peer_audio ? _PEER.audioOn : _PEER.audioOff;
         let peer_video = peer_info.peer_video ? _PEER.videoOn : _PEER.videoOff;
         let peer_hand = peer_info.peer_hand ? _PEER.raiseHand : _PEER.lowerHand;
