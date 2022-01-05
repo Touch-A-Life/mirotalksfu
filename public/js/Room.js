@@ -343,6 +343,7 @@ function whoAreYou() {
             peer_name = name;
         },
     }).then(() => {
+        hide(startAudioButton);
         getPeerInfo();
         shareRoom();
         joinRoom(peer_name, room_id);
