@@ -212,6 +212,8 @@ async function initEnumerateDevices() {
     }
 
     document.getElementById('initAudioButton').click();
+    document.getElementById('startAudioButton').click();
+    hide(startAudioButton);
 }
 
 function enumerateAudioDevices(stream) {
@@ -343,7 +345,6 @@ function whoAreYou() {
             peer_name = name;
         },
     }).then(() => {
-        hide(startAudioButton);
         getPeerInfo();
         shareRoom();
         joinRoom(peer_name, room_id);
