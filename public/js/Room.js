@@ -1456,15 +1456,15 @@ async function getParticipantsTable(peers) {
 
     for (let peer of Array.from(peers.keys())) {
         let peer_info = peers.get(peer).peer_info;
-        console.log('peer info 1', _PEER);
-        console.log('peer info 2', peer_info);
         let peer_name = '👤 ' + peer_info.peer_name;
+        let isModerator = rc.peer_isModerator;
         let peer_audio = peer_info.peer_audio ? _PEER.audioOn : _PEER.audioOff;
         let peer_video = peer_info.peer_video ? _PEER.videoOn : _PEER.videoOff;
         let peer_hand = peer_info.peer_hand ? _PEER.raiseHand : _PEER.lowerHand;
         let peer_eject = _PEER.ejectPeer;
         let peer_sendFile = _PEER.sendFile;
         let peer_id = peer_info.peer_id;
+
         if (rc.peer_id === peer_id) {
             table += `
             <tr>
@@ -1477,14 +1477,28 @@ async function getParticipantsTable(peers) {
             </tr>
             `;
         } else {
+            let audioButton = isModerator
+                ? `<button id='${peer_id}___pAudio' onclick="rc.peerAction('me',this.id,'mute')">${peer_audio}</button>`
+                : '';
+            let videoButton = isModerator
+                ? `<button id='${peer_id}___pVideo' onclick="rc.peerAction('me',this.id,'hide')">${peer_video}</button>`
+                : '';
+            let sendFile = isModerator
+                ? `<button id='${peer_id}' onclick="rc.selectFileToShare(this.id, false)">${peer_sendFile}</button>`
+                : '';
+            let ejectButton = isModerator
+                ? `<button id='${peer_id}___pEject' onclick="rc.peerAction('me',this.id,'eject')">${peer_eject}</button>`
+                : '';
+            let handButton = isModerator ? `<button>${peer_hand}</button>` : '';
+
             table += `
             <tr id='${peer_id}'>
                 <td>${peer_name}</td>
-                <td><button id='${peer_id}___pAudio' onclick="rc.peerAction('me',this.id,'mute')">${peer_audio}</button></td>
-                <!--<td><button id='${peer_id}___pVideo' onclick="rc.peerAction('me',this.id,'hide')">${peer_video}</button></td>-->
-                <td><button>${peer_hand}</button></td>
-                <td><button id='${peer_id}' onclick="rc.selectFileToShare(this.id, false)">${peer_sendFile}</button></td>
-                <td><button id='${peer_id}___pEject' onclick="rc.peerAction('me',this.id,'eject')">${peer_eject}</button></td>
+                <td>${audioButton}</td>
+                <!--<td>${videoButton}</td>-->
+                <td>${handButton}</td>
+                <td>${sendFile}</td>
+                <td>${ejectButton}</td>
             </tr>
             `;
         }
