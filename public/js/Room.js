@@ -541,7 +541,7 @@ function roomIsReady() {
 
     //add a unique class to an control div
     var controlElement = document.getElementById('control');
-    if (controlElement) element.classList.add(`control-${rc.peer_id}`);
+    if (controlElement) controlElement.classList.add(`control-${rc.peer_id}`);
     console.log(controlElement, `control-${rc.peer_id}`);
 }
 
