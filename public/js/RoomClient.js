@@ -460,11 +460,9 @@ class RoomClient {
                 console.log('Peer info update:', data);
                 this.updatePeerInfo(data.peer_name, data.peer_id, data.type, data.status, false);
                 if ((data.type === 'speaking' || data.type === 'audio' || data.type === 'audioType') && data.status) {
-                    console.log('hello 1', data.peer_id + '__speaking');
                     document.getElementById(data.peer_id + '__speaking').innerHTML =
                         '<div class="boxContainer"><div class="box box1"></div><div class="box box2"></div><div class="box box3"></div></div>';
                 } else {
-                    console.log('hello 2', data.peer_id + '__speaking');
                     document.getElementById(data.peer_id + '__speaking').innerHTML = '';
                 }
             }.bind(this),
@@ -2323,7 +2321,6 @@ class RoomClient {
     // ####################################################
 
     updatePeerInfo(peer_name, peer_id, type, status, emit = true) {
-        console.log('hello 123', peer_name, peer_id, type, status, emit);
         if (emit) {
             switch (type) {
                 case 'audio':
