@@ -1255,7 +1255,7 @@ class RoomClient {
         let b = this.getPeerAudioBtn(peer_id);
         if (b) b.className = this.peer_info.peer_audio ? html.audioOn : html.audioOff;
 
-        var controlDiv = document.getElementById(`control-${peer_id}`);
+        var controlDiv = document.getElementsByClassName(`control-${peer_id}`);
         var controlSelector = controlDiv ? controlDiv.querySelector('#startAudioButton') : false;
         console.log('Hello new', controlDiv, controlSelector);
         if (controlDiv && controlSelector) {
