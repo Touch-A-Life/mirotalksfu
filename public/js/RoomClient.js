@@ -1257,12 +1257,13 @@ class RoomClient {
 
         var controlDiv = document.querySelector(`.control-${peer_id}`);
         var controlSelector = controlDiv ? controlDiv.querySelector('#startAudioButton') : false;
-        console.log('Hello new', controlDiv, controlSelector);
         if (controlDiv && controlSelector) {
             if (status) {
                 controlSelector.style.display = 'flex';
+                controlSelector.click();
             } else {
                 controlSelector.style.display = 'none';
+                controlSelector.click();
             }
         }
     }
