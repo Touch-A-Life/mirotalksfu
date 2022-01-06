@@ -1260,10 +1260,8 @@ class RoomClient {
         if (controlDiv && controlSelector) {
             if (status) {
                 controlSelector.style.display = 'flex';
-                controlSelector.click();
             } else {
                 controlSelector.style.display = 'none';
-                controlSelector.click();
             }
         }
     }
