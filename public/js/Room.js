@@ -45,8 +45,8 @@ let isEnumerateDevices = false;
 
 let isAudioAllowed = false;
 let isVideoAllowed = false;
-let isAudioOn = true;
-let isVideoOn = true;
+let isAudioOn = false;
+let isVideoOn = false;
 let initAudioButton = null;
 let initVideoButton = null;
 
