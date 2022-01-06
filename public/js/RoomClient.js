@@ -1255,11 +1255,13 @@ class RoomClient {
         let b = this.getPeerAudioBtn(peer_id);
         if (b) b.className = this.peer_info.peer_audio ? html.audioOn : html.audioOff;
 
-        // var c = document.getElementById(`control-${peer_id}`);
-        // // c.querySelector('#startAudioButton').style.backgroundColor = 'red';
-        // c.querySelector('#startAudioButton').style.display = 'flex';
-
-        console.log('audio status hello', peer_id, status);
+        var controlDiv = document.getElementById(`control-${peer_id}`);
+        var selectorControl = controlDiv.querySelector('#startAudioButton').style.display;
+        if (status) {
+            selectorControl = 'flex';
+        } else {
+            selectorControl = 'none';
+        }
     }
 
     setIsVideo(status) {
