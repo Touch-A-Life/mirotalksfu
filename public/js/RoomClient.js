@@ -1255,10 +1255,10 @@ class RoomClient {
         let b = this.getPeerAudioBtn(peer_id);
         if (b) b.className = this.peer_info.peer_audio ? html.audioOn : html.audioOff;
 
-        if (!status) {
-            let peerSpeakingIcon = document.getElementById(peer_id + '__speaking');
-            if (peerSpeakingIcon) peerSpeakingIcon.style.display = 'none';
-        }
+        // if (!status) {
+        //     let peerSpeakingIcon = document.getElementById(peer_id + '__speaking');
+        //     if (peerSpeakingIcon) peerSpeakingIcon.style.display = 'none';
+        // }
     }
 
     setIsVideo(status) {
