@@ -212,10 +212,10 @@ async function initEnumerateDevices() {
     }
 
     //toggle audio button in popup modal
-    document.getElementById('initAudioButton').click();
+    // document.getElementById('initAudioButton').click();
 
     //hide mute/unmute button
-    document.getElementById('startAudioButton').style.display = 'none';
+    // document.getElementById('startAudioButton').style.display = 'none';
 }
 
 function enumerateAudioDevices(stream) {
