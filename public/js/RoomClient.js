@@ -1256,7 +1256,7 @@ class RoomClient {
         if (b) b.className = this.peer_info.peer_audio ? html.audioOn : html.audioOff;
 
         var controlDiv = document.getElementById(`control-${peer_id}`);
-        var cotrolSelector = controlDiv.querySelector('#startAudioButton');
+        var cotrolSelector = controlDiv ? controlDiv.querySelector('#startAudioButton') : false;
         if (controlDiv && cotrolSelector) {
             if (status) {
                 cotrolSelector.style.display = 'flex';
