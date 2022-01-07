@@ -1076,9 +1076,9 @@ class RoomClient {
                 console.log('Clicked speaker');
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
-                thisRef.peerAction('me', `${peer_info.peer_id}___pAudio`, 'mute');
-                audienceRef.style.display = 'none';
-                speakerRef.style.cssText =
+                // thisRef.peerAction('me', `${peer_info.peer_id}___pAudio`, 'mute');
+                speakerRef.style.display = 'none';
+                audienceRef.style.cssText =
                     'display: flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
             };
 
@@ -1096,10 +1096,10 @@ class RoomClient {
                 console.log('Clicked audience');
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
-                thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', true);
+                // thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', true);
 
-                speakerRef.style.display = 'none';
-                audienceRef.style.cssText =
+                audienceRef.style.display = 'none';
+                speakerRef.style.cssText =
                     'display: flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
             };
         }
