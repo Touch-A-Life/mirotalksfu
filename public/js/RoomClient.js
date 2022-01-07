@@ -1062,7 +1062,7 @@ class RoomClient {
             spanTag = document.createElement('span');
             spanTag.id = peer_info.peer_id + '__toggleAudienceRole';
             spanTag.className = 'toggleAudienceRole';
-            spanTag.style.cssText = 'display:flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
+            spanTag.style.cssText = 'none';
 
             s = document.createElement('i');
             s.id = peer_info.peer_id + '__enableSpeaker';
@@ -1076,7 +1076,6 @@ class RoomClient {
                 console.log('Clicked speaker');
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
-                // thisRef.peerAction('me', `${peer_info.peer_id}___pAudio`, 'mute');
                 speakerRef.style.display = 'none';
                 audienceRef.style.cssText =
                     'display: flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
@@ -1097,6 +1096,7 @@ class RoomClient {
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
                 // thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', true);
+                thisRef.peerAction('me', `${peer_info.peer_id}___pAudio`, 'mute');
 
                 audienceRef.style.display = 'none';
                 speakerRef.style.cssText =
