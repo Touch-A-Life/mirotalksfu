@@ -1068,7 +1068,7 @@ class RoomClient {
             s.id = peer_info.peer_id + '__enableSpeaker';
             s.className = 'enableSpeaker';
             s.title = 'Make Speaker';
-            s.style.cssText = 'display: none;';
+            s.style.cssText = 'display:flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
             s.innerHTML = 'Make Speaker';
             spanTag.appendChild(s);
 
@@ -1076,8 +1076,8 @@ class RoomClient {
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
                 thisRef.peerAction('me', `${peer_info.peer_id}___pAudio`, 'mute');
-                speakerRef.style.display = 'none';
-                audienceRef.style.cssText =
+                audienceRef.style.display = 'none';
+                speakerRef.style.cssText =
                     'display: flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
             };
 
@@ -1086,7 +1086,8 @@ class RoomClient {
             a.id = peer_info.peer_id + '__enableAudience';
             a.className = 'enableAudience';
             a.title = 'Move to Audience';
-            a.style.cssText = 'left: 50px;cursor: pointer;color:background-color:lightgrey;color:black;';
+            // a.style.cssText = 'left: 50px;cursor: pointer;color:background-color:lightgrey;color:black;';
+            a.style.cssText = 'none';
             a.innerHTML = 'Move to Audience';
             spanTag.appendChild(a);
 
@@ -1095,8 +1096,8 @@ class RoomClient {
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
                 thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', true);
 
-                audienceRef.style.display = 'none';
-                speakerRef.style.cssText =
+                speakerRef.style.display = 'none';
+                audienceRef.style.cssText =
                     'display: flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
             };
         }
