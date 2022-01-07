@@ -210,14 +210,6 @@ async function initEnumerateDevices() {
         getPeerGeoLocation();
         whoAreYou();
     }
-
-    //toggle audio button in popup modal
-    // document.getElementById('initAudioButton').click();
-
-    if (rc.peer_isModerator) {
-        //hide mute/unmute button
-        document.getElementById('startAudioButton').style.display = 'none';
-    }
 }
 
 function enumerateAudioDevices(stream) {
@@ -495,6 +487,15 @@ function joinRoom(peer_name, room_id) {
             currentUserProfileImageUrl,
             isModerator,
         );
+
+        if (rc.peer_isModerator) {
+            console.log('hello 1');
+            //hide mute/unmute button
+            document.getElementById('startAudioButton').style.display = 'none';
+        } else {
+            console.log('hello 2');
+        }
+
         handleRoomClientEvents();
     }
 }
