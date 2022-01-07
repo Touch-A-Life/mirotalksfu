@@ -488,7 +488,7 @@ function joinRoom(peer_name, room_id) {
             isModerator,
         );
 
-        if (rc.peer_isModerator) {
+        if (!rc.peer_isModerator) {
             console.log('hello 1');
             //hide mute/unmute button
             document.getElementById('startAudioButton').style.display = 'none';
