@@ -1073,6 +1073,7 @@ class RoomClient {
             spanTag.appendChild(s);
 
             s.onclick = function () {
+                console.log('Clicked speaker');
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
                 thisRef.peerAction('me', `${peer_info.peer_id}___pAudio`, 'mute');
@@ -1092,6 +1093,7 @@ class RoomClient {
             spanTag.appendChild(a);
 
             a.onclick = function () {
+                console.log('Clicked audience');
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
                 thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', true);
