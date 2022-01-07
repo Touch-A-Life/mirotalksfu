@@ -1182,6 +1182,28 @@ class RoomClient {
         });
     }
 
+    confirmAsSpeaker() {
+        this.sound('open');
+
+        Swal.fire({
+            background: swalBackground,
+            position: 'center',
+            title: 'Join as Speaker?',
+            showDenyButton: true,
+            confirmButtonText: `Yes`,
+            denyButtonText: `No`,
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown',
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp',
+            },
+        }).then((result) => {
+            // if (result.isConfirmed) this.exit();
+            result.isConfirmed ? alert('Welcome to room!!!') : alert('Good bye!!!');
+        });
+    }
+
     // ####################################################
     // HELPERS
     // ####################################################
@@ -2324,7 +2346,8 @@ class RoomClient {
                     break;
                 case 'speaker':
                     if (peer_id === this.peer_id || broadcast) {
-                        this.userLog('warning', from_peer_name + ' you will be speaker soon', 'top-end', 10000);
+                        // this.userLog('warning', from_peer_name + ' you will be speaker soon', 'top-end', 10000);
+                        rc.confirmAsSpeaker();
                         this.sound('raiseHand', true);
                     }
                     break;
