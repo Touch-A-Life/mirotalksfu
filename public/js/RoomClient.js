@@ -1066,9 +1066,9 @@ class RoomClient {
 
             s = document.createElement('i');
             s.id = peer_info.peer_id + '__enableSpeaker';
-            s.className = 'fas fa-phone-volume enableSpeaker';
+            s.className = 'enableSpeaker';
             s.title = 'Make Speaker';
-            s.style.cssText = 'display:flex;left: 25px;cursor: pointer;';
+            s.style.cssText = 'display:flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
             s.innerHTML = 'Make Speaker';
             spanTag.appendChild(s);
 
@@ -1077,15 +1077,16 @@ class RoomClient {
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
                 thisRef.peerAction('me', `${peer_info.peer_id}___pAudio`, 'mute');
                 speakerRef.style.display = 'none';
-                audienceRef.style.cssText = 'display: flex;left: 25px;cursor: pointer;color:red;';
+                audienceRef.style.cssText =
+                    'display: flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
             };
 
             //toggle audience
             a = document.createElement('i');
             a.id = peer_info.peer_id + '__enableAudience';
-            a.className = 'fas fa-phone-volume enableAudience';
+            a.className = 'enableAudience';
             a.title = 'Move to Audience';
-            a.style.cssText = 'left: 50px;cursor: pointer;color:red;';
+            a.style.cssText = 'left: 50px;cursor: pointer;color:background-color:lightgrey;color:black;';
             a.innerHTML = 'Move to Audience';
             spanTag.appendChild(a);
 
@@ -1095,7 +1096,8 @@ class RoomClient {
                 thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', true);
 
                 audienceRef.style.display = 'none';
-                speakerRef.style.cssText = 'display: flex;left: 25px;cursor: pointer;';
+                speakerRef.style.cssText =
+                    'display: flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
             };
         }
 
