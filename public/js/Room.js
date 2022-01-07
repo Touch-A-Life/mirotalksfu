@@ -214,8 +214,10 @@ async function initEnumerateDevices() {
     //toggle audio button in popup modal
     // document.getElementById('initAudioButton').click();
 
-    //hide mute/unmute button
-    // document.getElementById('startAudioButton').style.display = 'none';
+    if (rc.peer_isModerator) {
+        //hide mute/unmute button
+        document.getElementById('startAudioButton').style.display = 'none';
+    }
 }
 
 function enumerateAudioDevices(stream) {
@@ -327,9 +329,9 @@ function whoAreYou() {
         background: swalBackground,
         input: 'text',
         inputPlaceholder: 'Enter your name',
-        inputAttributes: {
-            readonly: true,
-        },
+        // inputAttributes: {
+        //     readonly: true,
+        // },
         html: `<br />
         <div style="overflow: hidden;display:none;">
             <button id="initAudioButton" class="fas fa-microphone" onclick="handleAudio(event)"></button>
@@ -350,6 +352,7 @@ function whoAreYou() {
         getPeerInfo();
         shareRoom();
         joinRoom(peer_name, room_id);
+        alert('joined');
     });
 
     initAudioButton = document.getElementById('initAudioButton');
