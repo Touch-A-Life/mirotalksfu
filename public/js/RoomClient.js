@@ -1095,9 +1095,9 @@ class RoomClient {
                 console.log('Clicked audience');
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
-                // thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', true);
+                thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', false);
                 thisRef.peerAction('me', `${peer_info.peer_id}___pAudio`, 'mute');
-
+                spanTag.style.cssText = 'display:none;';
                 audienceRef.style.display = 'none';
                 speakerRef.style.cssText =
                     'display: flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
