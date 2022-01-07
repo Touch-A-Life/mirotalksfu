@@ -1096,6 +1096,7 @@ class RoomClient {
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
                 thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', false);
+                thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'hand', false);
                 thisRef.peerAction('me', `${peer_info.peer_id}___pAudio`, 'mute');
                 spanTag.style.cssText = 'display:none;';
                 audienceRef.style.display = 'none';
