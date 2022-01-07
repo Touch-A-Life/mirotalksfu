@@ -1074,6 +1074,7 @@ class RoomClient {
 
             s.onclick = function () {
                 console.log('Clicked speaker');
+                thisRef.peerAction('me', `${peer_info.peer_id}___pAudio`, 'speaker');
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
                 speakerRef.style.display = 'none';
@@ -2257,6 +2258,9 @@ class RoomClient {
                             getRoomParticipants(true);
                         }, 2000);
                         break;
+                    case 'speaker':
+                        console.log('1 Soon you will be speaker!!!');
+                        break;
                 }
             }
 
@@ -2316,6 +2320,11 @@ class RoomClient {
                             'top-end',
                             10000,
                         );
+                    }
+                    break;
+                case 'speaker':
+                    if (peer_id === this.peer_id || broadcast) {
+                        this.userLog('warning', from_peer_name + ' you will be speaker soon', 'top-end', 10000);
                     }
                     break;
                 // ...
@@ -2402,6 +2411,9 @@ class RoomClient {
                         if (document.getElementById(peer_id + '__enableAudience'))
                             document.getElementById(peer_id + '__enableAudience').style.display = 'none';
                     }
+                    break;
+                case 'audio':
+                    this.setIsAudio(peer_id, status);
                     break;
             }
         }
