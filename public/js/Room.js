@@ -344,7 +344,6 @@ function whoAreYou() {
         getPeerInfo();
         shareRoom();
         joinRoom(peer_name, room_id);
-        alert('joined');
     });
 
     initAudioButton = document.getElementById('initAudioButton');
@@ -488,12 +487,9 @@ function joinRoom(peer_name, room_id) {
             isModerator,
         );
 
+        //hide mute/unmute button for all except moderator/owner
         if (!rc.peer_isModerator) {
-            console.log('hello 1');
-            //hide mute/unmute button
             document.getElementById('startAudioButton').style.display = 'none';
-        } else {
-            console.log('hello 2');
         }
 
         handleRoomClientEvents();
