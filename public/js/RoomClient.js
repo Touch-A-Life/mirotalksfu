@@ -2325,6 +2325,7 @@ class RoomClient {
                 case 'speaker':
                     if (peer_id === this.peer_id || broadcast) {
                         this.userLog('warning', from_peer_name + ' you will be speaker soon', 'top-end', 10000);
+                        this.sound('raiseHand', true);
                     }
                     break;
                 // ...
