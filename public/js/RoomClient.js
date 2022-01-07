@@ -1069,6 +1069,7 @@ class RoomClient {
             s.className = 'fas fa-phone-volume enableSpeaker';
             s.title = 'Make Speaker';
             s.style.cssText = 'display:flex;left: 25px;cursor: pointer;';
+            s.innerHTML = 'Make Speaker';
             spanTag.appendChild(s);
 
             s.onclick = function () {
@@ -1083,8 +1084,9 @@ class RoomClient {
             a = document.createElement('i');
             a.id = peer_info.peer_id + '__enableAudience';
             a.className = 'fas fa-phone-volume enableAudience';
-            a.title = 'Make Audience';
+            a.title = 'Move to Audience';
             a.style.cssText = 'left: 50px;cursor: pointer;color:red;';
+            a.innerHTML = 'Move to Audience';
             spanTag.appendChild(a);
 
             a.onclick = function () {
@@ -1364,7 +1366,6 @@ class RoomClient {
     }
 
     thereIsParticipants() {
-        // console.log('participantsCount ---->', participantsCount);
         if (this.consumers.size > 0 || participantsCount > 1) {
             return true;
         }
