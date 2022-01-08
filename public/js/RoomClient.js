@@ -2282,9 +2282,6 @@ class RoomClient {
                             getRoomParticipants(true);
                         }, 2000);
                         break;
-                    case 'speaker':
-                        console.log('1 Soon you will be speaker!!!');
-                        break;
                 }
             }
 
@@ -2351,6 +2348,12 @@ class RoomClient {
                         // this.userLog('warning', from_peer_name + ' you will be speaker soon', 'top-end', 10000);
                         rc.confirmAsSpeaker();
                         this.sound('raiseHand', true);
+
+                        this.getId(raiseHandButton).style.display = 'flex';
+                        this.getId(lowerHandButton).style.display = 'none';
+
+                        this.getId(raiseHandIcon).style.display = 'none';
+                        this.getId(lowerHandIcon).style.display = 'flex';
                     }
                     break;
                 // ...
