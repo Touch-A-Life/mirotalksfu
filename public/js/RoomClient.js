@@ -1199,8 +1199,10 @@ class RoomClient {
                 popup: 'animate__animated animate__fadeOutUp',
             },
         }).then((result) => {
-            // if (result.isConfirmed) this.exit();
-            result.isConfirmed ? alert('Welcome to room!!!') : alert('Good bye!!!');
+            if (result.isConfirmed) {
+                this.produce(mediaType.audio, microphoneSelect.value);
+                rc.updatePeerInfo(this.peer_name, this.peer_id, 'audio', true);
+            }
         });
     }
 
