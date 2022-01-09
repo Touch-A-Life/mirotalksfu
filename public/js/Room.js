@@ -1484,7 +1484,7 @@ async function getParticipantsTable(peers) {
                 <td>${peer_name} (me)</td>
                 <td><!--<button>${peer_audio}</button>--></td>
                 <!--<td><button>${peer_video}</button></td>-->
-                <td><button>${peer_hand}</button></td>
+                <td><button id="${peer_id}__participantHandStatus">${peer_hand}</button></td>
                 <!--<td></td>-->
                 <td></td>
             </tr>
