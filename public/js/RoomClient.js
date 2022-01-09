@@ -1202,6 +1202,9 @@ class RoomClient {
             if (result.isConfirmed) {
                 this.produce(mediaType.audio, microphoneSelect.value);
                 rc.updatePeerInfo(this.peer_name, this.peer_id, 'audio', true);
+            } else {
+                //mute audio when declines as Speaker
+                this.peerAction('me', `${this.peer_id}___pAudio`, 'mute');
             }
         });
     }
