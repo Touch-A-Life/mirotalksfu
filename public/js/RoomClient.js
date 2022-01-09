@@ -2329,7 +2329,9 @@ class RoomClient {
                         this.updatePeerInfo(this.peer_name, this.peer_id, 'audio', false);
                         this.userLog(
                             'warning',
-                            from_peer_name + '  ' + _PEER.audioOff + ' has closed yours audio',
+                            (this.peer_isModerator ? '' : from_peer_name + '  ') +
+                                _PEER.audioOff +
+                                ' has closed your audio',
                             'top-end',
                             10000,
                         );
