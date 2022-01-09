@@ -1182,7 +1182,7 @@ class RoomClient {
         });
     }
 
-    confirmAsSpeaker(peerId = null) {
+    confirmAsSpeaker() {
         this.sound('open');
 
         Swal.fire({
@@ -1202,18 +1202,6 @@ class RoomClient {
             if (result.isConfirmed) {
                 this.produce(mediaType.audio, microphoneSelect.value);
                 rc.updatePeerInfo(this.peer_name, this.peer_id, 'audio', true);
-            }
-
-            if (peerId === this.peer_id) {
-                alert('yes');
-                console.log('yes', peerId, this.peer_id);
-                // const rhIcon = document.getElementById('raiseHandIcon');
-                // rhIcon ? (rhIcon.style.display = 'block') : '';
-                // const lhIcon = document.getElementById('lowerHandIcon');
-                // lhIcon ? (lhIcon.style.display = 'none') : '';
-            } else {
-                alert('no');
-                console.log('hello peer', peerId, this.peer_id);
             }
         });
     }
@@ -2357,9 +2345,7 @@ class RoomClient {
                     break;
                 case 'speaker':
                     if (peer_id === this.peer_id || broadcast) {
-                        // this.userLog('warning', from_peer_name + ' you will be speaker soon', 'top-end', 10000);
-                        this.confirmAsSpeaker(peer_id);
-                        this.sound('raiseHand', true);
+                        this.confirmAsSpeaker();
                     }
                     break;
                 // ...
@@ -2392,7 +2378,6 @@ class RoomClient {
                         if (document.getElementById(peer_id + '__enableAudience'))
                             document.getElementById(peer_id + '__enableAudience').style.display = 'none';
                         this.event(_EVENTS.raiseHand);
-                        this.sound('raiseHand', true);
                     } else {
                         if (peer_hand) peer_hand.style.display = 'none';
                         if (document.getElementById(peer_id + '__toggleAudienceRole'))
@@ -2402,6 +2387,9 @@ class RoomClient {
                         if (document.getElementById(peer_id + '__enableAudience'))
                             document.getElementById(peer_id + '__enableAudience').style.display = 'none';
                         this.event(_EVENTS.lowerHand);
+
+                        //mute audio when user lowers hand
+                        this.peerAction('me', `${peer_id}___pAudio`, 'mute');
                     }
                     break;
             }
@@ -2436,7 +2424,6 @@ class RoomClient {
                             'top-end',
                             10000,
                         );
-                        this.sound('raiseHand', true);
                     } else {
                         if (peer_hand) peer_hand.style.display = 'none';
                         if (document.getElementById(peer_id + '__toggleAudienceRole'))
@@ -2445,6 +2432,9 @@ class RoomClient {
                             document.getElementById(peer_id + '__enableSpeaker').style.display = 'none';
                         if (document.getElementById(peer_id + '__enableAudience'))
                             document.getElementById(peer_id + '__enableAudience').style.display = 'none';
+
+                        //mute audio when user lowers hand
+                        this.peerAction('me', `${peer_id}___pAudio`, 'mute');
                     }
                     break;
                 case 'audio':
