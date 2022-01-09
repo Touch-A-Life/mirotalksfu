@@ -294,7 +294,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('updatePeerInfo', (data) => {
-        log.debug('Peer info update:', data);
+        //log.debug('Peer info update:', data);
         // peer_info hand raise Or lower
         roomList.get(socket.room_id).getPeers().get(socket.id).updatePeerInfo(data);
         roomList.get(socket.room_id).broadCast(socket.id, 'updatePeerInfo', data);

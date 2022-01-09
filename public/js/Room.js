@@ -914,8 +914,8 @@ function handleRoomClientEvents() {
         setColor(lowerHandIcon, 'green');
     });
     rc.on(RoomClient.EVENTS.lowerHand, () => {
-        console.log('Room Client lower hand');
-        console.log('Info: Lower Hand: ', RoomClient);
+        //console.log('Room Client lower hand');
+        //console.log('Info: Lower Hand: ', RoomClient);
         // hide(lowerHandButton);
         // show(raiseHandButton);
 

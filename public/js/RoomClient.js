@@ -449,7 +449,7 @@ class RoomClient {
         this.socket.on(
             'peerAction',
             function (data) {
-                console.log('Peer action:', data);
+                //console.log('Peer action:', data);
                 this.peerAction(data.from_peer_name, data.peer_id, data.action, false, data.broadcast);
             }.bind(this),
         );
@@ -457,7 +457,7 @@ class RoomClient {
         this.socket.on(
             'updatePeerInfo',
             function (data) {
-                console.log('Peer info update:', data);
+                //console.log('Peer info update:', data);
                 this.updatePeerInfo(data.peer_name, data.peer_id, data.type, data.status, false);
                 if ((data.type === 'speaking' || data.type === 'audio' || data.type === 'audioType') && data.status) {
                     document.getElementById(data.peer_id + '__speaking').innerHTML =
@@ -792,7 +792,7 @@ class RoomClient {
 
     pauseProducer(type) {
         if (!this.producerLabel.has(type)) {
-            console.log('There is no producer for this type ' + type);
+            //console.log('Pause: There is no producer for this type ' + type);
             return;
         }
 
@@ -816,7 +816,7 @@ class RoomClient {
 
     resumeProducer(type) {
         if (!this.producerLabel.has(type)) {
-            console.log('There is no producer for this type ' + type);
+            //console.log('Resume: There is no producer for this type ' + type);
             return;
         }
 
@@ -840,7 +840,7 @@ class RoomClient {
 
     closeProducer(type) {
         if (!this.producerLabel.has(type)) {
-            console.log('There is no producer for this type ' + type);
+            //console.log('Close: There is no producer for this type ' + type);
             return;
         }
 
