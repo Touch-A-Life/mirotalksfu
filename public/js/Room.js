@@ -95,7 +95,7 @@ async function getCurrentUserInfo() {
         getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
 
         if (!getUserDetails || !getUserDetails.unique_id) {
-            // window.location.href = `${webBaseUrl}`;
+            window.location.href = `${webBaseUrl}`;
             return;
         }
 
@@ -114,7 +114,7 @@ async function getRoomInfo() {
         getRoomDetails = fetchRoomDetails && fetchRoomDetails.data && fetchRoomDetails.data.data;
 
         if (!getRoomDetails || !getRoomDetails._id) {
-            // window.location.href = `${webBaseUrl}`;
+            window.location.href = `${webBaseUrl}`;
             return;
         }
 
@@ -308,7 +308,7 @@ function whoAreYou() {
     console.log('04 ----> Who are you');
 
     if (!currentUserName || currentUserName.trim().length === 0) {
-        // window.location.href = `${webBaseUrl}/login?audioRoomId=${room_id}`;
+        window.location.href = `${webBaseUrl}/login?audioRoomId=${room_id}`;
         return;
     }
 
@@ -995,7 +995,7 @@ function handleRoomClientEvents() {
     });
     rc.on(RoomClient.EVENTS.exitRoom, () => {
         console.log('Room Client leave room');
-        // window.location.href = `${webBaseUrl}${webBaseUrlAudioPath}`;
+        window.location.href = `${webBaseUrl}${webBaseUrlAudioPath}`;
     });
 }
 
