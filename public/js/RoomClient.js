@@ -2349,11 +2349,8 @@ class RoomClient {
                         rc.confirmAsSpeaker();
                         this.sound('raiseHand', true);
 
-                        this.getId(raiseHandButton).style.display = 'flex';
-                        this.getId(lowerHandButton).style.display = 'none';
-
-                        this.getId(raiseHandIcon).style.display = 'none';
-                        this.getId(lowerHandIcon).style.display = 'flex';
+                        this.getId(raiseHandIcon).style.display = '';
+                        this.getId(lowerHandIcon).style.display = 'none';
                     }
                     break;
                 // ...
