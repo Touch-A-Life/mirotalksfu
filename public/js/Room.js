@@ -522,7 +522,7 @@ function roomIsReady() {
         show(fullScreenButton);
     }
     show(settingsButton);
-    show(raiseHandButton);
+    // show(raiseHandButton);
     if (isAudioAllowed) show(startAudioButton);
     // if (isVideoAllowed) show(startVideoButton);
     show(fileShareButton);
@@ -696,12 +696,12 @@ function handleButtons() {
     lowerHandIcon.onclick = () => {
         rc.updatePeerInfo(peer_name, rc.peer_id, 'hand', false);
     };
-    raiseHandButton.onclick = () => {
-        rc.updatePeerInfo(peer_name, rc.peer_id, 'hand', true);
-    };
-    lowerHandButton.onclick = () => {
-        rc.updatePeerInfo(peer_name, rc.peer_id, 'hand', false);
-    };
+    // raiseHandButton.onclick = () => {
+    //     rc.updatePeerInfo(peer_name, rc.peer_id, 'hand', true);
+    // };
+    // lowerHandButton.onclick = () => {
+    //     rc.updatePeerInfo(peer_name, rc.peer_id, 'hand', false);
+    // };
     startAudioButton.onclick = () => {
         rc.produce(RoomClient.mediaType.audio, microphoneSelect.value);
         rc.updatePeerInfo(peer_name, rc.peer_id, 'audio', true);
@@ -898,8 +898,8 @@ function handleRoomClientEvents() {
     rc.on(RoomClient.EVENTS.raiseHand, () => {
         console.log('Room Client raise hand');
         console.log('Info: Raise Hand: ', RoomClient);
-        hide(raiseHandButton);
-        show(lowerHandButton);
+        // hide(raiseHandButton);
+        // show(lowerHandButton);
 
         hide(raiseHandIcon);
         show(lowerHandIcon);
@@ -909,8 +909,8 @@ function handleRoomClientEvents() {
     rc.on(RoomClient.EVENTS.lowerHand, () => {
         console.log('Room Client lower hand');
         console.log('Info: Lower Hand: ', RoomClient);
-        hide(lowerHandButton);
-        show(raiseHandButton);
+        // hide(lowerHandButton);
+        // show(raiseHandButton);
 
         hide(lowerHandIcon);
         show(raiseHandIcon);

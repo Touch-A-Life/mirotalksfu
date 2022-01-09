@@ -1073,7 +1073,6 @@ class RoomClient {
             spanTag.appendChild(s);
 
             s.onclick = function () {
-                console.log('Clicked speaker');
                 thisRef.peerAction('me', `${peer_info.peer_id}___pAudio`, 'speaker');
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
@@ -1093,7 +1092,6 @@ class RoomClient {
             spanTag.appendChild(a);
 
             a.onclick = function () {
-                console.log('Clicked audience');
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
                 thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', false);
@@ -2327,6 +2325,12 @@ class RoomClient {
                     if (peer_id === this.peer_id || broadcast) {
                         this.closeProducer(mediaType.audio);
                         this.updatePeerInfo(this.peer_name, this.peer_id, 'audio', false);
+                        this.userLog(
+                            'warning',
+                            from_peer_name + '  ' + _PEER.audioOff + ' has closed yours audio',
+                            'top-end',
+                            10000,
+                        );
                     }
                     break;
                 case 'hide':
