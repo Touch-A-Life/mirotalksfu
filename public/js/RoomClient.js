@@ -1205,12 +1205,14 @@ class RoomClient {
             }
 
             if (peerId === this.peer_id) {
-                alert('yes', peerId, this.peer_id);
+                alert('yes');
+                console.log('yes', peerId, this.peer_id);
                 // const rhIcon = document.getElementById('raiseHandIcon');
                 // rhIcon ? (rhIcon.style.display = 'block') : '';
                 // const lhIcon = document.getElementById('lowerHandIcon');
                 // lhIcon ? (lhIcon.style.display = 'none') : '';
             } else {
+                alert('no');
                 console.log('hello peer', peerId, this.peer_id);
             }
         });
