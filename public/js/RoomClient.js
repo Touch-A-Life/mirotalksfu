@@ -1205,7 +1205,7 @@ class RoomClient {
             }
 
             if (peerId === this.peer_id) {
-                alert(123);
+                alert('yes', peerId, this.peer_id);
                 // const rhIcon = document.getElementById('raiseHandIcon');
                 // rhIcon ? (rhIcon.style.display = 'block') : '';
                 // const lhIcon = document.getElementById('lowerHandIcon');
