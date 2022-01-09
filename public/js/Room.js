@@ -487,9 +487,13 @@ function joinRoom(peer_name, room_id) {
             isModerator,
         );
 
-        //hide mute/unmute button for all except moderator/owner
         if (!rc.peer_isModerator) {
+            //hide mute/unmute button for all except moderator/owner
             document.getElementById('startAudioButton').style.display = 'none';
+
+            //hide lock/unlock button
+            document.getElementById('lockRoomButton').style.display = 'none';
+            document.getElementById('unlockRoomButton').style.display = 'none';
         }
 
         handleRoomClientEvents();
@@ -525,7 +529,7 @@ function roomIsReady() {
     // show(raiseHandButton);
     if (isAudioAllowed) show(startAudioButton);
     // if (isVideoAllowed) show(startVideoButton);
-    show(fileShareButton);
+    // show(fileShareButton);
     show(participantsButton);
     show(showParticipants);
     show(lockRoomButton);
@@ -726,9 +730,9 @@ function handleButtons() {
     // stopScreenButton.onclick = () => {
     //     //rc.closeProducer(RoomClient.mediaType.screen);
     // };
-    fileShareButton.onclick = () => {
-        rc.selectFileToShare(rc.peer_id);
-    };
+    // fileShareButton.onclick = () => {
+    //     rc.selectFileToShare(rc.peer_id);
+    // };
     // youTubeShareButton.onclick = () => {
     //     //rc.youTubeShareVideo();
     // };
