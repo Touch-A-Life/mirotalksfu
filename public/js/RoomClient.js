@@ -2327,9 +2327,10 @@ class RoomClient {
                     if (peer_id === this.peer_id || broadcast) {
                         this.closeProducer(mediaType.audio);
                         this.updatePeerInfo(this.peer_name, this.peer_id, 'audio', false);
+                    } else {
                         this.userLog(
                             'warning',
-                            (this.peer_isModerator ? '' : from_peer_name + '  ') +
+                            (this.peer_isModerator ? this.peer_name : from_peer_name + '  ') +
                                 _PEER.audioOff +
                                 ' has closed your audio',
                             'top-end',
