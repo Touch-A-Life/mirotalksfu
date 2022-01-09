@@ -1182,7 +1182,7 @@ class RoomClient {
         });
     }
 
-    confirmAsSpeaker() {
+    confirmAsSpeaker(peerId = null) {
         this.sound('open');
 
         Swal.fire({
@@ -1202,6 +1202,16 @@ class RoomClient {
             if (result.isConfirmed) {
                 this.produce(mediaType.audio, microphoneSelect.value);
                 rc.updatePeerInfo(this.peer_name, this.peer_id, 'audio', true);
+            }
+
+            if (peerId === this.peer_id) {
+                alert(123);
+                // const rhIcon = document.getElementById('raiseHandIcon');
+                // rhIcon ? (rhIcon.style.display = 'block') : '';
+                // const lhIcon = document.getElementById('lowerHandIcon');
+                // lhIcon ? (lhIcon.style.display = 'none') : '';
+            } else {
+                console.log('hello peer', peerId, this.peer_id);
             }
         });
     }
@@ -2346,14 +2356,8 @@ class RoomClient {
                 case 'speaker':
                     if (peer_id === this.peer_id || broadcast) {
                         // this.userLog('warning', from_peer_name + ' you will be speaker soon', 'top-end', 10000);
-                        rc.confirmAsSpeaker();
+                        this.confirmAsSpeaker(peerId);
                         this.sound('raiseHand', true);
-
-                        // const rhIcon = document.getElementById('raiseHandIcon');
-                        // rhIcon ? (rhIcon.style.display = 'block') : '';
-                        // const lhIcon = document.getElementById('lowerHandIcon');
-                        // lhIcon ? (lhIcon.style.display = 'none') : '';
-                        console.log('hello', rhIcon, lhIcon);
                     }
                     break;
                 // ...
