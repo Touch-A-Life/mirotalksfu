@@ -494,6 +494,7 @@ function joinRoom(peer_name, room_id) {
             //hide lock/unlock button
             document.getElementById('lockRoomButton').style.display = 'none';
             document.getElementById('unlockRoomButton').style.display = 'none';
+            document.getElementById('brAfterLockButtons').style.display = 'none';
         }
 
         handleRoomClientEvents();
