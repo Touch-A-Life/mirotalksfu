@@ -1286,16 +1286,6 @@ class RoomClient {
         this.peer_info.peer_audio = status;
         let b = this.getPeerAudioBtn(peer_id);
         if (b) b.className = this.peer_info.peer_audio ? html.audioOn : html.audioOff;
-
-        // var controlDiv = document.querySelector(`.control-${peer_id}`);
-        // var controlSelector = controlDiv ? controlDiv.querySelector('#startAudioButton') : false;
-        // if (controlDiv && controlSelector) {
-        //     if (status) {
-        //         controlSelector.style.display = 'flex';
-        //     } else {
-        //         controlSelector.style.display = 'none';
-        //     }
-        // }
     }
 
     setIsVideo(status) {

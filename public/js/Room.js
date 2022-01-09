@@ -544,6 +544,8 @@ function roomIsReady() {
         showButtons();
     });
 
+    hide(tabWhiteboardBtn);
+
     //add a unique class to an control div
     var controlElement = document.getElementById('control');
     if (controlElement) controlElement.classList.add(`control-${rc.peer_id}`);
