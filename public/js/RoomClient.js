@@ -2349,8 +2349,12 @@ class RoomClient {
                         rc.confirmAsSpeaker();
                         this.sound('raiseHand', true);
 
-                        this.getId(raiseHandIcon).style.display = '';
-                        this.getId(lowerHandIcon).style.display = 'none';
+                        const rhIcon = document.getElementById('raiseHandIcon');
+
+                        rhIcon ? (rhIcon.style.display = 'flex') : '';
+                        const lhIcon = document.getElementById('lowerHandIcon');
+                        lhIcon ? (lhIcon.style.display = 'none') : '';
+                        console.log('hello', rhIcon, lhIcon);
                     }
                     break;
                 // ...
