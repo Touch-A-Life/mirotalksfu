@@ -910,7 +910,7 @@ function handleRoomClientEvents() {
 
         hide(raiseHandIcon);
         show(lowerHandIcon);
-        setColor(lowerHandButton, 'green');
+        //setColor(lowerHandButton, 'green');
         setColor(lowerHandIcon, 'green');
     });
     rc.on(RoomClient.EVENTS.lowerHand, () => {
