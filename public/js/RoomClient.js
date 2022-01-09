@@ -1204,7 +1204,7 @@ class RoomClient {
                 rc.updatePeerInfo(this.peer_name, this.peer_id, 'audio', true);
             } else {
                 //mute audio when declines as Speaker
-                this.peerAction('me', `${this.peer_id}___pAudio`, 'mute');
+                rc.updatePeerInfo(this.peer_name, this.peer_id, 'hand', false);
             }
         });
     }
