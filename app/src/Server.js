@@ -285,7 +285,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('peerAction', (data) => {
-        log.debug('Peer action:', data);
+        // log.debug('Peer action:', data);
         if (data.broadcast) {
             roomList.get(socket.room_id).broadCast(data.peer_id, 'peerAction', data);
         } else {
@@ -328,7 +328,7 @@ io.on('connection', (socket) => {
 
     socket.on('wbCanvasToJson', (data) => {
         // let objLength = bytesToSize(Object.keys(data).length);
-        // log.debug('Send Whiteboard canvas JSON', { length: objLength });
+        log.debug('Send Whiteboard canvas JSON', { length: objLength });
         roomList.get(socket.room_id).broadCast(socket.id, 'wbCanvasToJson', data);
     });
 
@@ -375,7 +375,7 @@ io.on('connection', (socket) => {
     socket.on('getProducers', () => {
         if (!roomList.has(socket.room_id)) return;
 
-        log.debug('Get producers', getPeerName());
+        // log.debug('Get producers', getPeerName());
 
         // send all the current producer to newly joined member
         let producerList = roomList.get(socket.room_id).getProducerListForPeer();
@@ -398,7 +398,7 @@ io.on('connection', (socket) => {
 
     socket.on('connectTransport', async ({ transport_id, dtlsParameters }, callback) => {
         if (!roomList.has(socket.room_id)) return;
-        log.debug('Connect transport', getPeerName());
+        // log.debug('Connect transport', getPeerName());
 
         await roomList.get(socket.room_id).connectPeerTransport(socket.id, transport_id, dtlsParameters);
 
@@ -416,11 +416,11 @@ io.on('connection', (socket) => {
             .get(socket.room_id)
             .produce(socket.id, producerTransportId, rtpParameters, kind);
 
-        log.debug('Produce', {
-            kind: kind,
-            peer_name: peer_name,
-            producer_id: producer_id,
-        });
+        // log.debug('Produce', {
+        //     kind: kind,
+        //     peer_name: peer_name,
+        //     producer_id: producer_id,
+        // });
 
         // peer_info audio Or video ON
         let data = {
@@ -444,11 +444,11 @@ io.on('connection', (socket) => {
             .get(socket.room_id)
             .consume(socket.id, consumerTransportId, producerId, rtpCapabilities);
 
-        log.debug('Consuming', {
-            peer_name: getPeerName(false),
-            producer_id: producerId,
-            consumer_id: params.id,
-        });
+        // log.debug('Consuming', {
+        //     peer_name: getPeerName(false),
+        //     producer_id: producerId,
+        //     consumer_id: params.id,
+        // });
 
         callback(params);
     });
