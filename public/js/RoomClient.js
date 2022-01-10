@@ -1094,8 +1094,8 @@ class RoomClient {
             a.onclick = function () {
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
-                thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', false);
-                thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'hand', false);
+                // thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', false);
+                // thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'hand', false);
                 thisRef.peerAction('me', `${peer_info.peer_id}___pAudio`, 'mute');
                 spanTag.style.cssText = 'display:none;';
                 audienceRef.style.display = 'none';
@@ -1202,7 +1202,7 @@ class RoomClient {
                 rc.updatePeerInfo(this.peer_name, this.peer_id, 'audio', true);
             } else {
                 //mute audio when declines as Speaker
-                rc.updatePeerInfo(this.peer_name, this.peer_id, 'hand', false);
+                // rc.updatePeerInfo(this.peer_name, this.peer_id, 'hand', false);
             }
         });
     }
@@ -2314,8 +2314,8 @@ class RoomClient {
                 case 'mute':
                     if (peer_id === this.peer_id || broadcast) {
                         this.closeProducer(mediaType.audio);
-                        this.updatePeerInfo(this.peer_name, this.peer_id, 'audio', false);
-                        this.updatePeerInfo(this.peer_name, this.peer_id, 'hand', false);
+                        // this.updatePeerInfo(this.peer_name, this.peer_id, 'audio', false);
+                        // this.updatePeerInfo(this.peer_name, this.peer_id, 'hand', false);
                         document.getElementById(`${this.peer_id}__participantHandStatus`).style.display = 'none';
                         // this.userLog(
                         //     'warning',
@@ -2382,7 +2382,7 @@ class RoomClient {
                         this.event(_EVENTS.lowerHand);
 
                         //mute audio when user lowers hand
-                        this.peerAction('me', `${peer_id}___pAudio`, 'mute');
+                        // this.peerAction('me', `${peer_id}___pAudio`, 'mute');
                     }
                     break;
             }
@@ -2427,7 +2427,7 @@ class RoomClient {
                             document.getElementById(peer_id + '__enableAudience').style.display = 'none';
 
                         //mute audio when user lowers hand
-                        this.peerAction('me', `${peer_id}___pAudio`, 'mute');
+                        // this.peerAction('me', `${peer_id}___pAudio`, 'mute');
                     }
                     break;
                 case 'audio':
