@@ -1062,7 +1062,7 @@ class RoomClient {
             spanTag = document.createElement('span');
             spanTag.id = peer_info.peer_id + '__toggleAudienceRole';
             spanTag.className = 'toggleAudienceRole';
-            spanTag.style.cssText = 'display:none;';
+            // spanTag.style.cssText = 'display:none;';
 
             s = document.createElement('i');
             s.id = peer_info.peer_id + '__enableSpeaker';
