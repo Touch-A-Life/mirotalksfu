@@ -1205,8 +1205,8 @@ class RoomClient {
                 this.produce(mediaType.audio, microphoneSelect.value);
                 this.updatePeerInfo(this.peer_name, this.peer_id, 'audio', true);
             }
-            document.getElementById('raiseHandIcon').style.display = 'block';
-            document.getElementById('lowerHandIcon').style.display = 'none';
+            // document.getElementById('raiseHandIcon').style.display = 'block';
+            // document.getElementById('lowerHandIcon').style.display = 'none';
             document.getElementById(this.peer_id + '__hand').style.display = 'none';
             this.updatePeerInfo(this.peer_name, this.peer_id, 'hand', false);
         });
