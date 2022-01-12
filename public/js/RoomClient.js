@@ -2311,6 +2311,8 @@ class RoomClient {
                     if (peer_id === this.peer_id || broadcast) {
                         this.closeProducer(mediaType.audio);
                         document.getElementById(`${this.peer_id}__participantHandStatus`).style.display = 'none';
+                        document.getElementById('startAudioButton').style.display = 'none';
+                        document.getElementById('stopAudioButton').style.display = 'none';
                         // this.userLog(
                         //     'warning',
                         //     from_peer_name + '  ' + _PEER.audioOff + ' has closed yours audio',

@@ -718,9 +718,9 @@ function handleButtons() {
     startAudioButton.onclick = () => {
         rc.produce(RoomClient.mediaType.audio, microphoneSelect.value);
         rc.updatePeerInfo(peer_name, rc.peer_id, 'audio', true);
-        // rc.resumeProducer(RoomClient.mediaType.audio);
         document.getElementById('startAudioButton').style.display = 'none';
         document.getElementById('stopAudioButton').style.display = 'block';
+        // rc.resumeProducer(RoomClient.mediaType.audio);
     };
     stopAudioButton.onclick = () => {
         rc.closeProducer(RoomClient.mediaType.audio);
