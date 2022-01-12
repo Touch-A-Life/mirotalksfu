@@ -1208,8 +1208,7 @@ class RoomClient {
             document.getElementById('raiseHandIcon').style.display = 'block';
             document.getElementById('lowerHandIcon').style.display = 'none';
             document.getElementById(this.peer_id + '__hand').style.display = 'none';
-            console.log('hello', this.peer_id);
-            this.peerAction('me', `${this.peer_id}`, 'speaker');
+            this.updatePeerInfo(this.peer_name, this.peer_id, 'hand', false);
         });
     }
 
