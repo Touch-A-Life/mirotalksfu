@@ -767,7 +767,7 @@ meter#instant {
     color: #0f9d58;
 }
 
-#roomTitle {
+#roomTitleDiv {
     top: 30px;
-    background-color: grey;
+    color: grey;
 }
