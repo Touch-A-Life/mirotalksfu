@@ -387,7 +387,10 @@ async function shareRoom(useNavigator = false) {
         Swal.fire({
             background: swalBackground,
             position: 'center',
-            title: '<strong>Hello ' + peer_name + '</strong>',
+            title:
+                '<strong>Hello ' +
+                peer_name +
+                '</strong><p>By default, you are a listener. Raise hand to send a request to the moderator to become a speaker.</p>',
             html:
                 `
             <br/>
