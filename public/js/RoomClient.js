@@ -1081,8 +1081,8 @@ class RoomClient {
                     'display: flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
 
                 //hide raise hand, after setting as Speaker
-                var handRaiseRef = document.getElementById(peer_info.peer_id + '__hand');
-                handRaiseRef.style.display = 'none';
+                hide(peer_info.peer_id + '__hand');
+                // handRaiseRef.style.display = 'none';
             };
 
             //toggle audience
