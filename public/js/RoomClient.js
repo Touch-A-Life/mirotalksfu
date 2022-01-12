@@ -2405,12 +2405,12 @@ class RoomClient {
                     let peer_hand = this.getPeerHandBtn(peer_id);
                     if (status) {
                         if (peer_hand) peer_hand.style.display = 'flex';
-                        if (document.getElementById(peer_id + '__toggleAudienceRole'))
-                            document.getElementById(peer_id + '__toggleAudienceRole').style.display = '';
-                        if (document.getElementById(peer_id + '__enableSpeaker'))
-                            document.getElementById(peer_id + '__enableSpeaker').style.display = 'flex';
-                        if (document.getElementById(peer_id + '__enableAudience'))
-                            document.getElementById(peer_id + '__enableAudience').style.display = 'none';
+                        // if (document.getElementById(peer_id + '__toggleAudienceRole'))
+                        //     document.getElementById(peer_id + '__toggleAudienceRole').style.display = '';
+                        // if (document.getElementById(peer_id + '__enableSpeaker'))
+                        //     document.getElementById(peer_id + '__enableSpeaker').style.display = 'flex';
+                        // if (document.getElementById(peer_id + '__enableAudience'))
+                        //     document.getElementById(peer_id + '__enableAudience').style.display = 'none';
                         this.userLog(
                             'warning',
                             peer_name + '  ' + _PEER.raiseHand + ' has raised the hand',
@@ -2419,12 +2419,12 @@ class RoomClient {
                         );
                     } else {
                         if (peer_hand) peer_hand.style.display = 'none';
-                        if (document.getElementById(peer_id + '__toggleAudienceRole'))
-                            document.getElementById(peer_id + '__toggleAudienceRole').style.display = 'none';
-                        if (document.getElementById(peer_id + '__enableSpeaker'))
-                            document.getElementById(peer_id + '__enableSpeaker').style.display = 'none';
-                        if (document.getElementById(peer_id + '__enableAudience'))
-                            document.getElementById(peer_id + '__enableAudience').style.display = 'none';
+                        // if (document.getElementById(peer_id + '__toggleAudienceRole'))
+                        //     document.getElementById(peer_id + '__toggleAudienceRole').style.display = 'none';
+                        // if (document.getElementById(peer_id + '__enableSpeaker'))
+                        //     document.getElementById(peer_id + '__enableSpeaker').style.display = 'none';
+                        // if (document.getElementById(peer_id + '__enableAudience'))
+                        //     document.getElementById(peer_id + '__enableAudience').style.display = 'none';
 
                         //mute audio when user lowers hand
                         // this.peerAction('me', `${peer_id}___pAudio`, 'mute');
