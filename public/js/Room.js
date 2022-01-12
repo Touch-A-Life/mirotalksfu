@@ -719,10 +719,14 @@ function handleButtons() {
         rc.produce(RoomClient.mediaType.audio, microphoneSelect.value);
         rc.updatePeerInfo(peer_name, rc.peer_id, 'audio', true);
         // rc.resumeProducer(RoomClient.mediaType.audio);
+        hide(startAudioButton);
+        show(stopAudioButton);
     };
     stopAudioButton.onclick = () => {
         rc.closeProducer(RoomClient.mediaType.audio);
         rc.updatePeerInfo(peer_name, rc.peer_id, 'audio', false);
+        show(startAudioButton);
+        hide(stopAudioButton);
         // rc.pauseProducer(RoomClient.mediaType.audio);
     };
     // startVideoButton.onclick = () => {
