@@ -1611,6 +1611,6 @@ function stopMeter() {
     window.stream.getTracks().forEach((track) => track.stop());
     window.soundMeter.stop();
     clearInterval(meterRefresh);
-    // document.getElementById(rc.peer_id + "__speaking").innerHTML = "";
+    document.getElementById(rc.peer_id + '__speaking').style.display = 'none';
 }
 // end of Audio level
