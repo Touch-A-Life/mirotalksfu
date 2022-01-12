@@ -500,7 +500,6 @@ function joinRoom(peer_name, room_id) {
         }
 
         document.getElementById('roomTitle').innerHTML = getRoomDetails && getRoomDetails.title;
-        document.getElementById('roomTitle').style.backgroundColor = 'white';
         handleRoomClientEvents();
     }
 }
