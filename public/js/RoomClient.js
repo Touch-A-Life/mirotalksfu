@@ -1204,7 +1204,7 @@ class RoomClient {
                 //mute audio when declines as Speaker
                 // rc.updatePeerInfo(this.peer_name, this.peer_id, 'hand', false);
             }
-            document.getElementById('raiseHandIcon').style.display = 'none';
+            document.getElementById('raiseHandIcon').style.display = 'block';
             document.getElementById('lowerHandIcon').style.display = 'none';
         });
     }
