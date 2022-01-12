@@ -1101,7 +1101,7 @@ class RoomClient {
                 // thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', false);
                 // thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'hand', false);
                 thisRef.peerAction('me', `${peer_info.peer_id}___pAudio`, 'mute');
-                spanTag.style.cssText = 'display:none;';
+                //spanTag.style.cssText = 'display:none;';
                 audienceRef.style.display = 'none';
                 speakerRef.style.cssText =
                     'display: flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
