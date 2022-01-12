@@ -776,3 +776,7 @@ meter#instant {
     display: inline;
     padding-right: 25px;
 }
+
+.roomDuration {
+    margin-top: 10px;
+}
