@@ -2345,6 +2345,8 @@ class RoomClient {
                     if (peer_id === this.peer_id || broadcast) {
                         this.confirmAsSpeaker();
                     }
+                    document.getElementById(this.peer_id + '__hand').style.display = 'none';
+                    console.log('hello', this.peer_id);
                     break;
                 // ...
             }
