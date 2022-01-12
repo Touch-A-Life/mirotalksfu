@@ -771,3 +771,8 @@ meter#instant {
     top: 30px;
     color: grey;
 }
+
+#sessionTimeHome {
+    display: inline;
+    padding-right: 25px;
+}
