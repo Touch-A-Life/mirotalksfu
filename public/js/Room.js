@@ -587,7 +587,7 @@ function startSessionTimer() {
     setInterval(function printTime() {
         let callElapsedTime = Date.now() - callStartTime;
         sessionTime.innerHTML = ' ' + getTimeToString(callElapsedTime);
-        sessionTimeHome.innerHTML = 'Duration: ' + getTimeToString(callElapsedTime);
+        sessionTimeHome.innerHTML = ' ' + getTimeToString(callElapsedTime);
     }, 1000);
 }
 
