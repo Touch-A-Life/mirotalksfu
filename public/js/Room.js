@@ -725,8 +725,8 @@ function handleButtons() {
     stopAudioButton.onclick = () => {
         rc.closeProducer(RoomClient.mediaType.audio);
         rc.updatePeerInfo(peer_name, rc.peer_id, 'audio', false);
-        show(startAudioButton);
-        hide(stopAudioButton);
+        document.getElementById('startAudioButton').style.display = 'block';
+        document.getElementById('stopAudioButton').style.display = 'none';
         // rc.pauseProducer(RoomClient.mediaType.audio);
     };
     // startVideoButton.onclick = () => {

@@ -1062,7 +1062,6 @@ class RoomClient {
             spanTag = document.createElement('span');
             spanTag.id = peer_info.peer_id + '__toggleAudienceRole';
             spanTag.className = 'toggleAudienceRole';
-            // spanTag.style.cssText = 'display:none;';
 
             s = document.createElement('i');
             s.id = peer_info.peer_id + '__enableSpeaker';
@@ -1079,10 +1078,6 @@ class RoomClient {
                 speakerRef.style.display = 'none';
                 audienceRef.style.cssText =
                     'display: flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
-
-                //hide raise hand, after setting as Speaker
-                // var handRaiseRef = document.getElementById(peer_info.peer_id + '__hand');
-                // handRaiseRef.style.display = 'none';
             };
 
             //toggle audience
@@ -1090,7 +1085,6 @@ class RoomClient {
             a.id = peer_info.peer_id + '__enableAudience';
             a.className = 'enableAudience';
             a.title = 'Make Listener';
-            // a.style.cssText = 'left: 50px;cursor: pointer;color:background-color:lightgrey;color:black;';
             a.style.cssText = 'none';
             a.innerHTML = 'Make Listener';
             spanTag.appendChild(a);
@@ -1098,10 +1092,7 @@ class RoomClient {
             a.onclick = function () {
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
-                // thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', false);
-                // thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'hand', false);
                 thisRef.peerAction('me', `${peer_info.peer_id}`, 'mute');
-                //spanTag.style.cssText = 'display:none;';
                 audienceRef.style.display = 'none';
                 speakerRef.style.cssText =
                     'display: flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
@@ -2319,8 +2310,6 @@ class RoomClient {
                 case 'mute':
                     if (peer_id === this.peer_id || broadcast) {
                         this.closeProducer(mediaType.audio);
-                        // this.updatePeerInfo(this.peer_name, this.peer_id, 'audio', false);
-                        // this.updatePeerInfo(this.peer_name, this.peer_id, 'hand', false);
                         document.getElementById(`${this.peer_id}__participantHandStatus`).style.display = 'none';
                         // this.userLog(
                         //     'warning',
