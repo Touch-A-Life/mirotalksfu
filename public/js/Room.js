@@ -392,6 +392,7 @@ async function shareRoom(useNavigator = false) {
                 `
                 <p>By default, you are a listener. Raise hand to send a request to the moderator to become a speaker.</p>
             <br/>
+            <br/>
             <div id="qrRoomContainer">
                 <canvas id="qrRoom"></canvas>
             </div>
