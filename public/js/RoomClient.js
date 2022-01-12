@@ -1073,7 +1073,7 @@ class RoomClient {
             spanTag.appendChild(s);
 
             s.onclick = function () {
-                thisRef.peerAction('me', `${peer_info.peer_id}___pAudio`, 'speaker');
+                thisRef.peerAction('me', `${peer_info.peer_id}`, 'speaker');
                 var audienceRef = document.getElementById(peer_info.peer_id + '__enableAudience');
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
                 speakerRef.style.display = 'none';
@@ -1100,7 +1100,7 @@ class RoomClient {
                 var speakerRef = document.getElementById(peer_info.peer_id + '__enableSpeaker');
                 // thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'audio', false);
                 // thisRef.updatePeerInfo(peer_name, peer_info.peer_id, 'hand', false);
-                thisRef.peerAction('me', `${peer_info.peer_id}___pAudio`, 'mute');
+                thisRef.peerAction('me', `${peer_info.peer_id}`, 'mute');
                 //spanTag.style.cssText = 'display:none;';
                 audienceRef.style.display = 'none';
                 speakerRef.style.cssText =
@@ -1209,6 +1209,7 @@ class RoomClient {
             document.getElementById('lowerHandIcon').style.display = 'none';
             document.getElementById(this.peer_id + '__hand').style.display = 'none';
             console.log('hello', this.peer_id);
+            this.peerAction('me', `${this.peer_id}`, 'speaker');
         });
     }
 
@@ -2346,7 +2347,6 @@ class RoomClient {
                         this.confirmAsSpeaker();
                     }
                     document.getElementById(this.peer_id + '__hand').style.display = 'none';
-                    console.log('hello', this.peer_id);
                     break;
                 // ...
             }
