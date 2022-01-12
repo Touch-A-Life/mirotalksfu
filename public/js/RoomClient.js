@@ -2367,25 +2367,22 @@ class RoomClient {
                     let peer_hand = this.getPeerHandBtn(peer_id);
                     if (status) {
                         if (peer_hand) peer_hand.style.display = 'flex';
-                        if (document.getElementById(peer_id + '__toggleAudienceRole'))
-                            document.getElementById(peer_id + '__toggleAudienceRole').style.display = 'none';
-                        if (document.getElementById(peer_id + '__enableSpeaker'))
-                            document.getElementById(peer_id + '__enableSpeaker').style.display = 'flex';
-                        if (document.getElementById(peer_id + '__enableAudience'))
-                            document.getElementById(peer_id + '__enableAudience').style.display = 'none';
+                        // if (document.getElementById(peer_id + '__toggleAudienceRole'))
+                        //     document.getElementById(peer_id + '__toggleAudienceRole').style.display = 'none';
+                        // if (document.getElementById(peer_id + '__enableSpeaker'))
+                        //     document.getElementById(peer_id + '__enableSpeaker').style.display = 'flex';
+                        // if (document.getElementById(peer_id + '__enableAudience'))
+                        //     document.getElementById(peer_id + '__enableAudience').style.display = 'none';
                         this.event(_EVENTS.raiseHand);
                     } else {
                         if (peer_hand) peer_hand.style.display = 'none';
-                        if (document.getElementById(peer_id + '__toggleAudienceRole'))
-                            document.getElementById(peer_id + '__toggleAudienceRole').style.display = 'none';
-                        if (document.getElementById(peer_id + '__enableSpeaker'))
-                            document.getElementById(peer_id + '__enableSpeaker').style.display = 'none';
-                        if (document.getElementById(peer_id + '__enableAudience'))
-                            document.getElementById(peer_id + '__enableAudience').style.display = 'none';
+                        // if (document.getElementById(peer_id + '__toggleAudienceRole'))
+                        //     document.getElementById(peer_id + '__toggleAudienceRole').style.display = 'none';
+                        // if (document.getElementById(peer_id + '__enableSpeaker'))
+                        //     document.getElementById(peer_id + '__enableSpeaker').style.display = 'none';
+                        // if (document.getElementById(peer_id + '__enableAudience'))
+                        //     document.getElementById(peer_id + '__enableAudience').style.display = 'none';
                         this.event(_EVENTS.lowerHand);
-
-                        //mute audio when user lowers hand
-                        // this.peerAction('me', `${peer_id}___pAudio`, 'mute');
                     }
                     break;
             }
