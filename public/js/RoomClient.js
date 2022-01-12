@@ -1079,16 +1079,20 @@ class RoomClient {
                 speakerRef.style.display = 'none';
                 audienceRef.style.cssText =
                     'display: flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
+
+                //hide raise hand, after setting as Speaker
+                var handRaiseRef = document.getElementById(peer_info.peer_id + '__hand');
+                handRaiseRef.style.display = 'none';
             };
 
             //toggle audience
             a = document.createElement('i');
             a.id = peer_info.peer_id + '__enableAudience';
             a.className = 'enableAudience';
-            a.title = 'Move to Audience';
+            a.title = 'Make Listener';
             // a.style.cssText = 'left: 50px;cursor: pointer;color:background-color:lightgrey;color:black;';
             a.style.cssText = 'none';
-            a.innerHTML = 'Move to Audience';
+            a.innerHTML = 'Make Listener';
             spanTag.appendChild(a);
 
             a.onclick = function () {
@@ -1199,7 +1203,7 @@ class RoomClient {
         }).then((result) => {
             if (result.isConfirmed) {
                 this.produce(mediaType.audio, microphoneSelect.value);
-                rc.updatePeerInfo(this.peer_name, this.peer_id, 'audio', true);
+                this.updatePeerInfo(this.peer_name, this.peer_id, 'audio', true);
             }
             document.getElementById('raiseHandIcon').style.display = 'block';
             document.getElementById('lowerHandIcon').style.display = 'none';
