@@ -2433,9 +2433,6 @@ class RoomClient {
                         // this.peerAction('me', `${peer_id}___pAudio`, 'mute');
                     }
                     break;
-                case 'audio':
-                    this.setIsAudio(peer_id, status);
-                    break;
             }
         }
     }
