@@ -154,6 +154,7 @@ function initClient() {
         setTippy('chatCleanButton', 'Clean', 'bottom');
         setTippy('chatSaveButton', 'Save', 'bottom');
         setTippy('sessionTime', 'Session time', 'right');
+        setTippy('sessionTimeHome', 'Session time', 'right');
     }
     //setupWhiteboard();
     initEnumerateDevices();
@@ -397,7 +398,7 @@ async function shareRoom(useNavigator = false) {
                 <canvas id="qrRoom"></canvas>
             </div>
             <br/><br/>
-            <p style="background:transparent; color:white;">Share this meeting invite others to join.</p>
+            <p style="background:transparent; color:white;">Share this url to invite others to join.</p>
             <p style="background:transparent; color:rgb(8, 189, 89);">` +
                 RoomURL +
                 `</p>`,
@@ -581,10 +582,12 @@ function setChatSize() {
 
 function startSessionTimer() {
     sessionTime.style.display = 'inline';
+    sessionTimeHome.style.display = 'inline';
     let callStartTime = Date.now();
     setInterval(function printTime() {
         let callElapsedTime = Date.now() - callStartTime;
         sessionTime.innerHTML = ' ' + getTimeToString(callElapsedTime);
+        sessionTimeHome.innerHTML = ' ' + getTimeToString(callElapsedTime);
     }, 1000);
 }
 
