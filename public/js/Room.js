@@ -121,6 +121,9 @@ async function getRoomInfo() {
         if (getRoomDetails && getRoomDetails.ownerId == currentUserId) {
             isModerator = true;
         }
+
+        //set page title
+        document.title = getRoomDetails && getRoomDetails.title;
     } catch (e) {
         console.log('Failed to fetch the room details', room_id, e);
     }
@@ -498,6 +501,8 @@ function joinRoom(peer_name, room_id) {
             document.getElementById('lockRoomButton').style.display = 'none';
             document.getElementById('unlockRoomButton').style.display = 'none';
             document.getElementById('brAfterLockButtons').style.display = 'none';
+        } else {
+            rc.updatePeerInfo(rc.peer_name, rc.peer_id, 'audio', true);
         }
 
         document.getElementById('roomTitle').innerHTML = getRoomDetails && getRoomDetails.title;
