@@ -1286,6 +1286,9 @@ class RoomClient {
         this.peer_info.peer_audio = status;
         let b = this.getPeerAudioBtn(peer_id);
         if (b) b.className = this.peer_info.peer_audio ? html.audioOn : html.audioOff;
+
+        let peerSpeakingIcon = this.getId(peer_id + '__speaking');
+        if (peerSpeakingIcon) peerSpeakingIcon.style.display = this.peer_info.peer_audio ? '' : 'none';
     }
 
     setIsVideo(status) {
@@ -2317,6 +2320,10 @@ class RoomClient {
                         document.getElementById(`${this.peer_id}__participantHandStatus`).style.display = 'none';
                         document.getElementById('startAudioButton').style.display = 'none';
                         document.getElementById('stopAudioButton').style.display = 'none';
+
+                        let peerSpeakingIcon = this.getId(peer_id + '__speaking');
+                        if (peerSpeakingIcon) peerSpeakingIcon.style.display = 'none';
+
                         // this.userLog(
                         //     'warning',
                         //     from_peer_name + '  ' + _PEER.audioOff + ' has closed yours audio',
