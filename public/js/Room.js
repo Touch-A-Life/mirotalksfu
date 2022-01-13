@@ -502,6 +502,7 @@ function joinRoom(peer_name, room_id) {
             document.getElementById('unlockRoomButton').style.display = 'none';
             document.getElementById('brAfterLockButtons').style.display = 'none';
         } else {
+            console.log(rc.peer_name, rc.peer_id);
             rc.updatePeerInfo(rc.peer_name, rc.peer_id, 'audio', true);
         }
 
