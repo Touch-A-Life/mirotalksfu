@@ -1201,7 +1201,7 @@ class RoomClient {
             } else {
                 //show speaker button to moderator
                 //peerAction(from_peer_name, id, action, emit = true, broadcast = false)
-                this.peerAction(this.peer_name, this.peer_id, 'listener');
+                this.peerAction(this.peer_name, this.peer_id, 'listener', false);
             }
             document.getElementById(this.peer_id + '__hand').style.display = 'none';
             this.updatePeerInfo(this.peer_name, this.peer_id, 'hand', false);
@@ -2353,7 +2353,6 @@ class RoomClient {
                             document.getElementById(peer_id + '__enableAudience').style.display = 'none';
                     }
                     break;
-                // ...
             }
         }
     }
