@@ -501,11 +501,6 @@ function joinRoom(peer_name, room_id) {
             document.getElementById('lockRoomButton').style.display = 'none';
             document.getElementById('unlockRoomButton').style.display = 'none';
             document.getElementById('brAfterLockButtons').style.display = 'none';
-        } else {
-            console.log('Hello', peer_name, rc.peer_id);
-            // rc.updatePeerInfo(peer_name, rc.peer_id, 'audio', true);
-            // document.getElementById('startAudioButton').style.display = 'none';
-            // document.getElementById('stopAudioButton').style.display = 'block';
         }
 
         document.getElementById('roomTitle').innerHTML = getRoomDetails && getRoomDetails.title;
@@ -561,6 +556,13 @@ function roomIsReady() {
     //add a unique class to an control div
     var controlElement = document.getElementById('control');
     if (controlElement) controlElement.classList.add(`control-${rc.peer_id}`);
+
+    if (rc.peer_isModerator) {
+        console.log('Hello', peer_name, rc.peer_id);
+        // rc.updatePeerInfo(peer_name, rc.peer_id, 'audio', true);
+        // document.getElementById('startAudioButton').style.display = 'none';
+        // document.getElementById('stopAudioButton').style.display = 'block';
+    }
 }
 
 function hide(elem) {
