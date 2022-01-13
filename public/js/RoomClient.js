@@ -2344,6 +2344,7 @@ class RoomClient {
                     document.getElementById(this.peer_id + '__hand').style.display = 'none';
                     break;
                 case 'listener':
+                    console.log('Hello', peer_id + '__toggleAudienceRole');
                     if (peer_id === this.peer_id || broadcast) {
                         if (document.getElementById(peer_id + '__toggleAudienceRole'))
                             document.getElementById(peer_id + '__toggleAudienceRole').style.display = '';
