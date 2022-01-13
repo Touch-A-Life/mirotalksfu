@@ -1201,7 +1201,7 @@ class RoomClient {
             } else {
                 //show speaker button to moderator
                 //peerAction(from_peer_name, id, action, emit = true, broadcast = false)
-                this.peerAction('me', this.peer_id, 'listener');
+                this.updatePeerInfo(this.peer_name, this.peer_id, 'listener');
                 console.log('Hello listener type listener');
             }
             document.getElementById(this.peer_id + '__hand').style.display = 'none';
@@ -2344,17 +2344,6 @@ class RoomClient {
                     }
                     document.getElementById(this.peer_id + '__hand').style.display = 'none';
                     break;
-                case 'listener':
-                    console.log('Hello', 'listener', peer_id + '__enableSpeaker');
-                    // if (peer_id === this.peer_id || broadcast) {
-                    if (document.getElementById(peer_id + '__toggleAudienceRole'))
-                        document.getElementById(peer_id + '__toggleAudienceRole').style.display = 'none';
-                    if (document.getElementById(peer_id + '__enableSpeaker'))
-                        document.getElementById(peer_id + '__enableSpeaker').style.display = 'none';
-                    if (document.getElementById(peer_id + '__enableAudience'))
-                        document.getElementById(peer_id + '__enableAudience').style.display = 'none';
-                    // }
-                    break;
             }
         }
     }
@@ -2412,6 +2401,17 @@ class RoomClient {
                     } else {
                         if (peer_hand) peer_hand.style.display = 'none';
                     }
+                    break;
+                case 'listener':
+                    console.log('Hello', 'listener', peer_id + '__enableSpeaker');
+                    // if (peer_id === this.peer_id || broadcast) {
+                    if (document.getElementById(peer_id + '__toggleAudienceRole'))
+                        document.getElementById(peer_id + '__toggleAudienceRole').style.display = 'none';
+                    if (document.getElementById(peer_id + '__enableSpeaker'))
+                        document.getElementById(peer_id + '__enableSpeaker').style.display = 'none';
+                    if (document.getElementById(peer_id + '__enableAudience'))
+                        document.getElementById(peer_id + '__enableAudience').style.display = 'none';
+                    // }
                     break;
             }
         }
