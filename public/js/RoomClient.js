@@ -2345,14 +2345,14 @@ class RoomClient {
                     break;
                 case 'listener':
                     console.log('Hello', peer_id + '__toggleAudienceRole');
-                    if (peer_id === this.peer_id || broadcast) {
-                        if (document.getElementById(peer_id + '__toggleAudienceRole'))
-                            document.getElementById(peer_id + '__toggleAudienceRole').style.display = '';
-                        if (document.getElementById(peer_id + '__enableSpeaker'))
-                            document.getElementById(peer_id + '__enableSpeaker').style.display = 'flex';
-                        if (document.getElementById(peer_id + '__enableAudience'))
-                            document.getElementById(peer_id + '__enableAudience').style.display = 'none';
-                    }
+                    // if (peer_id === this.peer_id || broadcast) {
+                    if (document.getElementById(peer_id + '__toggleAudienceRole'))
+                        document.getElementById(peer_id + '__toggleAudienceRole').style.display = '';
+                    if (document.getElementById(peer_id + '__enableSpeaker'))
+                        document.getElementById(peer_id + '__enableSpeaker').style.display = 'flex';
+                    if (document.getElementById(peer_id + '__enableAudience'))
+                        document.getElementById(peer_id + '__enableAudience').style.display = 'none';
+                    // }
                     break;
             }
         }
