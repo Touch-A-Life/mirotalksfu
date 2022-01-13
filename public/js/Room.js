@@ -559,9 +559,9 @@ function roomIsReady() {
 
     if (rc.peer_isModerator) {
         console.log('Hello', peer_name, rc.peer_id);
-        // rc.updatePeerInfo(peer_name, rc.peer_id, 'audio', true);
-        // document.getElementById('startAudioButton').style.display = 'none';
-        // document.getElementById('stopAudioButton').style.display = 'block';
+        rc.updatePeerInfo(peer_name, rc.peer_id, 'audio', true);
+        document.getElementById('startAudioButton').style.display = 'none';
+        document.getElementById('stopAudioButton').style.display = 'block';
     }
 }
 
