@@ -1096,6 +1096,7 @@ class RoomClient {
                 audienceRef.style.display = 'none';
                 speakerRef.style.cssText =
                     'display: flex;left: 25px;cursor: pointer;background-color:lightgrey;color:black;';
+                document.getElementById(peer_info.peer_id + '__audio').className = html.audioOff;
             };
         }
 
