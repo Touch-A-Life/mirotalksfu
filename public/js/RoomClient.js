@@ -2401,7 +2401,6 @@ class RoomClient {
                     }
                     break;
                 case 'listener':
-                    console.log('Hello', 'listener', peer_id + '__enableSpeaker');
                     if (document.getElementById(peer_id + '__toggleAudienceRole'))
                         document.getElementById(peer_id + '__toggleAudienceRole').style.display = '';
                     if (document.getElementById(peer_id + '__enableSpeaker'))
