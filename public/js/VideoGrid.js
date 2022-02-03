@@ -42,13 +42,13 @@ function resizeVideoMedia() {
 function setWidth(width, margin) {
     let Cameras = document.getElementsByClassName('Camera');
     for (let s = 0; s < Cameras.length; s++) {
-        // Cameras[s].style.width = width + "px";
-        // Cameras[s].style.margin = margin + "px";
-        // Cameras[s].style.height = width * 0.7 + "px";
+        Cameras[s].style.width = width + 'px';
+        Cameras[s].style.margin = margin + 'px';
+        Cameras[s].style.height = width * 0.7 + 'px';
 
-        Cameras[s].style.width = '300px';
-        Cameras[s].style.margin = '10px';
-        Cameras[s].style.height = '200px';
+        // Cameras[s].style.width = '300px';
+        // Cameras[s].style.margin = '10px';
+        // Cameras[s].style.height = '200px';
     }
 }
 
