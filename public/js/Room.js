@@ -1486,8 +1486,7 @@ async function getParticipantsTable(peers) {
     </tr>
     `
         : '';
-    console.log('Hello table start');
-    const rolesList = [];
+
     for (let peer of Array.from(peers.keys())) {
         let peer_info = peers.get(peer).peer_info;
         let peer_name = '👤 ' + peer_info.peer_name;
@@ -1498,7 +1497,6 @@ async function getParticipantsTable(peers) {
         let peer_sendFile = _PEER.sendFile;
         let peer_id = peer_info.peer_id;
         let currentIsModerator = rolesList.push(peer_info.peer_isModerator ? 'yes' : 'no');
-        console.log('role value', peer_info, currentIsModerator);
 
         if (rc.peer_id === peer_id) {
             table += `
@@ -1538,9 +1536,6 @@ async function getParticipantsTable(peers) {
             `;
         }
     }
-
-    console.log('Moderator checking');
-    console.log('Moderator values', rolesList);
     table += `</table>`;
     return table;
 }
