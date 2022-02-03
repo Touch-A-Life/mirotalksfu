@@ -57,10 +57,8 @@ window.addEventListener(
     function (event) {
         resizeVideoMedia();
         window.onresize = resizeVideoMedia;
-
-        const pModTag = document.querySelector('p');
-        const check = pModTag.classList.contains('iammoderator') ? true : false;
-        console.log('hello window', check);
+        const check = document.body.classList.contains('iammoderator') ? true : false;
+        console.log('hello window', document.body.classList.contains('iammoderator'), check);
     },
     false,
 );
