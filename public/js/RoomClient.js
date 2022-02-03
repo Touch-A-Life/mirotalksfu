@@ -223,10 +223,9 @@ class RoomClient {
       }
     }
     */
-
+        console.log('Hello', peers.get(peer));
         for (let peer of Array.from(peers.keys()).filter((id) => id !== this.peer_id)) {
             let peer_info = peers.get(peer).peer_info;
-            console.log('Hello', peer_info.isModerator);
             // console.log('07 ----> Remote Peer info', peer_info);
             await this.setVideoOff(peer_info, true);
         }
