@@ -460,8 +460,10 @@ class RoomClient {
                 console.log('Peer info update:', data);
                 this.updatePeerInfo(data.peer_name, data.peer_id, data.type, data.status, false);
                 if ((data.type === 'speaking' || data.type === 'audio' || data.type === 'audioType') && data.status) {
-                    document.getElementById(data.peer_id + '__speaking').innerHTML =
-                        '<div class="boxContainer"><div class="box box1"></div><div class="box box2"></div><div class="box box3"></div></div>';
+                    const peerSpeaking = document.getElementById(data.peer_id + '__speaking');
+                    if (peerSpeaking)
+                        peerSpeaking.innerHTML =
+                            '<div class="boxContainer"><div class="box box1"></div><div class="box box2"></div><div class="box box3"></div></div>';
                 } else {
                     document.getElementById(data.peer_id + '__speaking').innerHTML = '';
                 }
@@ -1004,11 +1006,13 @@ class RoomClient {
         let elem = this.getId(consumer_id);
         let d = this.getId(consumer_id + '__d');
 
-        elem.srcObject.getTracks().forEach(function (track) {
-            track.stop();
-        });
+        if (elem) {
+            elem.srcObject.getTracks().forEach(function (track) {
+                track.stop();
+            });
+            elem.parentNode.removeChild(elem);
+        }
 
-        if (elem) elem.parentNode.removeChild(elem);
         if (d) d.parentNode.removeChild(d);
 
         resizeVideoMedia();
