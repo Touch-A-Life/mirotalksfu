@@ -1486,7 +1486,7 @@ async function getParticipantsTable(peers) {
     </tr>
     `
         : '';
-
+    console.log('Hello table', Array.from(peers.keys()));
     for (let peer of Array.from(peers.keys())) {
         let peer_info = peers.get(peer).peer_info;
         let peer_name = '👤 ' + peer_info.peer_name;
