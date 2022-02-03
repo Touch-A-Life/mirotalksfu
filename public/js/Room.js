@@ -1496,7 +1496,6 @@ async function getParticipantsTable(peers) {
         let peer_eject = _PEER.ejectPeer;
         let peer_sendFile = _PEER.sendFile;
         let peer_id = peer_info.peer_id;
-        let currentIsModerator = rolesList.push(peer_info.peer_isModerator ? 'yes' : 'no');
 
         if (rc.peer_id === peer_id) {
             table += `
