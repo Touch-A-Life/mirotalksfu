@@ -1047,9 +1047,7 @@ class RoomClient {
         let innerHTMLStr = '👤 ' + peer_name + (remotePeer ? '' : ' (me) ');
         p.innerHTML = innerHTMLStr + (peer_isModerator ? ' - moderator' : '');
 
-        if (isModerator) {
-            alert('Moderator joined');
-        }
+        console.log('hello Moderator joined', isModerator, currentUserIsModerator);
 
         //create speaking tag
         pSpeaking = document.createElement('p');
