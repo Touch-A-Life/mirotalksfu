@@ -1033,6 +1033,7 @@ class RoomClient {
         let peer_audio = peer_info.peer_audio;
         let peer_img = peer_info.peer_img;
         let peer_isModerator = peer_info.peer_isModerator;
+        var currentUserIsModerator = this.peer_isModerator;
 
         d = document.createElement('div');
         d.className = 'Camera';
@@ -1046,7 +1047,7 @@ class RoomClient {
         let innerHTMLStr = '👤 ' + peer_name + (remotePeer ? '' : ' (me) ');
         p.innerHTML = innerHTMLStr + (peer_isModerator ? ' - moderator' : '');
 
-        console.log('hello Moderator joined', peer_isModerator);
+        console.log('hello Moderator joined', peer_isModerator, currentUserIsModerator);
 
         //create speaking tag
         pSpeaking = document.createElement('p');
