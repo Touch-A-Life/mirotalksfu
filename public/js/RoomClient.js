@@ -211,6 +211,7 @@ class RoomClient {
     async handleRoomInfo(room) {
         let peers = new Map(JSON.parse(room.peers));
         participantsCount = peers.size;
+        console.log('hello', peers);
 
         /*
     for (let peer of Array.from(peers.keys()).filter(
@@ -223,7 +224,7 @@ class RoomClient {
       }
     }
     */
-        console.log('Hello', peers.get(peer));
+
         for (let peer of Array.from(peers.keys()).filter((id) => id !== this.peer_id)) {
             let peer_info = peers.get(peer).peer_info;
             // console.log('07 ----> Remote Peer info', peer_info);
