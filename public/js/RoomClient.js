@@ -1046,6 +1046,7 @@ class RoomClient {
         p.id = peer_id + '__name';
         let innerHTMLStr = '👤 ' + peer_name + (remotePeer ? '' : ' (me) ');
         p.innerHTML = innerHTMLStr + (peer_isModerator ? ' - moderator' : '');
+        p.className = peer_isModerator ? 'iammoderator' : '';
 
         if (peer_isModerator) {
             console.log('Hello all, moderator joined!!!');
