@@ -74,6 +74,9 @@ window.addEventListener(
 
 // select the target node
 var target = document.querySelector('#videoMediaContainer');
+var target2 = document.getElementById('videoMediaContainer');
+console.log(target);
+console.log(target2);
 
 // create an observer instance
 var observer = new MutationObserver(function (mutations) {
