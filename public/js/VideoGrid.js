@@ -57,8 +57,17 @@ window.addEventListener(
     function (event) {
         resizeVideoMedia();
         window.onresize = resizeVideoMedia;
-        const check = document.body.classList.contains('iammoderator') ? true : false;
-        console.log('hello window', document.body.classList.contains('iammoderator'), check);
+    },
+    false,
+);
+
+document.getElementById('videoMediaContainer').addEventListener(
+    'change',
+    function (e) {
+        e.target; //
+        console.log('hello', document.body.classList.contains('iammoderator'), e.target);
+        // const check = document.body.classList.contains('iammoderator') ? true : false;
+        // console.log('hello window', document.body.classList.contains('iammoderator'), check);
     },
     false,
 );
