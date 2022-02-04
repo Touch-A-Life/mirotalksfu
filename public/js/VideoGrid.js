@@ -62,7 +62,7 @@ window.addEventListener(
 );
 
 document.getElementById('videoMediaContainer').addEventListener(
-    'change',
+    'DOMNodeInserted',
     function (e) {
         e.target; //
         console.log('hello', document.body.classList.contains('iammoderator'), e.target);
