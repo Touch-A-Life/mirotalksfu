@@ -1125,11 +1125,7 @@ class RoomClient {
 
         //check if moderator joined or not
         const checkModeratorTag = document.getElementsByClassName('iammoderator');
-        if (checkModeratorTag && checkModeratorTag.length > 0) {
-            this.moderatorInList(true);
-        } else {
-            this.moderatorInList(false);
-        }
+        this.moderatorInList(checkModeratorTag && checkModeratorTag.length > 0);
     }
 
     removeVideoOff(peer_id) {
@@ -2473,6 +2469,7 @@ class RoomClient {
 
     //show chat & raise hand button only when moderator is present.
     moderatorInList(status = false) {
+        console.log('hello status', status);
         if (status) {
             document.getElementById('moderatorMessage').innerHTML = '';
             document.getElementById('chatButton').style.visibility = '';
@@ -2480,7 +2477,7 @@ class RoomClient {
         } else {
             document.getElementById('chatButton').style.visibility = 'none';
             document.getElementById('raiseHandIcon').style.visibility = 'none';
-            document.getElementById('moderatorMessage').innerHTML = 'welcome moderator';
+            document.getElementById('moderatorMessage').innerHTML = 'Please wait for the moderator to join the room';
         }
     }
 }
