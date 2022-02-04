@@ -1125,7 +1125,7 @@ class RoomClient {
 
         //check if moderator joined or not
         const checkModeratorTag = document.getElementsByClassName('iammoderator');
-        if (checkModeratorTag) {
+        if (checkModeratorTag && checkModeratorTag.length > 0) {
             console.log('Moderator joined');
         } else {
             console.log('Moderator not joined');
