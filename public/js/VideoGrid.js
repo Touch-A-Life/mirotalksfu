@@ -60,36 +60,3 @@ window.addEventListener(
     },
     false,
 );
-
-// document.getElementById('videoMediaContainer').addEventListener(
-//     'DOMNodeInserted',
-//     function (e) {
-//         e.target; //
-//         console.log('hello', document.body.classList.contains('iammoderator'), e.target);
-//         // const check = document.body.classList.contains('iammoderator') ? true : false;
-//         // console.log('hello window', document.body.classList.contains('iammoderator'), check);
-//     },
-//     false,
-// );
-
-// select the target node
-var target = document.querySelector('#videoMediaContainer');
-var target2 = document.getElementById('videoMediaContainer');
-console.log(target);
-console.log(target2);
-
-// create an observer instance
-var observer = new MutationObserver(function (mutations) {
-    mutations.forEach(function (mutation) {
-        console.log('Hello', mutation.type);
-    });
-});
-
-// configuration of the observer:
-var config = { attributes: true, childList: true, characterData: true };
-
-// pass in the target node, as well as the observer options
-observer.observe(target, config);
-
-// later, you can stop observing
-observer.disconnect();
