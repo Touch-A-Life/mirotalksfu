@@ -61,13 +61,27 @@ window.addEventListener(
     false,
 );
 
-document.getElementById('videoMediaContainer').addEventListener(
-    'DOMNodeInserted',
-    function (e) {
-        e.target; //
-        console.log('hello', document.body.classList.contains('iammoderator'), e.target);
-        // const check = document.body.classList.contains('iammoderator') ? true : false;
-        // console.log('hello window', document.body.classList.contains('iammoderator'), check);
-    },
-    false,
-);
+// document.getElementById('videoMediaContainer').addEventListener(
+//     'DOMNodeInserted',
+//     function (e) {
+//         e.target; //
+//         console.log('hello', document.body.classList.contains('iammoderator'), e.target);
+//         // const check = document.body.classList.contains('iammoderator') ? true : false;
+//         // console.log('hello window', document.body.classList.contains('iammoderator'), check);
+//     },
+//     false,
+// );
+
+var myElement = document.getElementById('videoMediaContainer');
+if (window.addEventListener) {
+    // Normal browsers
+    myElement.addEventListener('DOMSubtreeModified', contentChanged, false);
+} else if (window.attachEvent) {
+    // IE
+    myElement.attachEvent('DOMSubtreeModified', contentChanged);
+}
+
+function contentChanged() {
+    // this function will run each time the content of the DIV changes
+    console.log('Hello im modified');
+}
