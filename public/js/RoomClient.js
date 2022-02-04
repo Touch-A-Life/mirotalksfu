@@ -2474,13 +2474,13 @@ class RoomClient {
     //show chat & raise hand button only when moderator is present.
     moderatorInList(status = false) {
         if (status) {
-            this.getId('moderatorMessage').innerHTML = '';
-            this.getId('chatButton').style.visibility = '';
-            this.getId('raiseHandIcon').style.visibility = '';
+            document.getElementById('moderatorMessage').innerHTML = '';
+            document.getElementById('chatButton').style.visibility = '';
+            document.getElementById('raiseHandIcon').style.visibility = '';
         } else {
-            this.getId('chatButton').style.visibility = 'none';
-            this.getId('raiseHandIcon').style.visibility = 'none';
-            this.getId('moderatorMessage').innerHTML = 'welcome moderator';
+            document.getElementById('chatButton').style.visibility = 'none';
+            document.getElementById('raiseHandIcon').style.visibility = 'none';
+            document.getElementById('moderatorMessage').innerHTML = 'welcome moderator';
         }
     }
 }
