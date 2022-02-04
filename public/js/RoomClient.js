@@ -1126,9 +1126,9 @@ class RoomClient {
         //check if moderator joined or not
         const checkModeratorTag = document.getElementsByClassName('iammoderator');
         if (checkModeratorTag && checkModeratorTag.length > 0) {
-            console.log('Moderator joined');
+            moderatorInList(true);
         } else {
-            console.log('Moderator not joined');
+            moderatorInList(false);
         }
     }
 
@@ -2468,6 +2468,19 @@ class RoomClient {
                 ),
                 'top-start',
             );
+        }
+    }
+
+    //show chat & raise hand button only when moderator is present.
+    moderatorInList(status = false) {
+        if (status) {
+            this.getId('moderatorMessage').innerHTML = '';
+            this.getId('chatButton').style.visibility = '';
+            this.getId('raiseHandIcon').style.visibility = '';
+        } else {
+            this.getId('chatButton').style.visibility = 'none';
+            this.getId('raiseHandIcon').style.visibility = 'none';
+            this.getId('moderatorMessage').innerHTML = 'welcome moderator';
         }
     }
 }
