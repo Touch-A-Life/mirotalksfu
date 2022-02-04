@@ -72,12 +72,13 @@ window.addEventListener(
 //     false,
 // );
 
-var myElement = document.getElementById('videoMediaContainer');
 if (window.addEventListener) {
     // Normal browsers
+    var myElement = document.getElementById('videoMediaContainer');
     myElement.addEventListener('DOMSubtreeModified', contentChanged, false);
 } else if (window.attachEvent) {
     // IE
+    var myElement = document.getElementById('videoMediaContainer');
     myElement.attachEvent('DOMSubtreeModified', contentChanged);
 }
 
