@@ -72,17 +72,21 @@ window.addEventListener(
 //     false,
 // );
 
-if (window.addEventListener) {
-    // Normal browsers
-    var myElement = document.getElementById('videoMediaContainer');
-    myElement && myElement.addEventListener('DOMSubtreeModified', contentChanged, false);
-} else if (window.attachEvent) {
-    // IE
-    var myElement = document.getElementById('videoMediaContainer');
-    myElement && myElement.attachEvent('DOMSubtreeModified', contentChanged);
-}
+// select the target node
+var target = document.querySelector('#videoMediaContainer');
 
-function contentChanged() {
-    // this function will run each time the content of the DIV changes
-    console.log('Hello im modified');
-}
+// create an observer instance
+var observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+        console.log('Hello', mutation.type);
+    });
+});
+
+// configuration of the observer:
+var config = { attributes: true, childList: true, characterData: true };
+
+// pass in the target node, as well as the observer options
+observer.observe(target, config);
+
+// later, you can stop observing
+observer.disconnect();
