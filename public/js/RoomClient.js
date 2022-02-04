@@ -1123,7 +1123,13 @@ class RoomClient {
         resizeVideoMedia();
         this.sound('joined');
 
-        console.log('hello', document.getElementsByClassName('iammoderator'));
+        //check if moderator joined or not
+        const checkModeratorTag = document.getElementsByClassName('iammoderator');
+        if (checkModeratorTag) {
+            console.log('Moderator joined');
+        } else {
+            console.log('Moderator not joined');
+        }
     }
 
     removeVideoOff(peer_id) {
