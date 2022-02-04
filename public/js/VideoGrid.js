@@ -75,11 +75,11 @@ window.addEventListener(
 if (window.addEventListener) {
     // Normal browsers
     var myElement = document.getElementById('videoMediaContainer');
-    myElement.addEventListener('DOMSubtreeModified', contentChanged, false);
+    myElement && myElement.addEventListener('DOMSubtreeModified', contentChanged, false);
 } else if (window.attachEvent) {
     // IE
     var myElement = document.getElementById('videoMediaContainer');
-    myElement.attachEvent('DOMSubtreeModified', contentChanged);
+    myElement && myElement.attachEvent('DOMSubtreeModified', contentChanged);
 }
 
 function contentChanged() {
