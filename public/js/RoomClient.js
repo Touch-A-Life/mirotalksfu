@@ -2469,14 +2469,13 @@ class RoomClient {
 
     //show chat & raise hand button only when moderator is present.
     moderatorInList(status = false) {
-        console.log('hello status', status);
         if (status) {
             document.getElementById('moderatorMessage').innerHTML = '';
-            document.getElementById('chatButton').style.visibility = '';
-            document.getElementById('raiseHandIcon').style.visibility = '';
+            document.getElementById('chatButton').style.display = '';
+            document.getElementById('raiseHandIcon').style.display = '';
         } else {
-            document.getElementById('chatButton').style.visibility = 'none';
-            document.getElementById('raiseHandIcon').style.visibility = 'none';
+            document.getElementById('chatButton').style.display = 'none';
+            document.getElementById('raiseHandIcon').style.display = 'none';
             document.getElementById('moderatorMessage').innerHTML = 'Please wait for the moderator to join the room';
         }
     }
