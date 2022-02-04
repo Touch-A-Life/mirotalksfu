@@ -1123,8 +1123,7 @@ class RoomClient {
         resizeVideoMedia();
         this.sound('joined');
 
-        const checking = document.body.classList.contains('iammoderator');
-        console.log('hello', checking);
+        console.log('hello', document.getElementsByClassName('iammoderator'));
     }
 
     removeVideoOff(peer_id) {
