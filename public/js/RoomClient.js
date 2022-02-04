@@ -1021,6 +1021,19 @@ class RoomClient {
         this.sound('left');
     }
 
+    //show chat & raise hand button only when moderator is present.
+    moderatorInList(status = false) {
+        if (status) {
+            this.getId('moderatorMessage').innerHTML = '';
+            this.getId('chatButton').style.visibility = '';
+            this.getId('raiseHandIcon').style.visibility = '';
+        } else {
+            this.getId('chatButton').style.visibility = 'none';
+            this.getId('raiseHandIcon').style.visibility = 'none';
+            this.getId('moderatorMessage').innerHTML = 'welcome moderator';
+        }
+    }
+
     // ####################################################
     // HANDLE VIDEO OFF
     // ####################################################
@@ -2468,19 +2481,6 @@ class RoomClient {
                 ),
                 'top-start',
             );
-        }
-    }
-
-    //show chat & raise hand button only when moderator is present.
-    moderatorInList(status = false) {
-        if (status) {
-            this.getId('moderatorMessage').innerHTML = '';
-            this.getId('chatButton').style.visibility = '';
-            this.getId('raiseHandIcon').style.visibility = '';
-        } else {
-            this.getId('chatButton').style.visibility = 'none';
-            this.getId('raiseHandIcon').style.visibility = 'none';
-            this.getId('moderatorMessage').innerHTML = 'welcome moderator';
         }
     }
 }
