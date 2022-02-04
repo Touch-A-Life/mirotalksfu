@@ -1122,6 +1122,9 @@ class RoomClient {
         this.getId(i.id).style.display = 'block';
         resizeVideoMedia();
         this.sound('joined');
+
+        const checking = document.body.classList.contains('iammoderator');
+        console.log('hello', checking);
     }
 
     removeVideoOff(peer_id) {
