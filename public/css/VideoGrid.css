@@ -2,7 +2,7 @@
 # Video grid
 --------------------------------------------------------------*/
 
-.mainVideoContainer {
+.mainMediaContainer {
     display: block;
     margin-top: 30px;
     height: 80vh;
@@ -244,30 +244,30 @@ End of custom css for animation mic icon
 */
 
 .displayElement {
-  display: "flex !important";
+    display: 'flex !important';
 }
 .Camera {
-  width: 426px;
-  margin: 2px;
-  height: calc(100% - 200px);
+    width: 426px;
+    margin: 2px;
+    height: calc(100% - 200px);
 }
 @media screen and (min-width: 1920px) {
-  .Camera {
-    height: calc(100% - 260px);
-  }
+    .Camera {
+        height: calc(100% - 260px);
+    }
 }
 @media screen and (max-width: 768px) {
-  .Camera {
-    width: 47%;
-  }
-  #roomTitleDiv {
-    width: 100%;
-    text-align: center;
-  }
-  #roomTitleDiv h1 {
-    font-size: 15px;
-  }
-  #videoMediaContainer {
-    bottom: 65px;
-  }
+    .Camera {
+        width: 47%;
+    }
+    #roomTitleDiv {
+        width: 100%;
+        text-align: center;
+    }
+    #roomTitleDiv h1 {
+        font-size: 15px;
+    }
+    #videoMediaContainer {
+        bottom: 65px;
+    }
 }
