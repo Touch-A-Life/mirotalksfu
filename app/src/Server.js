@@ -296,8 +296,12 @@ io.on('connection', (socket) => {
     socket.on('updatePeerInfo', (data) => {
         log.debug('Peer info update:', data);
         // peer_info hand raise Or lower
-        roomList.get(socket.room_id).getPeers().get(socket.id).updatePeerInfo(data);
-        roomList.get(socket.room_id).broadCast(socket.id, 'updatePeerInfo', data);
+        try {
+            roomList.get(socket.room_id).getPeers().get(socket.id).updatePeerInfo(data);
+            roomList.get(socket.room_id).broadCast(socket.id, 'updatePeerInfo', data);
+        } catch (error) {
+            console.log('updatePeerInfo:', error);
+        }
     });
 
     socket.on('fileInfo', (data) => {
@@ -440,25 +444,33 @@ io.on('connection', (socket) => {
             return callback({ error: 'Room not found' });
         }
 
-        let params = await roomList
-            .get(socket.room_id)
-            .consume(socket.id, consumerTransportId, producerId, rtpCapabilities);
+        try {
+            let params = await roomList
+                .get(socket.room_id)
+                .consume(socket.id, consumerTransportId, producerId, rtpCapabilities);
 
-        log.debug('Consuming', {
-            peer_name: getPeerName(false),
-            producer_id: producerId,
-            consumer_id: params.id,
-        });
+            log.debug('Consuming', {
+                peer_name: getPeerName(false),
+                producer_id: producerId,
+                consumer_id: params.id,
+            });
 
-        callback(params);
+            callback(params);
+        } catch (error) {
+            return callback({ error: error.message });
+        }
     });
 
     socket.on('producerClosed', (data) => {
         log.debug('Producer close', data);
 
         // peer_info audio Or video OFF
-        roomList.get(socket.room_id).getPeers().get(socket.id).updatePeerInfo(data);
-        roomList.get(socket.room_id).closeProducer(socket.id, data.producer_id);
+        try {
+            roomList.get(socket.room_id).getPeers().get(socket.id).updatePeerInfo(data);
+            roomList.get(socket.room_id).closeProducer(socket.id, data.producer_id);
+        } catch (error) {
+            console.log('producerClosed', error);
+        }
     });
 
     socket.on('resume', async (_, callback) => {
@@ -527,16 +539,21 @@ io.on('connection', (socket) => {
 
     // common
     function getPeerName(json = true) {
-        if (json) {
-            return {
-                peer_name:
-                    roomList.get(socket.room_id) &&
-                    roomList.get(socket.room_id).getPeers().get(socket.id).peer_info.peer_name,
-            };
+        try {
+            if (json) {
+                return {
+                    peer_name:
+                        roomList.get(socket.room_id) &&
+                        roomList.get(socket.room_id).getPeers().get(socket.id).peer_info.peer_name,
+                };
+            }
+            return (
+                roomList.get(socket.room_id) &&
+                roomList.get(socket.room_id).getPeers().get(socket.id).peer_info.peer_name
+            );
+        } catch (error) {
+            console.log('getPeerName: ', error.message);
         }
-        return (
-            roomList.get(socket.room_id) && roomList.get(socket.room_id).getPeers().get(socket.id).peer_info.peer_name
-        );
     }
 
     function removeMeData() {
