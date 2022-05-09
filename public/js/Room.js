@@ -132,8 +132,8 @@ async function getRoomInfo() {
 
         roomTitle = getRoomDetails && getRoomDetails.title;
         roomDescription = getRoomDetails && getRoomDetails.description;
-        roomEndTime = getRoomDetails && getRoomDetails.endTime && new Date(getRoomDetails.endTime).toString();
-        roomStartTime = getRoomDetails && getRoomDetails.startTime && new Date(getRoomDetails.startTime).toString();
+        roomEndTime = getRoomDetails && getRoomDetails.endTime && new Date(getRoomDetails.endTime).toDateString() + " " + new Date(getRoomDetails.endTime).toLocaleTimeString();
+        roomStartTime = getRoomDetails && getRoomDetails.startTime && new Date(getRoomDetails.startTime).toDateString() + " " + new Date(getRoomDetails.startTime).toLocaleTimeString();
 
     } catch (e) {
         console.log('Failed to fetch the room details', room_id, e);
