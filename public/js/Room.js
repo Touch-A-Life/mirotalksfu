@@ -40,6 +40,11 @@ let peer_info = null;
 var currentUserName = '';
 var currentUserProfileImageUrl = '';
 
+var roomTitle = '';
+var roomDescription = '';
+var roomStartTime = '';
+var roomEndTime = '';
+
 let room_id = location.pathname.substring(6);
 let isEnumerateDevices = false;
 
@@ -124,6 +129,12 @@ async function getRoomInfo() {
 
         //set page title
         document.title = getRoomDetails && getRoomDetails.title;
+
+        roomTitle = getRoomDetails && getRoomDetails.title;
+        roomDescription = getRoomDetails && getRoomDetails.description;
+        roomEndTime = getRoomDetails && getRoomDetails.endTime;
+        roomStartTime = getRoomDetails && getRoomDetails.startTime;
+
     } catch (e) {
         console.log('Failed to fetch the room details', room_id, e);
     }
@@ -329,7 +340,9 @@ function whoAreYou() {
         //     readonly: true,
         // },
         html: `<br />
-        <div>Welcome to TAL</div>
+        <div>${roomTitle}</div>
+        <div>${roomDescription}</div>
+        <div>${roomStartTime} - ${roomEndTime}</div>
         <div style="overflow: hidden;display:none;">
             <button id="initAudioButton" class="fas fa-microphone" onclick="handleAudio(event)"></button>
             <button id="initVideoButton" class="fas fa-video" onclick="handleVideo(event)"></button>
