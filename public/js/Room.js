@@ -97,7 +97,7 @@ function getRandomNumber(length) {
 const currentUserId = getQueryString(window.location.search, 'userId');
 var redirectDomain = getQueryString(window.location.search, 'redirectTo');
 
-if(!redirectDomain && redirectDomain.length == 0){
+if(!redirectDomain || redirectDomain.length == 0){
     console.log("hello")
     redirectUrl = webBaseUrl + webBaseUrlAudioPath;
 }else{
