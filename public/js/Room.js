@@ -13,6 +13,7 @@ const swalImageUrl = '../images/pricing-illustration.svg';
 const webBaseUrl = 'https://touch-a-life-dev.web.app';
 const webApiBaseUrl = webBaseUrl + '/api/v1';
 const webBaseUrlAudioPath = '/chatTabs';
+var redirectUrl = 'https://touch-a-life-dev.web.app';
 
 const url = {
     ipLookup: 'https://extreme-ip-lookup.com/json/',
@@ -94,12 +95,21 @@ function getRandomNumber(length) {
 }
 
 const currentUserId = getQueryString(window.location.search, 'userId');
+var redirectDomain = getQueryString(window.location.search, 'redirectTo');
+
+if(!redirectDomain && redirectDomain.length == 0){
+    redirectUrl = webBaseUrl + webBaseUrlAudioPath;
+}else{
+    redirectUrl = redirectDomain + webBaseUrlAudioPath;
+}
+
 async function getCurrentUserInfo() {
     try {
         const fetchUserDetails = await axios.get(webApiBaseUrl + '/user/' + currentUserId);
         getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
 
         if (!getUserDetails || !getUserDetails.unique_id) {
+            alert("User details not found");
             window.location.href = `${webBaseUrl}`;
             return;
         }
@@ -119,6 +129,7 @@ async function getRoomInfo() {
         getRoomDetails = fetchRoomDetails && fetchRoomDetails.data && fetchRoomDetails.data.data;
 
         if (!getRoomDetails || !getRoomDetails._id) {
+            alert("Room details not found");
             window.location.href = `${webBaseUrl}`;
             return;
         }
@@ -1028,7 +1039,7 @@ function handleRoomClientEvents() {
     });
     rc.on(RoomClient.EVENTS.exitRoom, () => {
         console.log('Room Client leave room');
-        window.location.href = `${webBaseUrl}${webBaseUrlAudioPath}`;
+        window.location.href = `${redirectUrl}`;
     });
 }
 
