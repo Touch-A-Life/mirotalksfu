@@ -340,9 +340,9 @@ function whoAreYou() {
         //     readonly: true,
         // },
         html: `<br />
-        <div><b>Title:</b> ${roomTitle}</div><br/>
-        <div><b>Description:</b> ${roomDescription}</div><br/>
-        <div><b>Time:</b> ${roomStartTime} - ${roomEndTime}</div><br/>
+        <div class='color-white'><b>Title:</b> ${roomTitle}</div><br/>
+        <div class='color-white'><b>Description:</b> ${roomDescription}</div><br/>
+        <div class='color-white'><b>Time:</b> ${roomStartTime} - ${roomEndTime}</div><br/>
         <div style="overflow: hidden;display:none;">
             <button id="initAudioButton" class="fas fa-microphone" onclick="handleAudio(event)"></button>
             <button id="initVideoButton" class="fas fa-video" onclick="handleVideo(event)"></button>
