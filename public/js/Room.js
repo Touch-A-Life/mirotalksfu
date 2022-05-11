@@ -97,12 +97,9 @@ function getRandomNumber(length) {
 const currentUserId = getQueryString(window.location.search, 'userId');
 var redirectDomain = getQueryString(window.location.search, 'redirectTo');
 
-if(!redirectDomain || redirectDomain.length == 0){
-    console.log("hello")
+if (!redirectDomain || redirectDomain.length == 0) {
     redirectUrl = webBaseUrl + webBaseUrlAudioPath;
-}else{
-    console.log("hello 123")
-
+} else {
     redirectUrl = redirectDomain + webBaseUrlAudioPath;
 }
 
@@ -112,7 +109,7 @@ async function getCurrentUserInfo() {
         getUserDetails = fetchUserDetails && fetchUserDetails.data && fetchUserDetails.data.data;
 
         if (!getUserDetails || !getUserDetails.unique_id) {
-            alert("User details not found");
+            alert('User details not found');
             window.location.href = `${webBaseUrl}`;
             return;
         }
@@ -132,7 +129,7 @@ async function getRoomInfo() {
         getRoomDetails = fetchRoomDetails && fetchRoomDetails.data && fetchRoomDetails.data.data;
 
         if (!getRoomDetails || !getRoomDetails._id) {
-            alert("Room details not found");
+            alert('Room details not found');
             window.location.href = `${webBaseUrl}`;
             return;
         }
@@ -146,9 +143,18 @@ async function getRoomInfo() {
 
         roomTitle = getRoomDetails && getRoomDetails.title;
         roomDescription = getRoomDetails && getRoomDetails.description;
-        roomEndTime = getRoomDetails && getRoomDetails.endTime && new Date(getRoomDetails.endTime).toDateString() + " " + new Date(getRoomDetails.endTime).toLocaleTimeString();
-        roomStartTime = getRoomDetails && getRoomDetails.startTime && new Date(getRoomDetails.startTime).toDateString() + " " + new Date(getRoomDetails.startTime).toLocaleTimeString();
-
+        roomEndTime =
+            getRoomDetails &&
+            getRoomDetails.endTime &&
+            new Date(getRoomDetails.endTime).toDateString() +
+                ' ' +
+                new Date(getRoomDetails.endTime).toLocaleTimeString();
+        roomStartTime =
+            getRoomDetails &&
+            getRoomDetails.startTime &&
+            new Date(getRoomDetails.startTime).toDateString() +
+                ' ' +
+                new Date(getRoomDetails.startTime).toLocaleTimeString();
     } catch (e) {
         console.log('Failed to fetch the room details', room_id, e);
     }
