@@ -45,6 +45,8 @@ var roomTitle = '';
 var roomDescription = '';
 var roomStartTime = '';
 var roomEndTime = '';
+var moderatorInfo = '';
+var moderatorName = '';
 
 let room_id = location.pathname.substring(6);
 let isEnumerateDevices = false;
@@ -138,11 +140,19 @@ async function getRoomInfo() {
             isModerator = true;
         }
 
+        //fetch moderator details
+        if (getRoomDetails && getRoomDetails.ownerId) {
+            const fetchModeratorDetails = await axios.get(webApiBaseUrl + '/user/' + getRoomDetails.ownerId);
+            moderatorInfo = fetchModeratorDetails && fetchModeratorDetails.data && fetchModeratorDetails.data.data;
+        }
+
         //set page title
         document.title = getRoomDetails && getRoomDetails.title;
 
         roomTitle = getRoomDetails && getRoomDetails.title;
         roomDescription = getRoomDetails && getRoomDetails.description;
+        moderatorName =
+            moderatorInfo && moderatorInfo.name && moderatorInfo.name.first_name + ' ' + moderatorInfo.name.last_name;
         roomEndTime =
             getRoomDetails &&
             getRoomDetails.endTime &&
@@ -363,6 +373,7 @@ function whoAreYou() {
         <div class='color-white'><b>Title:</b> ${roomTitle}</div><br/>
         <div class='color-white'><b>Description:</b> ${roomDescription}</div><br/>
         <div class='color-white'><b>Time:</b> ${roomStartTime} - ${roomEndTime}</div><br/>
+        <div class='color-white'><b>Moderator:</b> ${moderatorName}</div><br/>
         <div style="overflow: hidden;display:none;">
             <button id="initAudioButton" class="fas fa-microphone" onclick="handleAudio(event)"></button>
             <button id="initVideoButton" class="fas fa-video" onclick="handleVideo(event)"></button>
