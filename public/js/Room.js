@@ -142,8 +142,7 @@ async function getRoomInfo() {
 
         //fetch moderator details
         if (getRoomDetails && getRoomDetails.ownerId) {
-            const fetchModeratorDetails = await axios.get(webApiBaseUrl + '/user/' + getRoomDetails.ownerId);
-            moderatorInfo = fetchModeratorDetails && fetchModeratorDetails.data && fetchModeratorDetails.data.data;
+            moderatorInfo = getRoomDetails.ownerId;
         }
 
         //set page title
