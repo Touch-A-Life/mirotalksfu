@@ -136,7 +136,7 @@ async function getRoomInfo() {
             return;
         }
 
-        if (getRoomDetails && getRoomDetails.ownerId == currentUserId) {
+        if (getRoomDetails && getRoomDetails.ownerId && getRoomDetails.ownerId._id == currentUserId) {
             isModerator = true;
         }
 
