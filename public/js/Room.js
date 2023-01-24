@@ -10,7 +10,7 @@ const RoomURL = window.location.href.split('?')[0];
 
 const swalBackground = 'linear-gradient(to left, #1f1e1e, #000000)';
 const swalImageUrl = '../images/pricing-illustration.svg';
-const webBaseUrl = 'https://talgiving.org';
+const webBaseUrl = 'https://touch-a-life-dev.web.app';
 const webApiBaseUrl = webBaseUrl + '/api/v1';
 const webBaseUrlAudioPath = '/chatTabs';
 
